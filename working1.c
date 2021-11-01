@@ -34,6 +34,12 @@ int main(int argc, char* arg[]) {
 
 	addnode(list, 1);
 	addnode(list, 2);
+	i = delnode(list);
+	printf("%d\n", i);
+	i = delnode(list);
+	printf("%d\n", i);
+	i = delnode(list);
+	printf("%d\n", i);
 	addnode(list, 3);
 	addnode(list, 4);
 	addnode(list, 5);
@@ -45,8 +51,7 @@ int main(int argc, char* arg[]) {
 	printf("%d\n", i);
 	i = delnode(list);
 	printf("%d\n", i);
-	i = delnode(list);
-	printf("%d\n", i);
+
 
 	/*for (i = 0; i < 10; i++) {
 		ret = fork();
@@ -92,7 +97,7 @@ int delnode(list* list) {
 	}
 	delnode = list->head;
 	data = list->head->data;
-	if (list->head->next == NULL) {		//if del last node
+	if (list->head->next == NULL) {			//if del last node
 		list->head = NULL;
 		list->tail = NULL;
 		printf("Delete last node\n");
