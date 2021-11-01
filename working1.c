@@ -35,10 +35,13 @@ int main(int argc, char* arg[]) {
 	list->head = NULL;
 	list->tail = NULL;
 	list->list_num = 0;
+
 	int bust_time[MAX_PROC];
-	int child_proc_num = 1;
+	int child_proc_num = 1;		//편의를 위해 자식 프로세스 번호지정
+	//child_proc_num 을 통해 각 자식 프로세스가 bust_time[child_proc_num]으로 남은 버스트 타임 계산
 
 	//CPU bust 타임 임의 세팅
+	//추가 할 것 : setting.txt 파일등으로 미리 세팅된 파일을 불러와서 저장 or 세팅파일을 프로그램 시작시 지정하지 않으면 랜덤으로 생성(고려)
 	bust_time[0] = 100;
 	bust_time[1] = 500;
 	bust_time[2] = 100;
@@ -50,32 +53,32 @@ int main(int argc, char* arg[]) {
 	bust_time[8] = 100;
 	bust_time[9] = 600;
 
-
 	
-	//초기 프로세스 생성 구간
+	//초기 자식 프로세스 생성 구간 - 부모 프로세스(처음 1번만 실행)
 	for (i = 0; i < 10; i++) {
 		sleep(1);
 		ret = fork();
-		if (ret > 0) {				//부모 프로세스
+		if (ret > 0) {								//부모 프로세스
 			pids[i] = ret;
 			printf("pid[%d] : stop\n",pids[i]);
 			kill(pids[i], SIGSTOP);
 
 		}
-		//초기 프로세스 생성 구간 - 부모 프로세스(처음 1번만 실행)
-		//자식 프로세스 코드 구간
-		else if (ret == 0) {		//자식 프로세스
+	//초기 자식 프로세스 생성 구간
+
+		//자식 프로세스 코드 구간 - 부모 프로세스가 kill 시그널 혹은 일정 자식 프로세스의 일정 조건까지 반복 후 종료
+		else if (ret == 0) {						//자식 프로세스
 			printf("pid[%d] : work\n",getpid());
-			while (1) {
+			while (1) {								//루프가 없으면 한번 실행 후 자식 프로세스가 다른 자식 프로세스 무한 생성
 
 
 
 			}
 		}
-		//자식 프로세스 코드 구간 - 부모 프로세스가 kill 시그널 혹은 일정 자식 프로세스의 일정 조건까지 반복 후 종료
+		//자식 프로세스 코드 구간
 	}
 
-	//부모 프로세스 코드 구간
+	//부모 프로세스 코드 구간 - 시그널 통해 자식 프로세스 통제 및 종료
 
 	//추가할 것 : 자식 프로세스의 CPU bust가 0이 될때까지 스케줄링
 	for (i = 0; i < 10; i++) {
@@ -91,11 +94,12 @@ int main(int argc, char* arg[]) {
 		printf("sigkill\n");
 	}
 
-	//부모 프로세스 코드 구간 - 시그널 통해 자식 프로세스 통제 및 종료
+	//부모 프로세스 코드 구간
 	
 	return 0;
 }
 
+//헤더로 분리할 함수들 - 1	(가명 list.h)
 void addnode(list* list, int data) {
 	node* addnode = (node*)malloc(sizeof(node));
 	addnode->next = NULL;
@@ -135,3 +139,4 @@ int delnode(list* list) {
 
 	return data;
 }
+//헤더로 분리할 함수들 - 1
