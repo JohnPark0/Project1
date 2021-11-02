@@ -7,6 +7,7 @@
 #include <sys/ipc.h>
 #include <sys/msg.h>
 #include <string.h>
+#include <sys/time.h>
 
 void Parent(void);
 void Child(void);
