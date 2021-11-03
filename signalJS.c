@@ -11,15 +11,17 @@
 #include <unistd.h>
 
 void parent(void);
-void child(void);
-void pmsgSnd(void);
-void pmsgRcv(void);
-void cmsgSnd(void);
-void cmsgRcv(void);
+void child(int* ckey);
+void pmsgSnd(int curProc);
+void pmsgRcv(int curProc);
+void cmsgSnd(int* ckey);
+void cmsgRcv(int* ckey);
 void signalHandler(int signo);
 
+int curProc = 1;
 int tickCount = 0;
-int cpid[1];// child process pid array.
+int cpid[3];// child process pid array.
+int* ckey[3];// child process key array.
 
 struct cdata {
     bool isZero;
@@ -33,17 +35,21 @@ struct msgbuf {
 };
 
 int main(int argc, char** argv) {
-    for (int i = 0; i < 1; i++) {
+
+    for (int i = 0; i < 3; i++) {
         int pid = fork();
 
         if (pid > 0) {
             printf("Parents Process: %d\n", getpid());
+            cpid[i] = pid;
         }
         else if (pid == 0) {
+            int key = 0x1000 * (i + 1);
+            ckey[i] = &key;
+
             printf("Child Process: %d\n", getpid());
-            sleep(1);
-            cpid[i] = pid;
-            child();
+            printf("ckey is %d\n", *ckey[i]);
+            child(ckey[i]);
             exit(0);
         }
         else if (pid == -1) {
@@ -76,10 +82,10 @@ void parent(void) {
     return;
 }
 
-void child(void) {
+void child(int* ckey) {
     while (1) {
-        cmsgRcv();
-        cmsgSnd();
+        cmsgRcv(ckey);
+        cmsgSnd(ckey);
     }
 }
 
@@ -87,33 +93,39 @@ void signalHandler(int signo) {
     switch (tickCount) {
     case 0:
     case 1:
-        printf("[%d tick]\n", tickCount);
-        pmsgSnd();
-        pmsgRcv();
+        printf("[%d tick, no.%d proc] \n", tickCount, curProc);
+        pmsgSnd(curProc);
+        pmsgRcv(curProc);
         tickCount++;
         break;
 
     case 2:
-        printf("[%d tick]\n", tickCount);
-        pmsgSnd();
-        pmsgRcv();
+        printf("[%d tick, no.%d proc] \n", tickCount, curProc);
+        pmsgSnd(curProc);
+        pmsgRcv(curProc);
+        curProc++;
         tickCount = 0;
-        kill(cpid[0], SIGKILL);
-        // exit(0);
         break;
+    }
+
+    if (curProc >= 4) {
+        for (int i = 0; i < 3; i++) {
+            kill(cpid[i], SIGKILL);
+        }
+        exit(0);
     }
     return;
 }
 
 // 어떻게 자식 프로세스마다 다른 key 값을 보유할 수 있을까?
 
-void pmsgSnd(void) {
+void pmsgSnd(int curProc) {
     int qid;
     int ret;
-    int ckey = 0x1000;
+    int key = 0x1000 * curProc;
     struct msgbuf msg;
 
-    qid = msgget(ckey, IPC_CREAT | 0666);
+    qid = msgget(key, IPC_CREAT | 0666);
     memset(&msg, 0, sizeof(msg));
 
     msg.mtype = 1;
@@ -122,35 +134,35 @@ void pmsgSnd(void) {
     msg.data.iotime = 0;
 
     if (ret = msgsnd(qid, (void*)&msg, sizeof(struct cdata), 0) == -1) {
-        perror("msgsnd error");
+        perror("pmsgsnd error");
         exit(1);
     }
     return;
 }
 
-void cmsgRcv(void) {
+void cmsgRcv(int* ckey) {
     int qid;
     int ret;
-    int ckey = 0x1000;
+    int key = *ckey;
     struct msgbuf msg;
 
-    qid = msgget(ckey, IPC_CREAT | 0666);
+    qid = msgget(key, IPC_CREAT | 0666);
     memset(&msg, 0, sizeof(msg));
 
     if (ret = msgrcv(qid, (void*)&msg, sizeof(msg), 0, 0) == -1) {
-        perror("msgrcv error");
+        perror("cmsgrcv error");
         exit(1);
     }
     return;
 }
 
-void cmsgSnd(void) {
+void cmsgSnd(int* ckey) {
     int msgq;
     int ret;
-    int ckey = 0x1000;
+    int key = *ckey;
     struct msgbuf msg;
 
-    msgq = msgget(ckey, IPC_CREAT | 0666);
+    msgq = msgget(key, IPC_CREAT | 0666);
     memset(&msg, 0, sizeof(msg));
 
     msg.mtype = 1;
@@ -165,13 +177,13 @@ void cmsgSnd(void) {
     return;
 }
 
-void pmsgRcv(void) {
+void pmsgRcv(int curProc) {
     int msgq;
     int ret;
-    int ckey = 0x1000;
+    int key = 0x1000 * curProc;
     struct msgbuf msg;
 
-    msgq = msgget(ckey, IPC_CREAT | 0666);
+    msgq = msgget(key, IPC_CREAT | 0666);
     memset(&msg, 0, sizeof(msg));
 
     if (ret = msgrcv(msgq, (void*)&msg, sizeof(msg), 0, 0) == -1) {
