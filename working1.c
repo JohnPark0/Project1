@@ -23,7 +23,10 @@ typedef struct list {
 } list;
 
 void addnode(list* list, int data);
-int delnode(list* list);
+//int delnode(list* list);
+int delnode(list* list, node* return_node);
+void inilist(list* list);
+
 void signal_handler(int signo);
 
 int pids[10];
@@ -31,10 +34,15 @@ int pids[10];
 int main(int argc, char* arg[]) {
 	int i;
 	int ret;
+	node* Return_node = malloc(sizeof(node));
+	list* RunningQ = malloc(sizeof(list));
+	inilist(RunningQ);
 	list* list = malloc(sizeof(list));
-	list->head = NULL;
+	inilist(list);
+	
+	/*list->head = NULL;
 	list->tail = NULL;
-	list->list_num = 0;
+	list->list_num = 0;*/
 
 	int bust_time[MAX_PROC];
 	int child_proc_num = 1;		//편의를 위해 자식 프로세스 번호지정
@@ -61,18 +69,18 @@ int main(int argc, char* arg[]) {
 		if (ret > 0) {								//부모 프로세스
 			pids[i] = ret;
 			printf("pid[%d] : stop\n",pids[i]);
-			kill(pids[i], SIGSTOP);
+			//kill(pids[i], SIGSTOP);
+			addnode(RunningQ, i);
 
 		}
 	//초기 자식 프로세스 생성 구간
 
 		//자식 프로세스 코드 구간 - 부모 프로세스가 kill 시그널 혹은 일정 자식 프로세스의 일정 조건까지 반복 후 종료
 		else if (ret == 0) {						//자식 프로세스
-			printf("pid[%d] : work\n",getpid());
+			kill(getpid(), SIGSTOP);				//첫 실행시 자식 프로세스 스스로 정지 시그널
 			while (1) {								//루프가 없으면 한번 실행 후 자식 프로세스가 다른 자식 프로세스 무한 생성
-
-
-
+				printf("pid[%d] : work\n", getpid());
+				kill(getpid(), SIGSTOP);
 			}
 		}
 		//자식 프로세스 코드 구간
@@ -83,8 +91,12 @@ int main(int argc, char* arg[]) {
 	//추가할 것 : 자식 프로세스의 CPU bust가 0이 될때까지 스케줄링
 	for (i = 0; i < 10; i++) {
 		sleep(1);
+		delnode(RunningQ, Return_node);
+
+
+
 		//printf("pid[%d] : start\n", pids[i]);
-		kill(pids[i], SIGCONT);
+		kill(pids[Return_node->data], SIGCONT);
 	}
 
 
@@ -100,6 +112,15 @@ int main(int argc, char* arg[]) {
 }
 
 //헤더로 분리할 함수들 - 1	(가명 list.h)
+
+void inilist(list* list) {
+	list->head = NULL;
+	list->tail = NULL;
+	list->list_num = 0;
+}
+
+
+
 void addnode(list* list, int data) {
 	node* addnode = (node*)malloc(sizeof(node));
 	addnode->next = NULL;
@@ -116,13 +137,13 @@ void addnode(list* list, int data) {
 	}
 }
 
-int delnode(list* list) {
+int delnode(list* list, node* return_node) {
 	int data;
 	node* delnode;
 
 	if (list->head == NULL) {				//비어있는 리스트 삭제시 예외처리
 		printf("There is no node to delete\n");
-		return 0;							//반환값을 0말고 다른걸로 해야할듯
+		return 0;							//실패
 	}
 	delnode = list->head;
 	data = list->head->data;
@@ -135,8 +156,9 @@ int delnode(list* list) {
 		list->head = delnode->next;
 		printf("Delete node\n");
 	}
+	*return_node = *delnode;
 	free(delnode);
 
-	return data;
+	return 1;								//성공
 }
 //헤더로 분리할 함수들 - 1
