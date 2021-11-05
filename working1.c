@@ -26,7 +26,6 @@ void signal_bustend(int signo);
 
 void signal_decrease(int signo);
 void addnode(list* list, int data);
-//int delnode(list* list);
 int delnode(list* list, node* return_node);
 void inilist(list* list);
 void signal_handler(int signo);
@@ -39,24 +38,20 @@ int parents_pid;
 
 list* WaitingQ;
 node* RunningQ;
+list* ReadyQ;
 
 int main(int argc, char* arg[]) {
 	int i;
 	int ret;
-	
-	node* Return_node = malloc(sizeof(node));
-	list* ReadyQ = malloc(sizeof(list));
+	int temp;
+
+	ReadyQ = malloc(sizeof(list));
 	inilist(ReadyQ);
 
 	WaitingQ = malloc(sizeof(list));
 	inilist(WaitingQ);
 
 	RunningQ = malloc(sizeof(node));
-
-	/*list* list = malloc(sizeof(list));
-	inilist(list);*/
-
-	//int bust_time[MAX_PROC];
 
 	struct sigaction old_sa;
 	struct sigaction new_sa;
@@ -88,7 +83,7 @@ int main(int argc, char* arg[]) {
 	bust_time[3] = 200;
 	bust_time[4] = 100;
 	bust_time[5] = 300;
-	bust_time[6] = 0;
+	bust_time[6] = 700;
 	bust_time[7] = 400;
 	bust_time[8] = 100;
 	bust_time[9] = 600;
@@ -109,15 +104,28 @@ int main(int argc, char* arg[]) {
 
 			//자식 프로세스 코드 구간 - 부모 프로세스가 kill 시그널 혹은 일정 자식 프로세스의 일정 조건까지 반복 후 종료
 		else if (ret == 0) {						//자식 프로세스
-			printf("pid[%d] = proc num [%d]\n",getpid(),child_proc_num);
-			printf("pid[%d] : stop\n", pids[i]);
-			raise(SIGSTOP);
-			
+			//printf("pid[%d] = proc num [%d]\n",getpid(),child_proc_num);		//디버그 용
+			printf("pid[%d] : stop\n", getpid());
+			//raise(SIGSTOP);
+			kill(getpid(), SIGSTOP);
+
 			while (1) {								//루프가 없으면 한번 실행 후 자식 프로세스가 다른 자식 프로세스 무한 생성
 				printf("pid[%d] : work\n", getpid());
+
+				temp = bust_time[child_proc_num];
+
+				if (bust_time[child_proc_num] - 100 == 0) {
+					bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
+					printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
+					kill(parents_pid, SIGUSR2);
+				}
+				else {
+					bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
+					printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
+					kill(parents_pid, SIGUSR1);
+				}
+				printf("pid[%d] : work done\n", getpid());
 				kill(getpid(), SIGSTOP);			//임시코드
-
-
 			}
 		}
 		//자식 프로세스 코드 구간
@@ -126,12 +134,27 @@ int main(int argc, char* arg[]) {
 	//부모 프로세스 코드 구간 - 시그널 통해 자식 프로세스 통제 및 종료
 
 	//추가할 것 : 자식 프로세스의 CPU bust가 0이 될때까지 스케줄링
-	for (i = 0; i < 10; i++) {
-		delnode(ReadyQ, RunningQ);				//Queue를 POP할때 RunningQ에 해당 노드 저장
-		setitimer(ITIMER_REAL, &new_itimer, &old_itimer);
-		sleep(10);
-		kill(pids[RunningQ->data], SIGCONT);
+
+	delnode(ReadyQ, RunningQ);
+	setitimer(ITIMER_REAL, &new_itimer, &old_itimer);
+	while(1) {
+		
+		
+		sleep(3);
+		//addnode(ReadyQ, RunningQ->data);
+
+		if (ReadyQ->head == NULL && ReadyQ->tail == NULL) {
+			break;
+
+		}
 	}
+
+	//for (i = 0; i < 10; i++) {
+	//	delnode(ReadyQ, RunningQ);				//Queue를 POP할때 RunningQ에 해당 노드 저장
+	//	setitimer(ITIMER_REAL, &new_itimer, &old_itimer);
+	//	sleep(10);
+	//	kill(pids[RunningQ->data], SIGCONT);
+	//}
 
 
 	//추가할 것 : 프로그램의 종료 조건(모든 자식 프로세스의 CPU bust가 0)
@@ -147,29 +170,39 @@ int main(int argc, char* arg[]) {
 
 //부모 프로세스에서 cpu_bust 감소
 //signal_handler에서 다시 자식 프로세스로 시그널 보내서 자식 프로세스에서 감소 테스트 해봐야
-void signal_handler(int signo)				//부모 프로세스에서 작동
+void signal_handler(int signo)				//부모 프로세스에서 작동 SIGALRM
 {
 	int child_proc;
+	printf("test1\n");
+
+	
 	child_proc = pids[RunningQ->data];		//Running Queue의 자식 프로세스 pid 지정
+	kill(pids[RunningQ->data], SIGCONT);
 
-	kill(child_proc, SIGUSR1);				//자식 프로세스에 SIGUSR1 시그널 전송 -> sigaction으로 signal_decrease함수 호출
+	//kill(child_proc, SIGUSR1);				//자식 프로세스에 SIGUSR1 시그널 전송 -> sigaction으로 signal_decrease함수 호출
 }
 
-void signal_decrease(int signo) {			//실행중인 자식 프로세스에서 작동
-	int temp;
-	temp = bust_time[child_proc_num];
+//void signal_decrease(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR1
+//	int temp;
+//	temp = bust_time[child_proc_num];
+//
+//	if (bust_time[child_proc_num] == 0) {
+//		kill(parents_pid, SIGUSR2);
+//	}
+//	else {
+//		bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
+//		printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
+//	}
+//}
 
-	if (bust_time[child_proc_num] == 0) {
-		kill(parents_pid, SIGUSR2);
-	}
-	else {
-		bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
-		printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
-	}
+void signal_decrease(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR1
+	addnode(ReadyQ, RunningQ->data);
+	delnode(ReadyQ, RunningQ);
 }
 
-void signal_bustend(int signo) {			//부모 프로세스
+void signal_bustend(int signo) {			//자식 프로세스 -> 부모 프로세스 시그널 전송 테스트 SIGUSR2
 	addnode(WaitingQ, RunningQ->data);
+	delnode(ReadyQ, RunningQ);
 	printf("SIGUSR2 called\n");
 }
 
