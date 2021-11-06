@@ -12,8 +12,8 @@
 #include <signal.h>
 
 #define MAX_PROC 10
-#define TICK_TIME 500000		//micro sec 1000000 = 1sec
-#define QUANTUM_TIME 1
+#define TICK_TIME 1000000		//micro sec 1000000 = 1sec
+#define QUANTUM_TIME 3
 
 typedef struct node {
 	struct node* next;
@@ -24,7 +24,6 @@ typedef struct list {
 	node* head;
 	node* tail;
 	int list_num;
-
 } list;
 
 struct data {
@@ -33,6 +32,10 @@ struct data {
 	int ioTime;// 자식의 io time.
 };// 메세지 큐에 넣을  자식 프로세스의  데이터.
 
+struct msgbuf {
+	long mtype;// 무조건 있어야 하는 mtype.
+	struct data mdata;
+};// 메세지 큐에 넣을 데이터.
 
 //Function Define
 void signal_bustend(int signo);
@@ -55,6 +58,20 @@ list* WaitingQ;
 list* ReadyQ;
 node* RunningQ;
 
+//합칠 코드
+void pmsgSnd(int curProc);
+void pmsgRcv(int curProc);
+void cmsgSnd(int* ckey);
+void cmsgRcv(int* ckey);
+void signalHandler(int signo);
+
+int curProc = 1;// 현재 실행 중인 자식 프로세스.
+int tickCount = 0; //타임 카운터
+int quantumCount = 0;//틱 카운터.
+int cpid[3];// parent holds child process pid array.
+int cqid[3];// parent holds message queue id array.
+int* ckey[3];// child holds child process key array.
+//합칠 코드
 
 int main(int argc, char* arg[]) {
 	int ret;
@@ -66,8 +83,8 @@ int main(int argc, char* arg[]) {
 	sigaction(SIGALRM, &new_sa, NULL);
 
 	struct itimerval new_itimer, old_itimer;
-	new_itimer.it_interval.tv_sec = 0;
-	new_itimer.it_interval.tv_usec = 50000;
+	new_itimer.it_interval.tv_sec = 1;
+	//new_itimer.it_interval.tv_usec = TICK_TIME;
 	new_itimer.it_value.tv_sec = 1;
 	new_itimer.it_value.tv_usec = 0;
 
@@ -87,7 +104,6 @@ int main(int argc, char* arg[]) {
 
 	inilist(ReadyQ);
 	inilist(WaitingQ);
-	
 
 	//CPU bust 타임 임의 세팅
 	//추가 할 것 : setting.txt 파일등으로 미리 세팅된 파일을 불러와서 저장 or 세팅파일을 프로그램 시작시 지정하지 않으면 랜덤으로 생성(고려)
@@ -166,7 +182,6 @@ int main(int argc, char* arg[]) {
 
 		if (ReadyQ->head == NULL && ReadyQ->tail == NULL) {
 			break;
-
 		}
 	}
 
@@ -175,7 +190,6 @@ int main(int argc, char* arg[]) {
 		kill(pids[i], SIGKILL);
 		printf("sigkill\n");
 	}
-
 	//부모 프로세스 코드 구간
 
 	return 0;
@@ -184,25 +198,113 @@ int main(int argc, char* arg[]) {
 void signal_handler(int signo)				//부모 프로세스에서 작동 SIGALRM
 {
 	int child_proc;
-	printf("test1\n");
-
-	
 	child_proc = pids[RunningQ->proc_num];		//Running Queue의 자식 프로세스 pid 지정
 	kill(pids[RunningQ->proc_num], SIGCONT);
 
 }
 
 void signal_decrease(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR1
-	addnode(ReadyQ, RunningQ->proc_num);
-	delnode(ReadyQ, RunningQ);
+	if (tickCount < QUANTUM_TIME-1) {
+		tickCount++;
+	}
+	else {
+		addnode(ReadyQ, RunningQ->proc_num);
+		delnode(ReadyQ, RunningQ);
+		tickCount = 0;
+	}
 }
 
 void signal_bustend(int signo) {			//자식 프로세스 -> 부모 프로세스 시그널 전송 테스트 SIGUSR2
 	printf("SIGUSR2 called1\n");
 	addnode(WaitingQ, RunningQ->proc_num);
 	delnode(ReadyQ, RunningQ);
+
+	tickCount = 0;
 	printf("SIGUSR2 called2\n");
 }
+
+//합칠 코드
+void pmsgSnd(int curProc) {
+	int qid;
+	int ret;
+	int key = 0x1000 * curProc;
+	struct msgbuf msg;
+
+	qid = msgget(key, IPC_CREAT | 0666);
+	cqid[curProc - 1] = qid;
+	memset(&msg, 0, sizeof(msg));
+
+	msg.mtype = 1;
+	msg.mdata.pid = 0;
+	msg.mdata.cpuTime = 0;
+	msg.mdata.ioTime = 0;
+
+	if (ret = msgsnd(qid, (void*)&msg, sizeof(struct data), 0) == -1) {
+		perror("pmsgsnd error");
+		exit(1);
+	}
+	return;
+}
+
+// 부모가 보낸 메시지를 자식이 받는다.
+void cmsgRcv(int* ckey) {
+	int qid;
+	int ret;
+	int key = *ckey;// 자식 프로세스 고유의 키 값.
+	struct msgbuf msg;
+
+	qid = msgget(key, IPC_CREAT | 0666);
+	memset(&msg, 0, sizeof(msg));
+
+	if (ret = msgrcv(qid, (void*)&msg, sizeof(msg), 0, 0) == -1) {
+		perror("cmsgrcv error");
+		exit(1);
+	}
+	return;
+}
+
+// 자식이 부모에게 자신의 데이터가 담긴  메시지를 보낸다.
+void cmsgSnd(int* ckey) {
+	int qid;
+	int ret;
+	int key = *ckey;// 자식 프로세스 고유의 키 값.
+	struct msgbuf msg;
+
+	qid = msgget(key, IPC_CREAT | 0666);
+	memset(&msg, 0, sizeof(msg));
+
+	msg.mtype = 1;
+	msg.mdata.pid = getpid();
+	msg.mdata.cpuTime = 100;
+	msg.mdata.ioTime = 100;// io time을 부모에게 보낸다.
+
+	if (ret = msgsnd(qid, (void*)&msg, sizeof(struct data), 0) == -1) {
+		perror("msgsnd error");
+		exit(1);
+	}
+	return;
+}
+
+// 자식이 보낸 메시지를 받은 부모는 그 데이터를 출력한다.
+void pmsgRcv(int curProc) {
+	int qid;
+	int ret;
+	int key = 0x1000 * curProc;
+	struct msgbuf msg;
+
+	qid = msgget(key, IPC_CREAT | 0666);
+	memset(&msg, 0, sizeof(msg));
+
+	if (ret = msgrcv(qid, (void*)&msg, sizeof(msg), 0, 0) == -1) {
+		perror("msgrcv error");
+		exit(1);
+	}
+	printf("%ld\t%d\t%d\t\t%d\n", msg.mtype, msg.mdata.pid, msg.mdata.cpuTime, msg.mdata.ioTime);
+	return;
+}
+
+
+
 
 //헤더로 분리할 함수들 - 1	(가명 list.h)
 
