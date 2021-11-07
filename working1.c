@@ -12,7 +12,7 @@
 #include <signal.h>
 
 #define MAX_PROC 10
-#define TICK_TIME 1000000		//micro sec 1000000 = 1sec
+#define TICK_TIME 10000		//micro sec 1000000 = 1sec
 #define QUANTUM_TIME 2
 
 typedef struct node {
@@ -42,6 +42,9 @@ void signal_bustend(int signo);
 void signal_decrease(int signo);
 void addnode(list* list, int proc_num);
 int delnode(list* list, node* return_node);
+void writenode(list* list, FILE* fp, char* listname);
+void writeallnode(list* ready, list* waiting, node* running, FILE* fp);
+
 void inilist(list* list);
 void signal_handler(int signo);
 
@@ -60,9 +63,11 @@ list* ReadyQ;
 node* RunningQ;
 node* IORunningQ;
 
+FILE* fp;
 
+int running_ticks = 0;
 int tickCount = 0; //타임 카운터
-int messagechk[MAX_PROC];
+//int messagechk[MAX_PROC];
 
 //합칠 코드
 void pmsgSnd(int curProc);
@@ -71,7 +76,7 @@ void pmsgSnd(int curProc);
 void cmsgRcv(int* ckey);
 
 void cmsgSnd(int ckey, int iobust_time);
-void pmsgRcv(int curProc, int* iobust_time, int* messagechk);
+void pmsgRcv(int curProc, int* iobust_time);
 
 void signalHandler(int signo);
 
@@ -86,7 +91,9 @@ int main(int argc, char* arg[]) {
 	int ret;
 	int temp;
 
-	memset(&messagechk, 0, sizeof(messagechk));
+	fp = fopen("schedule_dump.txt", "w");
+
+	//memset(&messagechk, 0, sizeof(messagechk));
 
 	struct sigaction new_sa;
 	memset(&new_sa, 0, sizeof(new_sa));
@@ -239,6 +246,10 @@ int main(int argc, char* arg[]) {
 void signal_handler(int signo)				//부모 프로세스에서 작동 SIGALRM
 {
 	int child_proc;
+	char ready[] = "ReadyQ";
+
+	//writenode(ReadyQ, fp, ready);
+	writeallnode(ReadyQ, WaitingQ, RunningQ, fp);
 
 	for (int i = 0; i < WaitingQ_num; i++) {						//현재 WaitingQ의 모든 노드들의 io_bust감소 코드
 		printf("iobust check\n");
@@ -247,8 +258,8 @@ void signal_handler(int signo)				//부모 프로세스에서 작동 SIGALRM
 
 		//검토 필요 -> 아마 작동됨
 		printf("parents Receive message %d\n", IORunningQ->proc_num);
-		pmsgRcv(IORunningQ->proc_num, iobust_time, messagechk);		//receive message from child
-		messagechk[IORunningQ->proc_num] = 0;
+		pmsgRcv(IORunningQ->proc_num, iobust_time);		//receive message from child
+		//messagechk[IORunningQ->proc_num] = 0;
 		printf("pid[%d] = iobust_time left : %d\n",pids[IORunningQ->proc_num], iobust_time[IORunningQ->proc_num]);
 
 		if (iobust_time[IORunningQ->proc_num] == 0) {
@@ -263,8 +274,10 @@ void signal_handler(int signo)				//부모 프로세스에서 작동 SIGALRM
 	}
 
 	//자식 프로세스의 cpu_bust 감소 부분
-	child_proc = pids[RunningQ->proc_num];				//Running Queue의 자식 프로세스 pid 지정
-	kill(pids[RunningQ->proc_num], SIGCONT);			//ReadyQ의 맨앞 노드의 cpu_bust를 감소 -> 자식 프로세스의 cpu_bust감소 코드로
+	if (RunningQ->proc_num != -1) {							//예외처리 ReadyQ가 비어있을 경우 -> 전부 WaitingQ에 있는경우
+		child_proc = pids[RunningQ->proc_num];				//Running Queue의 자식 프로세스 pid 지정
+		kill(pids[RunningQ->proc_num], SIGCONT);			//ReadyQ의 맨앞 노드의 cpu_bust를 감소 -> 자식 프로세스의 cpu_bust감소 코드로
+	}
 }
 
 void signal_decrease(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR1 -> 남은 cpu_bust가 0이 아님 -> ReadyQ맨 뒤로
@@ -279,10 +292,14 @@ void signal_decrease(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR1 ->
 }
 
 void signal_bustend(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR2 -> 남은 cpu_bust가 0임 -> WaitingQ맨 뒤로
+	int temp = 0;
 	addnode(WaitingQ, RunningQ->proc_num);
 	WaitingQ_num ++;
 	printf("1Current WaitingQ_num = %d\n", WaitingQ_num);
-	delnode(ReadyQ, RunningQ);
+	temp = delnode(ReadyQ, RunningQ);
+	if (temp == 0) {						//예외처리 ReadyQ가 비어있는경우 -> 모든 프로세스가 WaitingQ에 있는경우
+		RunningQ->proc_num = -1;
+	}
 
 	tickCount = 0;							//퀀텀 초기화
 }
@@ -351,7 +368,7 @@ void cmsgSnd(int ckey, int iobust_time) {
 }
 
 // 자식이 보낸 데이터로 자식 iobust_time 업데이트
-void pmsgRcv(int curProc, int* iobust_time, int* messagechk) {
+void pmsgRcv(int curProc, int* iobust_time) {
 	int qid;
 	int ret;
 	int key = 0x1000 * (curProc + 1);
@@ -365,7 +382,7 @@ void pmsgRcv(int curProc, int* iobust_time, int* messagechk) {
 		exit(1);
 	}
 
-	*(messagechk + curProc) = 1;
+
 	*(iobust_time + curProc) = msg.mdata.ioTime;
 
 	//printf("%ld\t%d\t%d\t\t%d\n", msg.mtype, msg.mdata.pid, msg.mdata.cpuTime, msg.mdata.ioTime);
@@ -422,5 +439,74 @@ int delnode(list* list, node* return_node) {
 	free(delnode);
 
 	return 1;								//성공
+}
+
+void writenode(list* list, FILE* fp, char* listname) {
+	node* nodepointer;
+	fprintf(fp, "\nRunning tick = %d\n", running_ticks);
+	running_ticks++;
+	if (list->head == NULL) {	//list empty
+		return;
+	}
+	nodepointer = list->head;
+	for (int i = 0; ; ) {
+		fprintf(fp, "%s[%d] = %d\n", listname, i, nodepointer->proc_num);
+		if (nodepointer->next == NULL) {
+			return;
+		}
+		else {
+			nodepointer = nodepointer->next;
+			i++;
+		}
+	}
+}
+
+void writeallnode(list* ready, list* waiting, node* running, FILE* fp) {
+	node* nodepointer1;
+	node* nodepointer2;
+	
+	nodepointer1 = ready->head;
+	nodepointer2 = waiting->head;
+
+	fprintf(fp, "\nRunning tick = %d\n", running_ticks);
+	running_ticks++;
+
+	for (int i = 0; i < MAX_PROC; i++) {
+		if (nodepointer1 == NULL) {
+			if (i == 0) {
+				fprintf(fp, "ReadyQ is empty | ");
+			}
+			else {
+				fprintf(fp, "\t       |");
+			}
+		}
+		else{
+			fprintf(fp, "ReadyQ[%d] = %d | ", i, nodepointer1->proc_num);
+			nodepointer1 = nodepointer1->next;
+		}
+		if (nodepointer2 == NULL) {
+			if (i == 0) {
+				fprintf(fp, "WaitingQ is empty | ");
+			}
+			else {
+				fprintf(fp, "\t\t         |");
+			}
+		}
+		else {
+			fprintf(fp, "WaitingQ[%d] = %d    | ", i, nodepointer2->proc_num);
+			nodepointer2 = nodepointer2->next;
+		}
+		if (i == 0) {
+			if (running->proc_num == -1) {
+				fprintf(fp, "RunningQ is empty\n");
+			}
+			else {
+				fprintf(fp, "RunningQ = %d\n", running->proc_num);
+			}
+		}
+		else {
+			fprintf(fp, "\n");
+		}
+	}
 }
 //헤더로 분리할 함수들 - 1

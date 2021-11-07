@@ -1,0 +1,1707 @@
+
+Running tick = 0
+ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 7 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 9 | 	          |
+	      |	          |
+
+Running tick = 1
+ReadyQ[0] = 2 | WaitingQ[0] = 0   | RunningQ = 1
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 9 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 2
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 1
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 9 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 3
+ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 0 | 	          |
+ReadyQ[8] = 1 | 	          |
+	      |	          |
+
+Running tick = 4
+ReadyQ[0] = 4 | WaitingQ[0] = 2   | RunningQ = 3
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 1 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 5
+ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 1 | 	          |
+ReadyQ[8] = 2 | 	          |
+	      |	          |
+
+Running tick = 6
+ReadyQ[0] = 5 | WaitingQ[0] = 3   | RunningQ = 4
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 2 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 7
+ReadyQ[0] = 6 | WaitingQ[0] = 3   | RunningQ = 5
+ReadyQ[1] = 7 | WaitingQ[1] = 4   | 
+ReadyQ[2] = 8 | 	          |
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 2 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 8
+ReadyQ[0] = 6 | WaitingQ[0] = 4   | RunningQ = 5
+ReadyQ[1] = 7 | 	          |
+ReadyQ[2] = 8 | 	          |
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 2 | 	          |
+ReadyQ[7] = 3 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 9
+ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 6
+ReadyQ[1] = 8 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 4 | 	          |
+ReadyQ[8] = 5 | 	          |
+	      |	          |
+
+Running tick = 10
+ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 6
+ReadyQ[1] = 8 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 4 | 	          |
+ReadyQ[8] = 5 | 	          |
+	      |	          |
+
+Running tick = 11
+ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
+ReadyQ[1] = 9 | 	          |
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 4 | 	          |
+ReadyQ[7] = 5 | 	          |
+ReadyQ[8] = 6 | 	          |
+	      |	          |
+
+Running tick = 12
+ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
+ReadyQ[1] = 9 | 	          |
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 4 | 	          |
+ReadyQ[7] = 5 | 	          |
+ReadyQ[8] = 6 | 	          |
+	      |	          |
+
+Running tick = 13
+ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 8
+ReadyQ[1] = 0 | 	          |
+ReadyQ[2] = 1 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 5 | 	          |
+ReadyQ[7] = 6 | 	          |
+ReadyQ[8] = 7 | 	          |
+	      |	          |
+
+Running tick = 14
+ReadyQ[0] = 0 | WaitingQ[0] = 8   | RunningQ = 9
+ReadyQ[1] = 1 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 7 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 15
+ReadyQ[0] = 0 | WaitingQ is empty | RunningQ = 9
+ReadyQ[1] = 1 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 7 | 	          |
+ReadyQ[8] = 8 | 	          |
+	      |	          |
+
+Running tick = 16
+ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 7 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 9 | 	          |
+	      |	          |
+
+Running tick = 17
+ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 7 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 9 | 	          |
+	      |	          |
+
+Running tick = 18
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 1
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 9 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 19
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 1
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 9 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 20
+ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 0 | 	          |
+ReadyQ[8] = 1 | 	          |
+	      |	          |
+
+Running tick = 21
+ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 0 | 	          |
+ReadyQ[8] = 1 | 	          |
+	      |	          |
+
+Running tick = 22
+ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 1 | 	          |
+ReadyQ[8] = 2 | 	          |
+	      |	          |
+
+Running tick = 23
+ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 1 | 	          |
+ReadyQ[8] = 2 | 	          |
+	      |	          |
+
+Running tick = 24
+ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 4
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 2 | 	          |
+ReadyQ[8] = 3 | 	          |
+	      |	          |
+
+Running tick = 25
+ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 4
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 2 | 	          |
+ReadyQ[8] = 3 | 	          |
+	      |	          |
+
+Running tick = 26
+ReadyQ[0] = 6 | WaitingQ is empty | RunningQ = 5
+ReadyQ[1] = 7 | 	          |
+ReadyQ[2] = 8 | 	          |
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 2 | 	          |
+ReadyQ[7] = 3 | 	          |
+ReadyQ[8] = 4 | 	          |
+	      |	          |
+
+Running tick = 27
+ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 6
+ReadyQ[1] = 8 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 4 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 28
+ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 6
+ReadyQ[1] = 8 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 4 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 29
+ReadyQ[0] = 8 | WaitingQ[0] = 5   | RunningQ = 7
+ReadyQ[1] = 9 | 	          |
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 4 | 	          |
+ReadyQ[7] = 6 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 30
+ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
+ReadyQ[1] = 9 | 	          |
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 4 | 	          |
+ReadyQ[7] = 6 | 	          |
+ReadyQ[8] = 5 | 	          |
+	      |	          |
+
+Running tick = 31
+ReadyQ[0] = 9 | WaitingQ[0] = 7   | RunningQ = 8
+ReadyQ[1] = 0 | 	          |
+ReadyQ[2] = 1 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 5 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 32
+ReadyQ[0] = 9 | WaitingQ[0] = 7   | RunningQ = 8
+ReadyQ[1] = 0 | 	          |
+ReadyQ[2] = 1 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 5 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 33
+ReadyQ[0] = 0 | WaitingQ[0] = 7   | RunningQ = 9
+ReadyQ[1] = 1 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 5 | 	          |
+ReadyQ[7] = 8 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 34
+ReadyQ[0] = 0 | WaitingQ[0] = 7   | RunningQ = 9
+ReadyQ[1] = 1 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 5 | 	          |
+ReadyQ[7] = 8 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 35
+ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 7 | 	          |
+ReadyQ[8] = 9 | 	          |
+	      |	          |
+
+Running tick = 36
+ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 7 | 	          |
+ReadyQ[8] = 9 | 	          |
+	      |	          |
+
+Running tick = 37
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 1
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 7 | 	          |
+ReadyQ[7] = 9 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 38
+ReadyQ[0] = 3 | WaitingQ[0] = 1   | RunningQ = 2
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 0 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 39
+ReadyQ[0] = 3 | WaitingQ[0] = 1   | RunningQ = 2
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 0 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 40
+ReadyQ[0] = 4 | WaitingQ[0] = 1   | RunningQ = 3
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 2 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 41
+ReadyQ[0] = 4 | WaitingQ[0] = 1   | RunningQ = 3
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 2 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 42
+ReadyQ[0] = 6 | WaitingQ[0] = 1   | RunningQ = 4
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 8 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 2 | 	          |
+ReadyQ[7] = 3 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 43
+ReadyQ[0] = 6 | WaitingQ is empty | RunningQ = 4
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 8 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 2 | 	          |
+ReadyQ[7] = 3 | 	          |
+ReadyQ[8] = 1 | 	          |
+	      |	          |
+
+Running tick = 44
+ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 6
+ReadyQ[1] = 8 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 1 | 	          |
+ReadyQ[8] = 4 | 	          |
+	      |	          |
+
+Running tick = 45
+ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 6
+ReadyQ[1] = 8 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 1 | 	          |
+ReadyQ[8] = 4 | 	          |
+	      |	          |
+
+Running tick = 46
+ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 5
+ReadyQ[1] = 7 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 4 | 	          |
+ReadyQ[8] = 6 | 	          |
+	      |	          |
+
+Running tick = 47
+ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 5
+ReadyQ[1] = 7 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 4 | 	          |
+ReadyQ[8] = 6 | 	          |
+	      |	          |
+
+Running tick = 48
+ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 8
+ReadyQ[1] = 9 | 	          |
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 4 | 	          |
+ReadyQ[7] = 6 | 	          |
+ReadyQ[8] = 5 | 	          |
+	      |	          |
+
+Running tick = 49
+ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 8
+ReadyQ[1] = 9 | 	          |
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 4 | 	          |
+ReadyQ[7] = 6 | 	          |
+ReadyQ[8] = 5 | 	          |
+	      |	          |
+
+Running tick = 50
+ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 7
+ReadyQ[1] = 0 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 5 | 	          |
+ReadyQ[8] = 8 | 	          |
+	      |	          |
+
+Running tick = 51
+ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 7
+ReadyQ[1] = 0 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 5 | 	          |
+ReadyQ[8] = 8 | 	          |
+	      |	          |
+
+Running tick = 52
+ReadyQ[0] = 0 | WaitingQ is empty | RunningQ = 9
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 5 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 7 | 	          |
+	      |	          |
+
+Running tick = 53
+ReadyQ[0] = 0 | WaitingQ is empty | RunningQ = 9
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 5 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 7 | 	          |
+	      |	          |
+
+Running tick = 54
+ReadyQ[0] = 2 | WaitingQ[0] = 9   | RunningQ = 0
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 1 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 7 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 55
+ReadyQ[0] = 3 | WaitingQ[0] = 9   | RunningQ = 2
+ReadyQ[1] = 1 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 7 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 56
+ReadyQ[0] = 1 | WaitingQ[0] = 9   | RunningQ = 3
+ReadyQ[1] = 4 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 6 | WaitingQ[2] = 2   | 
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 7 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 57
+ReadyQ[0] = 4 | WaitingQ[0] = 9   | RunningQ = 1
+ReadyQ[1] = 6 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 5 | WaitingQ[2] = 2   | 
+ReadyQ[3] = 8 | WaitingQ[3] = 3   | 
+ReadyQ[4] = 7 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 58
+ReadyQ[0] = 4 | WaitingQ[0] = 9   | RunningQ = 1
+ReadyQ[1] = 6 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 5 | WaitingQ[2] = 2   | 
+ReadyQ[3] = 8 | WaitingQ[3] = 3   | 
+ReadyQ[4] = 7 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 59
+ReadyQ[0] = 6 | WaitingQ[0] = 9   | RunningQ = 4
+ReadyQ[1] = 5 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 8 | WaitingQ[2] = 2   | 
+ReadyQ[3] = 7 | WaitingQ[3] = 3   | 
+ReadyQ[4] = 1 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 60
+ReadyQ[0] = 5 | WaitingQ[0] = 2   | RunningQ = 6
+ReadyQ[1] = 8 | WaitingQ[1] = 3   | 
+ReadyQ[2] = 7 | WaitingQ[2] = 4   | 
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 61
+ReadyQ[0] = 8 | WaitingQ[0] = 2   | RunningQ = 5
+ReadyQ[1] = 7 | WaitingQ[1] = 3   | 
+ReadyQ[2] = 1 | WaitingQ[2] = 4   | 
+ReadyQ[3] = 9 | WaitingQ[3] = 6   | 
+ReadyQ[4] = 0 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 62
+ReadyQ[0] = 8 | WaitingQ[0] = 6   | RunningQ = 5
+ReadyQ[1] = 7 | WaitingQ[1] = 3   | 
+ReadyQ[2] = 1 | WaitingQ[2] = 4   | 
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 2 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 63
+ReadyQ[0] = 7 | WaitingQ[0] = 4   | RunningQ = 8
+ReadyQ[1] = 1 | WaitingQ[1] = 6   | 
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 5 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 64
+ReadyQ[0] = 1 | WaitingQ[0] = 4   | RunningQ = 7
+ReadyQ[1] = 9 | WaitingQ[1] = 6   | 
+ReadyQ[2] = 0 | WaitingQ[2] = 8   | 
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 5 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 65
+ReadyQ[0] = 1 | WaitingQ[0] = 4   | RunningQ = 7
+ReadyQ[1] = 9 | WaitingQ[1] = 6   | 
+ReadyQ[2] = 0 | WaitingQ[2] = 8   | 
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 5 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 66
+ReadyQ[0] = 9 | WaitingQ[0] = 8   | RunningQ = 1
+ReadyQ[1] = 0 | WaitingQ[1] = 6   | 
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 7 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 67
+ReadyQ[0] = 9 | WaitingQ[0] = 8   | RunningQ = 1
+ReadyQ[1] = 0 | WaitingQ[1] = 6   | 
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 7 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 68
+ReadyQ[0] = 0 | WaitingQ[0] = 8   | RunningQ = 9
+ReadyQ[1] = 2 | WaitingQ[1] = 6   | 
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 1 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 69
+ReadyQ[0] = 0 | WaitingQ[0] = 8   | RunningQ = 9
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 6 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 70
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 9 | 	          |
+	      |	          |
+
+Running tick = 71
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 9 | 	          |
+	      |	          |
+
+Running tick = 72
+ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 9 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 73
+ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 9 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 74
+ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 3
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 0 | 	          |
+ReadyQ[8] = 2 | 	          |
+	      |	          |
+
+Running tick = 75
+ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 3
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 0 | 	          |
+ReadyQ[8] = 2 | 	          |
+	      |	          |
+
+Running tick = 76
+ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 5
+ReadyQ[1] = 7 | 	          |
+ReadyQ[2] = 1 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 2 | 	          |
+ReadyQ[8] = 3 | 	          |
+	      |	          |
+
+Running tick = 77
+ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 4
+ReadyQ[1] = 1 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 2 | 	          |
+ReadyQ[7] = 3 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 78
+ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 4
+ReadyQ[1] = 1 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 2 | 	          |
+ReadyQ[7] = 3 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 79
+ReadyQ[0] = 1 | WaitingQ[0] = 5   | RunningQ = 7
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 8 | 	          |
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 4 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 80
+ReadyQ[0] = 6 | WaitingQ[0] = 5   | RunningQ = 1
+ReadyQ[1] = 8 | WaitingQ[1] = 7   | 
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 4 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 81
+ReadyQ[0] = 8 | WaitingQ[0] = 5   | RunningQ = 6
+ReadyQ[1] = 9 | WaitingQ[1] = 7   | 
+ReadyQ[2] = 0 | WaitingQ[2] = 1   | 
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 4 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 82
+ReadyQ[0] = 8 | WaitingQ[0] = 1   | RunningQ = 6
+ReadyQ[1] = 9 | WaitingQ[1] = 7   | 
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 5 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 83
+ReadyQ[0] = 9 | WaitingQ[0] = 1   | RunningQ = 8
+ReadyQ[1] = 0 | WaitingQ[1] = 7   | 
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 6 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 84
+ReadyQ[0] = 9 | WaitingQ[0] = 1   | RunningQ = 8
+ReadyQ[1] = 0 | WaitingQ[1] = 7   | 
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 6 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 85
+ReadyQ[0] = 0 | WaitingQ[0] = 1   | RunningQ = 9
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 7 | 	          |
+ReadyQ[7] = 8 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 86
+ReadyQ[0] = 0 | WaitingQ[0] = 1   | RunningQ = 9
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 7 | 	          |
+ReadyQ[7] = 8 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 87
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 1 | 	          |
+ReadyQ[8] = 9 | 	          |
+	      |	          |
+
+Running tick = 88
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 1 | 	          |
+ReadyQ[8] = 9 | 	          |
+	      |	          |
+
+Running tick = 89
+ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 9 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 90
+ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 9 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 91
+ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 0 | 	          |
+ReadyQ[8] = 2 | 	          |
+	      |	          |
+
+Running tick = 92
+ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 0 | 	          |
+ReadyQ[8] = 2 | 	          |
+	      |	          |
+
+Running tick = 93
+ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 4
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 2 | 	          |
+ReadyQ[8] = 3 | 	          |
+	      |	          |
+
+Running tick = 94
+ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 4
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 2 | 	          |
+ReadyQ[8] = 3 | 	          |
+	      |	          |
+
+Running tick = 95
+ReadyQ[0] = 6 | WaitingQ is empty | RunningQ = 5
+ReadyQ[1] = 7 | 	          |
+ReadyQ[2] = 8 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 2 | 	          |
+ReadyQ[7] = 3 | 	          |
+ReadyQ[8] = 4 | 	          |
+	      |	          |
+
+Running tick = 96
+ReadyQ[0] = 6 | WaitingQ is empty | RunningQ = 5
+ReadyQ[1] = 7 | 	          |
+ReadyQ[2] = 8 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 2 | 	          |
+ReadyQ[7] = 3 | 	          |
+ReadyQ[8] = 4 | 	          |
+	      |	          |
+
+Running tick = 97
+ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 6
+ReadyQ[1] = 8 | 	          |
+ReadyQ[2] = 1 | 	          |
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 4 | 	          |
+ReadyQ[8] = 5 | 	          |
+	      |	          |
+
+Running tick = 98
+ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 6
+ReadyQ[1] = 8 | 	          |
+ReadyQ[2] = 1 | 	          |
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 4 | 	          |
+ReadyQ[8] = 5 | 	          |
+	      |	          |
+
+Running tick = 99
+ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
+ReadyQ[1] = 1 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 4 | 	          |
+ReadyQ[7] = 5 | 	          |
+ReadyQ[8] = 6 | 	          |
+	      |	          |
+
+Running tick = 100
+ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
+ReadyQ[1] = 1 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 4 | 	          |
+ReadyQ[7] = 5 | 	          |
+ReadyQ[8] = 6 | 	          |
+	      |	          |
+
+Running tick = 101
+ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 8
+ReadyQ[1] = 9 | 	          |
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 5 | 	          |
+ReadyQ[7] = 6 | 	          |
+ReadyQ[8] = 7 | 	          |
+	      |	          |
+
+Running tick = 102
+ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 8
+ReadyQ[1] = 9 | 	          |
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 5 | 	          |
+ReadyQ[7] = 6 | 	          |
+ReadyQ[8] = 7 | 	          |
+	      |	          |
+
+Running tick = 103
+ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 1
+ReadyQ[1] = 0 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 7 | 	          |
+ReadyQ[8] = 8 | 	          |
+	      |	          |
+
+Running tick = 104
+ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 1
+ReadyQ[1] = 0 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 7 | 	          |
+ReadyQ[8] = 8 | 	          |
+	      |	          |
+
+Running tick = 105
+ReadyQ[0] = 0 | WaitingQ is empty | RunningQ = 9
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 7 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 1 | 	          |
+	      |	          |
+
+Running tick = 106
+ReadyQ[0] = 2 | WaitingQ[0] = 9   | RunningQ = 0
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 1 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 107
+ReadyQ[0] = 3 | WaitingQ[0] = 9   | RunningQ = 2
+ReadyQ[1] = 4 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 1 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 108
+ReadyQ[0] = 4 | WaitingQ[0] = 9   | RunningQ = 3
+ReadyQ[1] = 5 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 6 | WaitingQ[2] = 2   | 
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 1 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 109
+ReadyQ[0] = 5 | WaitingQ[0] = 9   | RunningQ = 4
+ReadyQ[1] = 6 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 7 | WaitingQ[2] = 2   | 
+ReadyQ[3] = 8 | WaitingQ[3] = 3   | 
+ReadyQ[4] = 1 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 110
+ReadyQ[0] = 6 | WaitingQ[0] = 9   | RunningQ = 5
+ReadyQ[1] = 7 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 8 | WaitingQ[2] = 2   | 
+ReadyQ[3] = 1 | WaitingQ[3] = 3   | 
+	      |WaitingQ[4] = 4   | 
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 111
+ReadyQ[0] = 6 | WaitingQ[0] = 4   | RunningQ = 5
+ReadyQ[1] = 7 | WaitingQ[1] = 0   | 
+ReadyQ[2] = 8 | WaitingQ[2] = 2   | 
+ReadyQ[3] = 1 | WaitingQ[3] = 3   | 
+ReadyQ[4] = 9 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 112
+ReadyQ[0] = 7 | WaitingQ[0] = 3   | RunningQ = 6
+ReadyQ[1] = 8 | WaitingQ[1] = 4   | 
+ReadyQ[2] = 1 | WaitingQ[2] = 2   | 
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 5 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 113
+ReadyQ[0] = 8 | WaitingQ[0] = 3   | RunningQ = 7
+ReadyQ[1] = 1 | WaitingQ[1] = 4   | 
+ReadyQ[2] = 9 | WaitingQ[2] = 6   | 
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 2 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 114
+ReadyQ[0] = 8 | WaitingQ[0] = 3   | RunningQ = 7
+ReadyQ[1] = 1 | WaitingQ[1] = 4   | 
+ReadyQ[2] = 9 | WaitingQ[2] = 6   | 
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 2 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 115
+ReadyQ[0] = 1 | WaitingQ[0] = 6   | RunningQ = 8
+ReadyQ[1] = 9 | WaitingQ[1] = 4   | 
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 7 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 116
+ReadyQ[0] = 9 | WaitingQ[0] = 6   | RunningQ = 1
+ReadyQ[1] = 0 | WaitingQ[1] = 8   | 
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 4 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 117
+ReadyQ[0] = 9 | WaitingQ[0] = 6   | RunningQ = 1
+ReadyQ[1] = 0 | WaitingQ[1] = 8   | 
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 4 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 118
+ReadyQ[0] = 0 | WaitingQ[0] = 6   | RunningQ = 9
+ReadyQ[1] = 5 | WaitingQ[1] = 8   | 
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 1 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 119
+ReadyQ[0] = 0 | WaitingQ[0] = 8   | RunningQ = 9
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 6 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 120
+ReadyQ[0] = 5 | WaitingQ[0] = 8   | RunningQ = 0
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 9 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 121
+ReadyQ[0] = 5 | WaitingQ[0] = 8   | RunningQ = 0
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 9 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 122
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 5
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 1 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 123
+ReadyQ[0] = 3 | WaitingQ[0] = 5   | RunningQ = 2
+ReadyQ[1] = 7 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 0 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 124
+ReadyQ[0] = 3 | WaitingQ[0] = 5   | RunningQ = 2
+ReadyQ[1] = 7 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 1 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 0 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 125
+ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 3
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 1 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 2 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 126
+ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 3
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 1 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 8 | 	          |
+ReadyQ[6] = 0 | 	          |
+ReadyQ[7] = 2 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 127
+ReadyQ[0] = 4 | WaitingQ[0] = 5   | RunningQ = 7
+ReadyQ[1] = 1 | 	          |
+ReadyQ[2] = 6 | 	          |
+ReadyQ[3] = 9 | 	          |
+ReadyQ[4] = 8 | 	          |
+ReadyQ[5] = 0 | 	          |
+ReadyQ[6] = 2 | 	          |
+ReadyQ[7] = 3 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 128
+ReadyQ[0] = 1 | WaitingQ[0] = 7   | RunningQ = 4
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 5 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 129
+ReadyQ[0] = 1 | WaitingQ[0] = 7   | RunningQ = 4
+ReadyQ[1] = 6 | 	          |
+ReadyQ[2] = 9 | 	          |
+ReadyQ[3] = 8 | 	          |
+ReadyQ[4] = 0 | 	          |
+ReadyQ[5] = 2 | 	          |
+ReadyQ[6] = 3 | 	          |
+ReadyQ[7] = 5 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 130
+ReadyQ[0] = 6 | WaitingQ[0] = 7   | RunningQ = 1
+ReadyQ[1] = 9 | 	          |
+ReadyQ[2] = 8 | 	          |
+ReadyQ[3] = 0 | 	          |
+ReadyQ[4] = 2 | 	          |
+ReadyQ[5] = 3 | 	          |
+ReadyQ[6] = 5 | 	          |
+ReadyQ[7] = 4 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 131
+ReadyQ[0] = 9 | WaitingQ[0] = 7   | RunningQ = 6
+ReadyQ[1] = 8 | WaitingQ[1] = 1   | 
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 4 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 132
+ReadyQ[0] = 9 | WaitingQ[0] = 7   | RunningQ = 6
+ReadyQ[1] = 8 | WaitingQ[1] = 1   | 
+ReadyQ[2] = 0 | 	          |
+ReadyQ[3] = 2 | 	          |
+ReadyQ[4] = 3 | 	          |
+ReadyQ[5] = 5 | 	          |
+ReadyQ[6] = 4 | 	          |
+	      |	          |
+	      |	          |
+	      |	          |
+
+Running tick = 133
+ReadyQ[0] = 8 | WaitingQ[0] = 1   | RunningQ = 9
+ReadyQ[1] = 0 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 7 | 	          |
+ReadyQ[7] = 6 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 134
+ReadyQ[0] = 8 | WaitingQ[0] = 1   | RunningQ = 9
+ReadyQ[1] = 0 | 	          |
+ReadyQ[2] = 2 | 	          |
+ReadyQ[3] = 3 | 	          |
+ReadyQ[4] = 5 | 	          |
+ReadyQ[5] = 4 | 	          |
+ReadyQ[6] = 7 | 	          |
+ReadyQ[7] = 6 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 135
+ReadyQ[0] = 0 | WaitingQ[0] = 1   | RunningQ = 8
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 9 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 136
+ReadyQ[0] = 0 | WaitingQ[0] = 1   | RunningQ = 8
+ReadyQ[1] = 2 | 	          |
+ReadyQ[2] = 3 | 	          |
+ReadyQ[3] = 5 | 	          |
+ReadyQ[4] = 4 | 	          |
+ReadyQ[5] = 7 | 	          |
+ReadyQ[6] = 6 | 	          |
+ReadyQ[7] = 9 | 	          |
+	      |	          |
+	      |	          |
+
+Running tick = 137
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 1 | 	          |
+ReadyQ[8] = 8 | 	          |
+	      |	          |
+
+Running tick = 138
+ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
+ReadyQ[1] = 3 | 	          |
+ReadyQ[2] = 5 | 	          |
+ReadyQ[3] = 4 | 	          |
+ReadyQ[4] = 7 | 	          |
+ReadyQ[5] = 6 | 	          |
+ReadyQ[6] = 9 | 	          |
+ReadyQ[7] = 1 | 	          |
+ReadyQ[8] = 8 | 	          |
+	      |	          |
+
+Running tick = 139
+ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 140
+ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
+ReadyQ[1] = 5 | 	          |
+ReadyQ[2] = 4 | 	          |
+ReadyQ[3] = 7 | 	          |
+ReadyQ[4] = 6 | 	          |
+ReadyQ[5] = 9 | 	          |
+ReadyQ[6] = 1 | 	          |
+ReadyQ[7] = 8 | 	          |
+ReadyQ[8] = 0 | 	          |
+	      |	          |
+
+Running tick = 141
+ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 3
+ReadyQ[1] = 4 | 	          |
+ReadyQ[2] = 7 | 	          |
+ReadyQ[3] = 6 | 	          |
+ReadyQ[4] = 9 | 	          |
+ReadyQ[5] = 1 | 	          |
+ReadyQ[6] = 8 | 	          |
+ReadyQ[7] = 0 | 	          |
+ReadyQ[8] = 2 | 	          |
+	      |	          |
+
+Running tick = 142
+ReadyQ[0] = 5 
