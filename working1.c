@@ -13,7 +13,7 @@
 
 #define MAX_PROC 10
 #define TICK_TIME 1000000		//micro sec 1000000 = 1sec
-#define QUANTUM_TIME 3
+#define QUANTUM_TIME 2
 
 typedef struct node {
 	struct node* next;
@@ -53,29 +53,40 @@ int bust_time[MAX_PROC];
 int iobust_time[MAX_PROC];
 int pids[MAX_PROC];
 int parents_pid;
+int WaitingQ_num;
 
 list* WaitingQ;
 list* ReadyQ;
 node* RunningQ;
+node* IORunningQ;
+
+
+int tickCount = 0; //타임 카운터
+int messagechk[MAX_PROC];
 
 //합칠 코드
 void pmsgSnd(int curProc);
-void pmsgRcv(int curProc);
-void cmsgSnd(int* ckey);
+//void pmsgRcv(int curProc);
+//void cmsgSnd(int* ckey);
 void cmsgRcv(int* ckey);
+
+void cmsgSnd(int ckey, int iobust_time);
+void pmsgRcv(int curProc, int* iobust_time, int* messagechk);
+
 void signalHandler(int signo);
 
 int curProc = 1;// 현재 실행 중인 자식 프로세스.
-int tickCount = 0; //타임 카운터
 int quantumCount = 0;//틱 카운터.
-int cpid[3];// parent holds child process pid array.
-int cqid[3];// parent holds message queue id array.
-int* ckey[3];// child holds child process key array.
+int cpid[MAX_PROC];// parent holds child process pid array.
+int cqid[MAX_PROC];// parent holds message queue id array.
+int ckey[MAX_PROC];// child holds child process key array.
 //합칠 코드
 
 int main(int argc, char* arg[]) {
 	int ret;
 	int temp;
+
+	memset(&messagechk, 0, sizeof(messagechk));
 
 	struct sigaction new_sa;
 	memset(&new_sa, 0, sizeof(new_sa));
@@ -83,8 +94,11 @@ int main(int argc, char* arg[]) {
 	sigaction(SIGALRM, &new_sa, NULL);
 
 	struct itimerval new_itimer, old_itimer;
-	new_itimer.it_interval.tv_sec = 1;
-	//new_itimer.it_interval.tv_usec = TICK_TIME;
+	if (TICK_TIME > 999999) {
+		new_itimer.it_interval.tv_sec = TICK_TIME/1000000;
+	}
+	//new_itimer.it_interval.tv_sec = 0;
+	new_itimer.it_interval.tv_usec = TICK_TIME % 1000000;
 	new_itimer.it_value.tv_sec = 1;
 	new_itimer.it_value.tv_usec = 0;
 
@@ -101,9 +115,16 @@ int main(int argc, char* arg[]) {
 	ReadyQ = malloc(sizeof(list));
 	WaitingQ = malloc(sizeof(list));
 	RunningQ = malloc(sizeof(node));
+	IORunningQ = malloc(sizeof(node));
 
 	inilist(ReadyQ);
 	inilist(WaitingQ);
+
+	for (int i = 0; i < MAX_PROC; i++) {						//이전에 사용했던 메시지 큐를 비워 에러 방지(무한대로 돌기때문에 프로그램 끝날때 초기화 불가능)
+		ckey[i] = 0x1000 * (i + 1);
+		cqid[i] = msgget(ckey[i], IPC_CREAT | 0666);
+		msgctl(cqid[i], IPC_RMID, NULL);
+	}
 
 	//CPU bust 타임 임의 세팅
 	//추가 할 것 : setting.txt 파일등으로 미리 세팅된 파일을 불러와서 저장 or 세팅파일을 프로그램 시작시 지정하지 않으면 랜덤으로 생성(고려)
@@ -131,10 +152,12 @@ int main(int argc, char* arg[]) {
 	iobust_time[9] = 600;
 
 	parents_pid = getpid();
+	WaitingQ_num = 0;
 
 	//초기 자식 프로세스 생성 구간 - 부모 프로세스(처음 1번만 실행)
 	for (int i = 0; i < 10; i++) {
 		//sleep(1);
+		ckey[i] = 0x1000 * (i + 1);
 		ret = fork();
 		if (ret > 0) {								//부모 프로세스
 			child_proc_num++;
@@ -152,21 +175,43 @@ int main(int argc, char* arg[]) {
 			kill(getpid(), SIGSTOP);
 
 			while (1) {								//루프가 없으면 한번 실행 후 자식 프로세스가 다른 자식 프로세스 무한 생성
-				printf("pid[%d] : work\n", getpid());
+				if (bust_time[child_proc_num] == 0) {				//IO_bust part
 
-				temp = bust_time[child_proc_num];
+					//임시코드	:	랜덤으로 생성하도록 수정해야
+					if (iobust_time[child_proc_num] == 0) {
+						iobust_time[child_proc_num] = 500;
+					}
+					//
 
-				if (bust_time[child_proc_num] - 100 == 0) {
-					bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
-					printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
-					kill(parents_pid, SIGUSR2);
+					printf("pid[%d] : work1\n", getpid());
+					temp = iobust_time[child_proc_num];
+					iobust_time[child_proc_num] = iobust_time[child_proc_num] - 100;
+					printf("pids[%d] = io_bust decrease %d - 100 = %d\n", getpid(), temp, iobust_time[child_proc_num]);
+					//send parents message left io_bust time
+					cmsgSnd(ckey[child_proc_num], iobust_time[child_proc_num]);
+
+					//임시코드	:	랜덤으로 생성하도록 수정해야
+					if (iobust_time[child_proc_num] == 0) {
+						bust_time[child_proc_num] = 500;
+					}
+					//
 				}
-				else {
-					bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
-					printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
-					kill(parents_pid, SIGUSR1);
+				else {												//CPU_bust part
+
+					printf("\npid[%d] : work2\n", getpid());
+					temp = bust_time[child_proc_num];
+					if (bust_time[child_proc_num] - 100 == 0) {
+						bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
+						printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
+						kill(parents_pid, SIGUSR2);
+					}
+					else {
+						bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
+						printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
+						kill(parents_pid, SIGUSR1);
+					}
+					printf("pid[%d] : work done\n", getpid());
 				}
-				printf("pid[%d] : work done\n", getpid());
 				kill(getpid(), SIGSTOP);
 			}
 		}
@@ -178,11 +223,7 @@ int main(int argc, char* arg[]) {
 	delnode(ReadyQ, RunningQ);
 	setitimer(ITIMER_REAL, &new_itimer, &old_itimer);
 	while(1) {
-		//addnode(ReadyQ, RunningQ->proc_num);
 
-		if (ReadyQ->head == NULL && ReadyQ->tail == NULL) {
-			break;
-		}
 	}
 
 	//추가할 것 : 프로그램의 종료 조건(모든 자식 프로세스의 CPU bust가 0)
@@ -198,33 +239,56 @@ int main(int argc, char* arg[]) {
 void signal_handler(int signo)				//부모 프로세스에서 작동 SIGALRM
 {
 	int child_proc;
-	child_proc = pids[RunningQ->proc_num];		//Running Queue의 자식 프로세스 pid 지정
-	kill(pids[RunningQ->proc_num], SIGCONT);
 
+	for (int i = 0; i < WaitingQ_num; i++) {						//현재 WaitingQ의 모든 노드들의 io_bust감소 코드
+		printf("iobust check\n");
+		delnode(WaitingQ, IORunningQ);
+		kill(pids[IORunningQ->proc_num], SIGCONT);					//WaitingQ의 맨앞 노드의 io_bust를 감소 -> 자식 프로세스의 io_bust감소 코드로
+
+		//검토 필요 -> 아마 작동됨
+		printf("parents Receive message %d\n", IORunningQ->proc_num);
+		pmsgRcv(IORunningQ->proc_num, iobust_time, messagechk);		//receive message from child
+		messagechk[IORunningQ->proc_num] = 0;
+		printf("pid[%d] = iobust_time left : %d\n",pids[IORunningQ->proc_num], iobust_time[IORunningQ->proc_num]);
+
+		if (iobust_time[IORunningQ->proc_num] == 0) {
+			addnode(ReadyQ, IORunningQ->proc_num);
+			WaitingQ_num--;
+			printf("2Current WaitingQ_num = %d\n", WaitingQ_num);
+		}
+		else {
+			addnode(WaitingQ, IORunningQ->proc_num);
+		}
+		//
+	}
+
+	//자식 프로세스의 cpu_bust 감소 부분
+	child_proc = pids[RunningQ->proc_num];				//Running Queue의 자식 프로세스 pid 지정
+	kill(pids[RunningQ->proc_num], SIGCONT);			//ReadyQ의 맨앞 노드의 cpu_bust를 감소 -> 자식 프로세스의 cpu_bust감소 코드로
 }
 
-void signal_decrease(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR1
-	if (tickCount < QUANTUM_TIME-1) {
+void signal_decrease(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR1 -> 남은 cpu_bust가 0이 아님 -> ReadyQ맨 뒤로
+	if (tickCount < QUANTUM_TIME-1) {		//퀀텀이 안끝남 -> RunningQ 유지
 		tickCount++;
 	}
-	else {
+	else {									//퀀텀이 끝남 -> ReadyQ맨 뒤로 -> RunningQ 업데이트
 		addnode(ReadyQ, RunningQ->proc_num);
 		delnode(ReadyQ, RunningQ);
 		tickCount = 0;
 	}
 }
 
-void signal_bustend(int signo) {			//자식 프로세스 -> 부모 프로세스 시그널 전송 테스트 SIGUSR2
-	printf("SIGUSR2 called1\n");
+void signal_bustend(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR2 -> 남은 cpu_bust가 0임 -> WaitingQ맨 뒤로
 	addnode(WaitingQ, RunningQ->proc_num);
+	WaitingQ_num ++;
+	printf("1Current WaitingQ_num = %d\n", WaitingQ_num);
 	delnode(ReadyQ, RunningQ);
 
-	tickCount = 0;
-	printf("SIGUSR2 called2\n");
+	tickCount = 0;							//퀀텀 초기화
 }
 
 //합칠 코드
-void pmsgSnd(int curProc) {
+void pmsgSnd(int curProc) {				//->사용 X
 	int qid;
 	int ret;
 	int key = 0x1000 * curProc;
@@ -247,7 +311,7 @@ void pmsgSnd(int curProc) {
 }
 
 // 부모가 보낸 메시지를 자식이 받는다.
-void cmsgRcv(int* ckey) {
+void cmsgRcv(int* ckey) {				//->사용 X
 	int qid;
 	int ret;
 	int key = *ckey;// 자식 프로세스 고유의 키 값.
@@ -264,10 +328,10 @@ void cmsgRcv(int* ckey) {
 }
 
 // 자식이 부모에게 자신의 데이터가 담긴  메시지를 보낸다.
-void cmsgSnd(int* ckey) {
+void cmsgSnd(int ckey, int iobust_time) {
 	int qid;
 	int ret;
-	int key = *ckey;// 자식 프로세스 고유의 키 값.
+	int key = ckey;// 자식 프로세스 고유의 키 값.
 	struct msgbuf msg;
 
 	qid = msgget(key, IPC_CREAT | 0666);
@@ -275,8 +339,9 @@ void cmsgSnd(int* ckey) {
 
 	msg.mtype = 1;
 	msg.mdata.pid = getpid();
-	msg.mdata.cpuTime = 100;
-	msg.mdata.ioTime = 100;// io time을 부모에게 보낸다.
+	msg.mdata.cpuTime = 0;			//->사용 X
+	msg.mdata.ioTime = iobust_time;	// io time을 부모에게 보낸다.
+	printf("send c->p iobust_time : %d\n",iobust_time);
 
 	if (ret = msgsnd(qid, (void*)&msg, sizeof(struct data), 0) == -1) {
 		perror("msgsnd error");
@@ -285,11 +350,11 @@ void cmsgSnd(int* ckey) {
 	return;
 }
 
-// 자식이 보낸 메시지를 받은 부모는 그 데이터를 출력한다.
-void pmsgRcv(int curProc) {
+// 자식이 보낸 데이터로 자식 iobust_time 업데이트
+void pmsgRcv(int curProc, int* iobust_time, int* messagechk) {
 	int qid;
 	int ret;
-	int key = 0x1000 * curProc;
+	int key = 0x1000 * (curProc + 1);
 	struct msgbuf msg;
 
 	qid = msgget(key, IPC_CREAT | 0666);
@@ -299,7 +364,11 @@ void pmsgRcv(int curProc) {
 		perror("msgrcv error");
 		exit(1);
 	}
-	printf("%ld\t%d\t%d\t\t%d\n", msg.mtype, msg.mdata.pid, msg.mdata.cpuTime, msg.mdata.ioTime);
+
+	*(messagechk + curProc) = 1;
+	*(iobust_time + curProc) = msg.mdata.ioTime;
+
+	//printf("%ld\t%d\t%d\t\t%d\n", msg.mtype, msg.mdata.pid, msg.mdata.cpuTime, msg.mdata.ioTime);
 	return;
 }
 
@@ -321,12 +390,12 @@ void addnode(list* list, int proc_num) {
 	if (list->head == NULL) {				//첫번째 노드일때 list->head = list->tail
 		list->head = addnode;
 		list->tail = addnode;
-		printf("Add first node\n");
+		//printf("Add first node\n");
 	}
 	else {									//첫번째 노드가 아니면 마지막 노드 업데이트
 		list->tail->next = addnode;
 		list->tail = addnode;
-		printf("Add node\n");
+		//printf("Add node\n");
 	}
 }
 
@@ -343,11 +412,11 @@ int delnode(list* list, node* return_node) {
 	if (list->head->next == NULL) {			//마지막 노드를 지우면 list를 NULL로 초기화
 		list->head = NULL;
 		list->tail = NULL;
-		printf("Delete last node\n");
+		//printf("Delete last node\n");
 	}
 	else {
 		list->head = delnode->next;
-		printf("Delete node\n");
+		//printf("Delete node\n");
 	}
 	*return_node = *delnode;
 	free(delnode);
