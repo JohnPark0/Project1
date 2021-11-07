@@ -27,15 +27,15 @@ typedef struct list {
 } list;
 
 struct data {
-	int pid;// ÀÚ½Ä ÇÁ·Î¼¼½ºÀÇ id.
+	int pid;// ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ id.
 	int cpuTime;
-	int ioTime;// ÀÚ½ÄÀÇ io time.
-};// ¸Ş¼¼Áö Å¥¿¡ ³ÖÀ»  ÀÚ½Ä ÇÁ·Î¼¼½ºÀÇ  µ¥ÀÌÅÍ.
+	int ioTime;// ï¿½Ú½ï¿½ï¿½ï¿½ io time.
+};// ï¿½Ş¼ï¿½ï¿½ï¿½ Å¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
 struct msgbuf {
-	long mtype;// ¹«Á¶°Ç ÀÖ¾î¾ß ÇÏ´Â mtype.
+	long mtype;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ ï¿½Ï´ï¿½ mtype.
 	struct data mdata;
-};// ¸Ş¼¼Áö Å¥¿¡ ³ÖÀ» µ¥ÀÌÅÍ.
+};// ï¿½Ş¼ï¿½ï¿½ï¿½ Å¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
 //Function Define
 void signal_bustend(int signo);
@@ -49,8 +49,8 @@ void inilist(list* list);
 void signal_handler(int signo);
 
 //Global Parameter
-int child_proc_num = 0;		//ÆíÀÇ¸¦ À§ÇØ ÀÚ½Ä ÇÁ·Î¼¼½º ¹øÈ£ÁöÁ¤
-//child_proc_num À» ÅëÇØ °¢ ÀÚ½Ä ÇÁ·Î¼¼½º°¡ bust_time[child_proc_num]À¸·Î ³²Àº ¹ö½ºÆ® Å¸ÀÓ °è»ê
+int child_proc_num = 0;		//ï¿½ï¿½ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½
+//child_proc_num ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ bust_time[child_proc_num]ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½
 
 int bust_time[MAX_PROC];
 int iobust_time[MAX_PROC];
@@ -66,10 +66,10 @@ node* IORunningQ;
 FILE* fp;
 
 int running_ticks = 0;
-int tickCount = 0; //Å¸ÀÓ Ä«¿îÅÍ
+int tickCount = 0; //Å¸ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½
 //int messagechk[MAX_PROC];
 
-//ÇÕÄ¥ ÄÚµå
+//ï¿½ï¿½Ä¥ ï¿½Úµï¿½
 void pmsgSnd(int curProc);
 //void pmsgRcv(int curProc);
 //void cmsgSnd(int* ckey);
@@ -80,12 +80,12 @@ void pmsgRcv(int curProc, int* iobust_time);
 
 void signalHandler(int signo);
 
-int curProc = 1;// ÇöÀç ½ÇÇà ÁßÀÎ ÀÚ½Ä ÇÁ·Î¼¼½º.
-int quantumCount = 0;//Æ½ Ä«¿îÅÍ.
+int curProc = 1;// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½.
+int quantumCount = 0;//Æ½ Ä«ï¿½ï¿½ï¿½ï¿½.
 int cpid[MAX_PROC];// parent holds child process pid array.
 int cqid[MAX_PROC];// parent holds message queue id array.
 int ckey[MAX_PROC];// child holds child process key array.
-//ÇÕÄ¥ ÄÚµå
+//ï¿½ï¿½Ä¥ ï¿½Úµï¿½
 
 int main(int argc, char* arg[]) {
 	int ret;
@@ -127,14 +127,14 @@ int main(int argc, char* arg[]) {
 	inilist(ReadyQ);
 	inilist(WaitingQ);
 
-	for (int i = 0; i < MAX_PROC; i++) {						//ÀÌÀü¿¡ »ç¿ëÇß´ø ¸Ş½ÃÁö Å¥¸¦ ºñ¿ö ¿¡·¯ ¹æÁö(¹«ÇÑ´ë·Î µ¹±â¶§¹®¿¡ ÇÁ·Î±×·¥ ³¡³¯¶§ ÃÊ±âÈ­ ºÒ°¡´É)
+	for (int i = 0; i < MAX_PROC; i++) {						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ß´ï¿½ ï¿½Ş½ï¿½ï¿½ï¿½ Å¥ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½ ï¿½ï¿½ï¿½â¶§ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½Ò°ï¿½ï¿½ï¿½)
 		ckey[i] = 0x1000 * (i + 1);
 		cqid[i] = msgget(ckey[i], IPC_CREAT | 0666);
 		msgctl(cqid[i], IPC_RMID, NULL);
 	}
 
-	//CPU bust Å¸ÀÓ ÀÓÀÇ ¼¼ÆÃ
-	//Ãß°¡ ÇÒ °Í : setting.txt ÆÄÀÏµîÀ¸·Î ¹Ì¸® ¼¼ÆÃµÈ ÆÄÀÏÀ» ºÒ·¯¿Í¼­ ÀúÀå or ¼¼ÆÃÆÄÀÏÀ» ÇÁ·Î±×·¥ ½ÃÀÛ½Ã ÁöÁ¤ÇÏÁö ¾ÊÀ¸¸é ·£´ıÀ¸·Î »ı¼º(°í·Á)
+	//CPU bust Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½ï¿½ : setting.txt ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ or ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½Û½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
 	bust_time[0] = 100;
 	bust_time[1] = 500;
 	bust_time[2] = 100;
@@ -146,7 +146,7 @@ int main(int argc, char* arg[]) {
 	bust_time[8] = 100;
 	bust_time[9] = 600;
 
-	//IO bust Å¸ÀÓ ÀÓÀÇ ¼¼ÆÃ
+	//IO bust Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	iobust_time[0] = 100;
 	iobust_time[1] = 500;
 	iobust_time[2] = 100;
@@ -161,30 +161,30 @@ int main(int argc, char* arg[]) {
 	parents_pid = getpid();
 	WaitingQ_num = 0;
 
-	//ÃÊ±â ÀÚ½Ä ÇÁ·Î¼¼½º »ı¼º ±¸°£ - ºÎ¸ğ ÇÁ·Î¼¼½º(Ã³À½ 1¹ø¸¸ ½ÇÇà)
+	//ï¿½Ê±ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½(Ã³ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 	for (int i = 0; i < 10; i++) {
 		//sleep(1);
 		ckey[i] = 0x1000 * (i + 1);
 		ret = fork();
-		if (ret > 0) {								//ºÎ¸ğ ÇÁ·Î¼¼½º
+		if (ret > 0) {								//ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½
 			child_proc_num++;
 			pids[i] = ret;
 			addnode(ReadyQ, i);
 
 		}
-		//ÃÊ±â ÀÚ½Ä ÇÁ·Î¼¼½º »ı¼º ±¸°£
+		//ï¿½Ê±ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-			//ÀÚ½Ä ÇÁ·Î¼¼½º ÄÚµå ±¸°£ - ºÎ¸ğ ÇÁ·Î¼¼½º°¡ kill ½Ã±×³Î È¤Àº ÀÏÁ¤ ÀÚ½Ä ÇÁ·Î¼¼½ºÀÇ ÀÏÁ¤ Á¶°Ç±îÁö ¹İº¹ ÈÄ Á¾·á
-		else if (ret == 0) {						//ÀÚ½Ä ÇÁ·Î¼¼½º
-			//printf("pid[%d] = proc num [%d]\n",getpid(),child_proc_num);		//µğ¹ö±× ¿ë
+			//ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ kill ï¿½Ã±×³ï¿½ È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ ï¿½İºï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		else if (ret == 0) {						//ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½
+			//printf("pid[%d] = proc num [%d]\n",getpid(),child_proc_num);		//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			printf("pid[%d] : stop\n", getpid());
 			//raise(SIGSTOP);
 			kill(getpid(), SIGSTOP);
 
-			while (1) {								//·çÇÁ°¡ ¾øÀ¸¸é ÇÑ¹ø ½ÇÇà ÈÄ ÀÚ½Ä ÇÁ·Î¼¼½º°¡ ´Ù¸¥ ÀÚ½Ä ÇÁ·Î¼¼½º ¹«ÇÑ »ı¼º
+			while (1) {								//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				if (bust_time[child_proc_num] == 0) {				//IO_bust part
 
-					//ÀÓ½ÃÄÚµå	:	·£´ıÀ¸·Î »ı¼ºÇÏµµ·Ï ¼öÁ¤ÇØ¾ß
+					//ï¿½Ó½ï¿½ï¿½Úµï¿½	:	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½
 					if (iobust_time[child_proc_num] == 0) {
 						iobust_time[child_proc_num] = 500;
 					}
@@ -197,7 +197,7 @@ int main(int argc, char* arg[]) {
 					//send parents message left io_bust time
 					cmsgSnd(ckey[child_proc_num], iobust_time[child_proc_num]);
 
-					//ÀÓ½ÃÄÚµå	:	·£´ıÀ¸·Î »ı¼ºÇÏµµ·Ï ¼öÁ¤ÇØ¾ß
+					//ï¿½Ó½ï¿½ï¿½Úµï¿½	:	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½
 					if (iobust_time[child_proc_num] == 0) {
 						bust_time[child_proc_num] = 500;
 					}
@@ -222,10 +222,10 @@ int main(int argc, char* arg[]) {
 				kill(getpid(), SIGSTOP);
 			}
 		}
-		//ÀÚ½Ä ÇÁ·Î¼¼½º ÄÚµå ±¸°£
+		//ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 
-	//ºÎ¸ğ ÇÁ·Î¼¼½º ÄÚµå ±¸°£ - ½Ã±×³Î ÅëÇØ ÀÚ½Ä ÇÁ·Î¼¼½º ÅëÁ¦ ¹× Á¾·á
+	//ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½Ã±×³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 	delnode(ReadyQ, RunningQ);
 	setitimer(ITIMER_REAL, &new_itimer, &old_itimer);
@@ -233,17 +233,17 @@ int main(int argc, char* arg[]) {
 
 	}
 
-	//Ãß°¡ÇÒ °Í : ÇÁ·Î±×·¥ÀÇ Á¾·á Á¶°Ç(¸ğµç ÀÚ½Ä ÇÁ·Î¼¼½ºÀÇ CPU bust°¡ 0)
+	//ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ CPU bustï¿½ï¿½ 0)
 	for (int i = 0; i < 10; i++) {
 		kill(pids[i], SIGKILL);
 		printf("sigkill\n");
 	}
-	//ºÎ¸ğ ÇÁ·Î¼¼½º ÄÚµå ±¸°£
+	//ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
 
 	return 0;
 }
 
-void signal_handler(int signo)				//ºÎ¸ğ ÇÁ·Î¼¼½º¿¡¼­ ÀÛµ¿ SIGALRM
+void signal_handler(int signo)				//ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ SIGALRM
 {
 	int child_proc;
 	char ready[] = "ReadyQ";
@@ -251,12 +251,12 @@ void signal_handler(int signo)				//ºÎ¸ğ ÇÁ·Î¼¼½º¿¡¼­ ÀÛµ¿ SIGALRM
 	//writenode(ReadyQ, fp, ready);
 	writeallnode(ReadyQ, WaitingQ, RunningQ, fp);
 
-	for (int i = 0; i < WaitingQ_num; i++) {						//ÇöÀç WaitingQÀÇ ¸ğµç ³ëµåµéÀÇ io_bust°¨¼Ò ÄÚµå
+	for (int i = 0; i < WaitingQ_num; i++) {						//ï¿½ï¿½ï¿½ï¿½ WaitingQï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ io_bustï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
 		printf("iobust check\n");
 		delnode(WaitingQ, IORunningQ);
-		kill(pids[IORunningQ->proc_num], SIGCONT);					//WaitingQÀÇ ¸Ç¾Õ ³ëµåÀÇ io_bust¸¦ °¨¼Ò -> ÀÚ½Ä ÇÁ·Î¼¼½ºÀÇ io_bust°¨¼Ò ÄÚµå·Î
+		kill(pids[IORunningQ->proc_num], SIGCONT);					//WaitingQï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ io_bustï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ io_bustï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½
 
-		//°ËÅä ÇÊ¿ä -> ¾Æ¸¶ ÀÛµ¿µÊ
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ -> ï¿½Æ¸ï¿½ ï¿½Ûµï¿½ï¿½ï¿½
 		printf("parents Receive message %d\n", IORunningQ->proc_num);
 		pmsgRcv(IORunningQ->proc_num, iobust_time);		//receive message from child
 		//messagechk[IORunningQ->proc_num] = 0;
@@ -273,39 +273,39 @@ void signal_handler(int signo)				//ºÎ¸ğ ÇÁ·Î¼¼½º¿¡¼­ ÀÛµ¿ SIGALRM
 		//
 	}
 
-	//ÀÚ½Ä ÇÁ·Î¼¼½ºÀÇ cpu_bust °¨¼Ò ºÎºĞ
-	if (RunningQ->proc_num != -1) {							//¿¹¿ÜÃ³¸® ReadyQ°¡ ºñ¾îÀÖÀ» °æ¿ì -> ÀüºÎ WaitingQ¿¡ ÀÖ´Â°æ¿ì
-		child_proc = pids[RunningQ->proc_num];				//Running QueueÀÇ ÀÚ½Ä ÇÁ·Î¼¼½º pid ÁöÁ¤
-		kill(pids[RunningQ->proc_num], SIGCONT);			//ReadyQÀÇ ¸Ç¾Õ ³ëµåÀÇ cpu_bust¸¦ °¨¼Ò -> ÀÚ½Ä ÇÁ·Î¼¼½ºÀÇ cpu_bust°¨¼Ò ÄÚµå·Î
+	//ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ cpu_bust ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½
+	if (RunningQ->proc_num != -1) {							//ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ReadyQï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½ WaitingQï¿½ï¿½ ï¿½Ö´Â°ï¿½ï¿½
+		child_proc = pids[RunningQ->proc_num];				//Running Queueï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ pid ï¿½ï¿½ï¿½ï¿½
+		kill(pids[RunningQ->proc_num], SIGCONT);			//ReadyQï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ cpu_bustï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ cpu_bustï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½
 	}
 }
 
-void signal_decrease(int signo) {			//½ÇÇàÁßÀÎ ÀÚ½Ä ÇÁ·Î¼¼½º¿¡¼­ ÀÛµ¿ SIGUSR1 -> ³²Àº cpu_bust°¡ 0ÀÌ ¾Æ´Ô -> ReadyQ¸Ç µÚ·Î
-	if (tickCount < QUANTUM_TIME-1) {		//ÄöÅÒÀÌ ¾È³¡³² -> RunningQ À¯Áö
+void signal_decrease(int signo) {			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ SIGUSR1 -> ï¿½ï¿½ï¿½ï¿½ cpu_bustï¿½ï¿½ 0ï¿½ï¿½ ï¿½Æ´ï¿½ -> ReadyQï¿½ï¿½ ï¿½Ú·ï¿½
+	if (tickCount < QUANTUM_TIME-1) {		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È³ï¿½ï¿½ï¿½ -> RunningQ ï¿½ï¿½ï¿½ï¿½
 		tickCount++;
 	}
-	else {									//ÄöÅÒÀÌ ³¡³² -> ReadyQ¸Ç µÚ·Î -> RunningQ ¾÷µ¥ÀÌÆ®
+	else {									//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ReadyQï¿½ï¿½ ï¿½Ú·ï¿½ -> RunningQ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 		addnode(ReadyQ, RunningQ->proc_num);
 		delnode(ReadyQ, RunningQ);
 		tickCount = 0;
 	}
 }
 
-void signal_bustend(int signo) {			//½ÇÇàÁßÀÎ ÀÚ½Ä ÇÁ·Î¼¼½º¿¡¼­ ÀÛµ¿ SIGUSR2 -> ³²Àº cpu_bust°¡ 0ÀÓ -> WaitingQ¸Ç µÚ·Î
+void signal_bustend(int signo) {			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ SIGUSR2 -> ï¿½ï¿½ï¿½ï¿½ cpu_bustï¿½ï¿½ 0ï¿½ï¿½ -> WaitingQï¿½ï¿½ ï¿½Ú·ï¿½
 	int temp = 0;
 	addnode(WaitingQ, RunningQ->proc_num);
 	WaitingQ_num ++;
 	printf("1Current WaitingQ_num = %d\n", WaitingQ_num);
 	temp = delnode(ReadyQ, RunningQ);
-	if (temp == 0) {						//¿¹¿ÜÃ³¸® ReadyQ°¡ ºñ¾îÀÖ´Â°æ¿ì -> ¸ğµç ÇÁ·Î¼¼½º°¡ WaitingQ¿¡ ÀÖ´Â°æ¿ì
+	if (temp == 0) {						//ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ReadyQï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´Â°ï¿½ï¿½ -> ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ WaitingQï¿½ï¿½ ï¿½Ö´Â°ï¿½ï¿½
 		RunningQ->proc_num = -1;
 	}
 
-	tickCount = 0;							//ÄöÅÒ ÃÊ±âÈ­
+	tickCount = 0;							//ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
 }
 
-//ÇÕÄ¥ ÄÚµå
-void pmsgSnd(int curProc) {				//->»ç¿ë X
+//ï¿½ï¿½Ä¥ ï¿½Úµï¿½
+void pmsgSnd(int curProc) {				//->ï¿½ï¿½ï¿½ X
 	int qid;
 	int ret;
 	int key = 0x1000 * curProc;
@@ -327,11 +327,11 @@ void pmsgSnd(int curProc) {				//->»ç¿ë X
 	return;
 }
 
-// ºÎ¸ğ°¡ º¸³½ ¸Ş½ÃÁö¸¦ ÀÚ½ÄÀÌ ¹Ş´Â´Ù.
-void cmsgRcv(int* ckey) {				//->»ç¿ë X
+// ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ş½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ş´Â´ï¿½.
+void cmsgRcv(int* ckey) {				//->ï¿½ï¿½ï¿½ X
 	int qid;
 	int ret;
-	int key = *ckey;// ÀÚ½Ä ÇÁ·Î¼¼½º °íÀ¯ÀÇ Å° °ª.
+	int key = *ckey;// ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å° ï¿½ï¿½.
 	struct msgbuf msg;
 
 	qid = msgget(key, IPC_CREAT | 0666);
@@ -344,11 +344,11 @@ void cmsgRcv(int* ckey) {				//->»ç¿ë X
 	return;
 }
 
-// ÀÚ½ÄÀÌ ºÎ¸ğ¿¡°Ô ÀÚ½ÅÀÇ µ¥ÀÌÅÍ°¡ ´ã±ä  ¸Ş½ÃÁö¸¦ º¸³½´Ù.
+// ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Î¸ğ¿¡°ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½  ï¿½Ş½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 void cmsgSnd(int ckey, int iobust_time) {
 	int qid;
 	int ret;
-	int key = ckey;// ÀÚ½Ä ÇÁ·Î¼¼½º °íÀ¯ÀÇ Å° °ª.
+	int key = ckey;// ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å° ï¿½ï¿½.
 	struct msgbuf msg;
 
 	qid = msgget(key, IPC_CREAT | 0666);
@@ -356,8 +356,8 @@ void cmsgSnd(int ckey, int iobust_time) {
 
 	msg.mtype = 1;
 	msg.mdata.pid = getpid();
-	msg.mdata.cpuTime = 0;			//->»ç¿ë X
-	msg.mdata.ioTime = iobust_time;	// io timeÀ» ºÎ¸ğ¿¡°Ô º¸³½´Ù.
+	msg.mdata.cpuTime = 0;			//->ï¿½ï¿½ï¿½ X
+	msg.mdata.ioTime = iobust_time;	// io timeï¿½ï¿½ ï¿½Î¸ğ¿¡°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 	printf("send c->p iobust_time : %d\n",iobust_time);
 
 	if (ret = msgsnd(qid, (void*)&msg, sizeof(struct data), 0) == -1) {
@@ -367,7 +367,7 @@ void cmsgSnd(int ckey, int iobust_time) {
 	return;
 }
 
-// ÀÚ½ÄÀÌ º¸³½ µ¥ÀÌÅÍ·Î ÀÚ½Ä iobust_time ¾÷µ¥ÀÌÆ®
+// ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ ï¿½Ú½ï¿½ iobust_time ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 void pmsgRcv(int curProc, int* iobust_time) {
 	int qid;
 	int ret;
@@ -392,7 +392,7 @@ void pmsgRcv(int curProc, int* iobust_time) {
 
 
 
-//Çì´õ·Î ºĞ¸®ÇÒ ÇÔ¼öµé - 1	(°¡¸í list.h)
+//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ğ¸ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ - 1	(ï¿½ï¿½ï¿½ï¿½ list.h)
 
 void inilist(list* list) {
 	list->head = NULL;
@@ -404,12 +404,12 @@ void addnode(list* list, int proc_num) {
 	node* addnode = (node*)malloc(sizeof(node));
 	addnode->next = NULL;
 	addnode->proc_num = proc_num;
-	if (list->head == NULL) {				//Ã¹¹øÂ° ³ëµåÀÏ¶§ list->head = list->tail
+	if (list->head == NULL) {				//Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ list->head = list->tail
 		list->head = addnode;
 		list->tail = addnode;
 		//printf("Add first node\n");
 	}
-	else {									//Ã¹¹øÂ° ³ëµå°¡ ¾Æ´Ï¸é ¸¶Áö¸· ³ëµå ¾÷µ¥ÀÌÆ®
+	else {									//Ã¹ï¿½ï¿½Â° ï¿½ï¿½å°¡ ï¿½Æ´Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 		list->tail->next = addnode;
 		list->tail = addnode;
 		//printf("Add node\n");
@@ -420,13 +420,13 @@ int delnode(list* list, node* return_node) {
 	int proc_num;
 	node* delnode;
 
-	if (list->head == NULL) {				//ºñ¾îÀÖ´Â ¸®½ºÆ® »èÁ¦½Ã ¿¹¿ÜÃ³¸®
+	if (list->head == NULL) {				//ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
 		printf("There is no node to delete\n");
-		return 0;							//½ÇÆĞ
+		return 0;							//ï¿½ï¿½ï¿½ï¿½
 	}
 	delnode = list->head;
 	proc_num = list->head->proc_num;
-	if (list->head->next == NULL) {			//¸¶Áö¸· ³ëµå¸¦ Áö¿ì¸é list¸¦ NULL·Î ÃÊ±âÈ­
+	if (list->head->next == NULL) {			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ listï¿½ï¿½ NULLï¿½ï¿½ ï¿½Ê±ï¿½È­
 		list->head = NULL;
 		list->tail = NULL;
 		//printf("Delete last node\n");
@@ -438,7 +438,7 @@ int delnode(list* list, node* return_node) {
 	*return_node = *delnode;
 	free(delnode);
 
-	return 1;								//¼º°ø
+	return 1;								//ï¿½ï¿½ï¿½ï¿½
 }
 
 void writenode(list* list, FILE* fp, char* listname) {
@@ -462,51 +462,56 @@ void writenode(list* list, FILE* fp, char* listname) {
 }
 
 void writeallnode(list* ready, list* waiting, node* running, FILE* fp) {
-	node* nodepointer1;
-	node* nodepointer2;
-	
-	nodepointer1 = ready->head;
-	nodepointer2 = waiting->head;
+	node* nodePtr1 = ready->head;
+	node* nodePtr2 = waiting->head;
 
-	fprintf(fp, "\nRunning tick = %d\n", running_ticks);
+	fprintf(fp, "\n");
+	fprintf(fp, "â”Œâ”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”\n");
+	fprintf(fp, "â”‚ TICK â”‚ INDEX â”‚ RUNNING PROCESS â”‚ READY QUEUE â”‚ WAITING QUEUE â”‚\n");
 	running_ticks++;
 
 	for (int i = 0; i < MAX_PROC; i++) {
-		if (nodepointer1 == NULL) {
-			if (i == 0) {
-				fprintf(fp, "ReadyQ is empty | ");
-			}
-			else {
-				fprintf(fp, "\t       |");
-			}
-		}
-		else{
-			fprintf(fp, "ReadyQ[%d] = %d | ", i, nodepointer1->proc_num);
-			nodepointer1 = nodepointer1->next;
-		}
-		if (nodepointer2 == NULL) {
-			if (i == 0) {
-				fprintf(fp, "WaitingQ is empty | ");
-			}
-			else {
-				fprintf(fp, "\t\t         |");
-			}
-		}
-		else {
-			fprintf(fp, "WaitingQ[%d] = %d    | ", i, nodepointer2->proc_num);
-			nodepointer2 = nodepointer2->next;
-		}
+		// print index, running process.
 		if (i == 0) {
 			if (running->proc_num == -1) {
-				fprintf(fp, "RunningQ is empty\n");
+				fprintf(fp, "â”‚ %04d â”‚ %02d    â”‚ none            ", running_ticks, i);
 			}
 			else {
-				fprintf(fp, "RunningQ = %d\n", running->proc_num);
+				fprintf(fp, "â”‚ %04d â”‚ %02d    â”‚ %02d              ", running_ticks, i, running->proc_num);
 			}
 		}
 		else {
-			fprintf(fp, "\n");
+			fprintf(fp, "â”‚      â”‚ %02d    â”‚                 ", i);
+		}
+
+		// print ready queue.
+		if (nodePtr1 == NULL) {
+			if (i == 0) {
+				fprintf(fp, "â”‚ none        ");
+			}
+			else {
+				fprintf(fp, "â”‚             ");
+			}
+		}
+		else {
+			fprintf(fp, "â”‚ %02d          ", nodePtr1->proc_num);
+			nodePtr1 = nodePtr1->next;
+		}
+
+		// printf waiting queue.
+		if (nodePtr2 == NULL) {
+			if (i == 0) {
+				fprintf(fp, "â”‚ none          â”‚\n");
+			}
+			else {
+				fprintf(fp, "â”‚               â”‚\n");
+			}
+		}
+		else {
+			fprintf(fp, "â”‚ %02d            â”‚\n", nodePtr2->proc_num);
+			nodePtr2 = nodePtr2->next;
 		}
 	}
+	fprintf(fp, "â””â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜\n");
 }
-//Çì´õ·Î ºĞ¸®ÇÒ ÇÔ¼öµé - 1
+//í—¤ë”ë¡œ ë¶„ë¦¬í•  í•¨ìˆ˜ë“¤ - 1
