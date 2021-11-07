@@ -1,1707 +1,1348 @@
 
-Running tick = 0
-ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 7 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 9 | 	          |
-	      |	          |
-
-Running tick = 1
-ReadyQ[0] = 2 | WaitingQ[0] = 0   | RunningQ = 1
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 9 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 2
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 1
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 9 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 3
-ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 0 | 	          |
-ReadyQ[8] = 1 | 	          |
-	      |	          |
-
-Running tick = 4
-ReadyQ[0] = 4 | WaitingQ[0] = 2   | RunningQ = 3
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 1 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 5
-ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 1 | 	          |
-ReadyQ[8] = 2 | 	          |
-	      |	          |
-
-Running tick = 6
-ReadyQ[0] = 5 | WaitingQ[0] = 3   | RunningQ = 4
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 2 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 7
-ReadyQ[0] = 6 | WaitingQ[0] = 3   | RunningQ = 5
-ReadyQ[1] = 7 | WaitingQ[1] = 4   | 
-ReadyQ[2] = 8 | 	          |
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 2 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 8
-ReadyQ[0] = 6 | WaitingQ[0] = 4   | RunningQ = 5
-ReadyQ[1] = 7 | 	          |
-ReadyQ[2] = 8 | 	          |
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 2 | 	          |
-ReadyQ[7] = 3 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 9
-ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 6
-ReadyQ[1] = 8 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 4 | 	          |
-ReadyQ[8] = 5 | 	          |
-	      |	          |
-
-Running tick = 10
-ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 6
-ReadyQ[1] = 8 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 4 | 	          |
-ReadyQ[8] = 5 | 	          |
-	      |	          |
-
-Running tick = 11
-ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
-ReadyQ[1] = 9 | 	          |
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 4 | 	          |
-ReadyQ[7] = 5 | 	          |
-ReadyQ[8] = 6 | 	          |
-	      |	          |
-
-Running tick = 12
-ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
-ReadyQ[1] = 9 | 	          |
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 4 | 	          |
-ReadyQ[7] = 5 | 	          |
-ReadyQ[8] = 6 | 	          |
-	      |	          |
-
-Running tick = 13
-ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 8
-ReadyQ[1] = 0 | 	          |
-ReadyQ[2] = 1 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 5 | 	          |
-ReadyQ[7] = 6 | 	          |
-ReadyQ[8] = 7 | 	          |
-	      |	          |
-
-Running tick = 14
-ReadyQ[0] = 0 | WaitingQ[0] = 8   | RunningQ = 9
-ReadyQ[1] = 1 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 7 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 15
-ReadyQ[0] = 0 | WaitingQ is empty | RunningQ = 9
-ReadyQ[1] = 1 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 7 | 	          |
-ReadyQ[8] = 8 | 	          |
-	      |	          |
-
-Running tick = 16
-ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 7 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 9 | 	          |
-	      |	          |
-
-Running tick = 17
-ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 7 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 9 | 	          |
-	      |	          |
-
-Running tick = 18
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 1
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 9 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 19
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 1
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 9 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 20
-ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 0 | 	          |
-ReadyQ[8] = 1 | 	          |
-	      |	          |
-
-Running tick = 21
-ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 0 | 	          |
-ReadyQ[8] = 1 | 	          |
-	      |	          |
-
-Running tick = 22
-ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 1 | 	          |
-ReadyQ[8] = 2 | 	          |
-	      |	          |
-
-Running tick = 23
-ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 1 | 	          |
-ReadyQ[8] = 2 | 	          |
-	      |	          |
-
-Running tick = 24
-ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 4
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 2 | 	          |
-ReadyQ[8] = 3 | 	          |
-	      |	          |
-
-Running tick = 25
-ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 4
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 2 | 	          |
-ReadyQ[8] = 3 | 	          |
-	      |	          |
-
-Running tick = 26
-ReadyQ[0] = 6 | WaitingQ is empty | RunningQ = 5
-ReadyQ[1] = 7 | 	          |
-ReadyQ[2] = 8 | 	          |
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 2 | 	          |
-ReadyQ[7] = 3 | 	          |
-ReadyQ[8] = 4 | 	          |
-	      |	          |
-
-Running tick = 27
-ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 6
-ReadyQ[1] = 8 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 4 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 28
-ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 6
-ReadyQ[1] = 8 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 4 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 29
-ReadyQ[0] = 8 | WaitingQ[0] = 5   | RunningQ = 7
-ReadyQ[1] = 9 | 	          |
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 4 | 	          |
-ReadyQ[7] = 6 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 30
-ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
-ReadyQ[1] = 9 | 	          |
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 4 | 	          |
-ReadyQ[7] = 6 | 	          |
-ReadyQ[8] = 5 | 	          |
-	      |	          |
-
-Running tick = 31
-ReadyQ[0] = 9 | WaitingQ[0] = 7   | RunningQ = 8
-ReadyQ[1] = 0 | 	          |
-ReadyQ[2] = 1 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 5 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 32
-ReadyQ[0] = 9 | WaitingQ[0] = 7   | RunningQ = 8
-ReadyQ[1] = 0 | 	          |
-ReadyQ[2] = 1 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 5 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 33
-ReadyQ[0] = 0 | WaitingQ[0] = 7   | RunningQ = 9
-ReadyQ[1] = 1 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 5 | 	          |
-ReadyQ[7] = 8 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 34
-ReadyQ[0] = 0 | WaitingQ[0] = 7   | RunningQ = 9
-ReadyQ[1] = 1 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 5 | 	          |
-ReadyQ[7] = 8 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 35
-ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 7 | 	          |
-ReadyQ[8] = 9 | 	          |
-	      |	          |
-
-Running tick = 36
-ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 7 | 	          |
-ReadyQ[8] = 9 | 	          |
-	      |	          |
-
-Running tick = 37
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 1
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 7 | 	          |
-ReadyQ[7] = 9 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 38
-ReadyQ[0] = 3 | WaitingQ[0] = 1   | RunningQ = 2
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 0 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 39
-ReadyQ[0] = 3 | WaitingQ[0] = 1   | RunningQ = 2
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 0 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 40
-ReadyQ[0] = 4 | WaitingQ[0] = 1   | RunningQ = 3
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 2 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 41
-ReadyQ[0] = 4 | WaitingQ[0] = 1   | RunningQ = 3
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 2 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 42
-ReadyQ[0] = 6 | WaitingQ[0] = 1   | RunningQ = 4
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 8 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 2 | 	          |
-ReadyQ[7] = 3 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 43
-ReadyQ[0] = 6 | WaitingQ is empty | RunningQ = 4
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 8 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 2 | 	          |
-ReadyQ[7] = 3 | 	          |
-ReadyQ[8] = 1 | 	          |
-	      |	          |
-
-Running tick = 44
-ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 6
-ReadyQ[1] = 8 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 1 | 	          |
-ReadyQ[8] = 4 | 	          |
-	      |	          |
-
-Running tick = 45
-ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 6
-ReadyQ[1] = 8 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 1 | 	          |
-ReadyQ[8] = 4 | 	          |
-	      |	          |
-
-Running tick = 46
-ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 5
-ReadyQ[1] = 7 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 4 | 	          |
-ReadyQ[8] = 6 | 	          |
-	      |	          |
-
-Running tick = 47
-ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 5
-ReadyQ[1] = 7 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 4 | 	          |
-ReadyQ[8] = 6 | 	          |
-	      |	          |
-
-Running tick = 48
-ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 8
-ReadyQ[1] = 9 | 	          |
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 4 | 	          |
-ReadyQ[7] = 6 | 	          |
-ReadyQ[8] = 5 | 	          |
-	      |	          |
-
-Running tick = 49
-ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 8
-ReadyQ[1] = 9 | 	          |
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 4 | 	          |
-ReadyQ[7] = 6 | 	          |
-ReadyQ[8] = 5 | 	          |
-	      |	          |
-
-Running tick = 50
-ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 7
-ReadyQ[1] = 0 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 5 | 	          |
-ReadyQ[8] = 8 | 	          |
-	      |	          |
-
-Running tick = 51
-ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 7
-ReadyQ[1] = 0 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 5 | 	          |
-ReadyQ[8] = 8 | 	          |
-	      |	          |
-
-Running tick = 52
-ReadyQ[0] = 0 | WaitingQ is empty | RunningQ = 9
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 5 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 7 | 	          |
-	      |	          |
-
-Running tick = 53
-ReadyQ[0] = 0 | WaitingQ is empty | RunningQ = 9
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 5 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 7 | 	          |
-	      |	          |
-
-Running tick = 54
-ReadyQ[0] = 2 | WaitingQ[0] = 9   | RunningQ = 0
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 1 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 7 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 55
-ReadyQ[0] = 3 | WaitingQ[0] = 9   | RunningQ = 2
-ReadyQ[1] = 1 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 7 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 56
-ReadyQ[0] = 1 | WaitingQ[0] = 9   | RunningQ = 3
-ReadyQ[1] = 4 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 6 | WaitingQ[2] = 2   | 
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 7 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 57
-ReadyQ[0] = 4 | WaitingQ[0] = 9   | RunningQ = 1
-ReadyQ[1] = 6 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 5 | WaitingQ[2] = 2   | 
-ReadyQ[3] = 8 | WaitingQ[3] = 3   | 
-ReadyQ[4] = 7 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 58
-ReadyQ[0] = 4 | WaitingQ[0] = 9   | RunningQ = 1
-ReadyQ[1] = 6 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 5 | WaitingQ[2] = 2   | 
-ReadyQ[3] = 8 | WaitingQ[3] = 3   | 
-ReadyQ[4] = 7 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 59
-ReadyQ[0] = 6 | WaitingQ[0] = 9   | RunningQ = 4
-ReadyQ[1] = 5 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 8 | WaitingQ[2] = 2   | 
-ReadyQ[3] = 7 | WaitingQ[3] = 3   | 
-ReadyQ[4] = 1 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 60
-ReadyQ[0] = 5 | WaitingQ[0] = 2   | RunningQ = 6
-ReadyQ[1] = 8 | WaitingQ[1] = 3   | 
-ReadyQ[2] = 7 | WaitingQ[2] = 4   | 
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 61
-ReadyQ[0] = 8 | WaitingQ[0] = 2   | RunningQ = 5
-ReadyQ[1] = 7 | WaitingQ[1] = 3   | 
-ReadyQ[2] = 1 | WaitingQ[2] = 4   | 
-ReadyQ[3] = 9 | WaitingQ[3] = 6   | 
-ReadyQ[4] = 0 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 62
-ReadyQ[0] = 8 | WaitingQ[0] = 6   | RunningQ = 5
-ReadyQ[1] = 7 | WaitingQ[1] = 3   | 
-ReadyQ[2] = 1 | WaitingQ[2] = 4   | 
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 2 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 63
-ReadyQ[0] = 7 | WaitingQ[0] = 4   | RunningQ = 8
-ReadyQ[1] = 1 | WaitingQ[1] = 6   | 
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 5 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 64
-ReadyQ[0] = 1 | WaitingQ[0] = 4   | RunningQ = 7
-ReadyQ[1] = 9 | WaitingQ[1] = 6   | 
-ReadyQ[2] = 0 | WaitingQ[2] = 8   | 
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 5 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 65
-ReadyQ[0] = 1 | WaitingQ[0] = 4   | RunningQ = 7
-ReadyQ[1] = 9 | WaitingQ[1] = 6   | 
-ReadyQ[2] = 0 | WaitingQ[2] = 8   | 
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 5 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 66
-ReadyQ[0] = 9 | WaitingQ[0] = 8   | RunningQ = 1
-ReadyQ[1] = 0 | WaitingQ[1] = 6   | 
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 7 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 67
-ReadyQ[0] = 9 | WaitingQ[0] = 8   | RunningQ = 1
-ReadyQ[1] = 0 | WaitingQ[1] = 6   | 
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 7 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 68
-ReadyQ[0] = 0 | WaitingQ[0] = 8   | RunningQ = 9
-ReadyQ[1] = 2 | WaitingQ[1] = 6   | 
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 1 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 69
-ReadyQ[0] = 0 | WaitingQ[0] = 8   | RunningQ = 9
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 6 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 70
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 9 | 	          |
-	      |	          |
-
-Running tick = 71
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 9 | 	          |
-	      |	          |
-
-Running tick = 72
-ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 9 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 73
-ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 9 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 74
-ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 3
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 0 | 	          |
-ReadyQ[8] = 2 | 	          |
-	      |	          |
-
-Running tick = 75
-ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 3
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 0 | 	          |
-ReadyQ[8] = 2 | 	          |
-	      |	          |
-
-Running tick = 76
-ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 5
-ReadyQ[1] = 7 | 	          |
-ReadyQ[2] = 1 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 2 | 	          |
-ReadyQ[8] = 3 | 	          |
-	      |	          |
-
-Running tick = 77
-ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 4
-ReadyQ[1] = 1 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 2 | 	          |
-ReadyQ[7] = 3 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 78
-ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 4
-ReadyQ[1] = 1 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 2 | 	          |
-ReadyQ[7] = 3 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 79
-ReadyQ[0] = 1 | WaitingQ[0] = 5   | RunningQ = 7
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 8 | 	          |
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 4 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 80
-ReadyQ[0] = 6 | WaitingQ[0] = 5   | RunningQ = 1
-ReadyQ[1] = 8 | WaitingQ[1] = 7   | 
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 4 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 81
-ReadyQ[0] = 8 | WaitingQ[0] = 5   | RunningQ = 6
-ReadyQ[1] = 9 | WaitingQ[1] = 7   | 
-ReadyQ[2] = 0 | WaitingQ[2] = 1   | 
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 4 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 82
-ReadyQ[0] = 8 | WaitingQ[0] = 1   | RunningQ = 6
-ReadyQ[1] = 9 | WaitingQ[1] = 7   | 
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 5 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 83
-ReadyQ[0] = 9 | WaitingQ[0] = 1   | RunningQ = 8
-ReadyQ[1] = 0 | WaitingQ[1] = 7   | 
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 6 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 84
-ReadyQ[0] = 9 | WaitingQ[0] = 1   | RunningQ = 8
-ReadyQ[1] = 0 | WaitingQ[1] = 7   | 
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 6 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 85
-ReadyQ[0] = 0 | WaitingQ[0] = 1   | RunningQ = 9
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 7 | 	          |
-ReadyQ[7] = 8 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 86
-ReadyQ[0] = 0 | WaitingQ[0] = 1   | RunningQ = 9
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 7 | 	          |
-ReadyQ[7] = 8 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 87
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 1 | 	          |
-ReadyQ[8] = 9 | 	          |
-	      |	          |
-
-Running tick = 88
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 1 | 	          |
-ReadyQ[8] = 9 | 	          |
-	      |	          |
-
-Running tick = 89
-ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 9 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 90
-ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 9 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 91
-ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 0 | 	          |
-ReadyQ[8] = 2 | 	          |
-	      |	          |
-
-Running tick = 92
-ReadyQ[0] = 4 | WaitingQ is empty | RunningQ = 3
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 0 | 	          |
-ReadyQ[8] = 2 | 	          |
-	      |	          |
-
-Running tick = 93
-ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 4
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 2 | 	          |
-ReadyQ[8] = 3 | 	          |
-	      |	          |
-
-Running tick = 94
-ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 4
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 2 | 	          |
-ReadyQ[8] = 3 | 	          |
-	      |	          |
-
-Running tick = 95
-ReadyQ[0] = 6 | WaitingQ is empty | RunningQ = 5
-ReadyQ[1] = 7 | 	          |
-ReadyQ[2] = 8 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 2 | 	          |
-ReadyQ[7] = 3 | 	          |
-ReadyQ[8] = 4 | 	          |
-	      |	          |
-
-Running tick = 96
-ReadyQ[0] = 6 | WaitingQ is empty | RunningQ = 5
-ReadyQ[1] = 7 | 	          |
-ReadyQ[2] = 8 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 2 | 	          |
-ReadyQ[7] = 3 | 	          |
-ReadyQ[8] = 4 | 	          |
-	      |	          |
-
-Running tick = 97
-ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 6
-ReadyQ[1] = 8 | 	          |
-ReadyQ[2] = 1 | 	          |
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 4 | 	          |
-ReadyQ[8] = 5 | 	          |
-	      |	          |
-
-Running tick = 98
-ReadyQ[0] = 7 | WaitingQ is empty | RunningQ = 6
-ReadyQ[1] = 8 | 	          |
-ReadyQ[2] = 1 | 	          |
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 4 | 	          |
-ReadyQ[8] = 5 | 	          |
-	      |	          |
-
-Running tick = 99
-ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
-ReadyQ[1] = 1 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 4 | 	          |
-ReadyQ[7] = 5 | 	          |
-ReadyQ[8] = 6 | 	          |
-	      |	          |
-
-Running tick = 100
-ReadyQ[0] = 8 | WaitingQ is empty | RunningQ = 7
-ReadyQ[1] = 1 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 4 | 	          |
-ReadyQ[7] = 5 | 	          |
-ReadyQ[8] = 6 | 	          |
-	      |	          |
-
-Running tick = 101
-ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 8
-ReadyQ[1] = 9 | 	          |
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 5 | 	          |
-ReadyQ[7] = 6 | 	          |
-ReadyQ[8] = 7 | 	          |
-	      |	          |
-
-Running tick = 102
-ReadyQ[0] = 1 | WaitingQ is empty | RunningQ = 8
-ReadyQ[1] = 9 | 	          |
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 5 | 	          |
-ReadyQ[7] = 6 | 	          |
-ReadyQ[8] = 7 | 	          |
-	      |	          |
-
-Running tick = 103
-ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 1
-ReadyQ[1] = 0 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 7 | 	          |
-ReadyQ[8] = 8 | 	          |
-	      |	          |
-
-Running tick = 104
-ReadyQ[0] = 9 | WaitingQ is empty | RunningQ = 1
-ReadyQ[1] = 0 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 7 | 	          |
-ReadyQ[8] = 8 | 	          |
-	      |	          |
-
-Running tick = 105
-ReadyQ[0] = 0 | WaitingQ is empty | RunningQ = 9
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 7 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 1 | 	          |
-	      |	          |
-
-Running tick = 106
-ReadyQ[0] = 2 | WaitingQ[0] = 9   | RunningQ = 0
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 1 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 107
-ReadyQ[0] = 3 | WaitingQ[0] = 9   | RunningQ = 2
-ReadyQ[1] = 4 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 1 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 108
-ReadyQ[0] = 4 | WaitingQ[0] = 9   | RunningQ = 3
-ReadyQ[1] = 5 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 6 | WaitingQ[2] = 2   | 
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 1 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 109
-ReadyQ[0] = 5 | WaitingQ[0] = 9   | RunningQ = 4
-ReadyQ[1] = 6 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 7 | WaitingQ[2] = 2   | 
-ReadyQ[3] = 8 | WaitingQ[3] = 3   | 
-ReadyQ[4] = 1 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 110
-ReadyQ[0] = 6 | WaitingQ[0] = 9   | RunningQ = 5
-ReadyQ[1] = 7 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 8 | WaitingQ[2] = 2   | 
-ReadyQ[3] = 1 | WaitingQ[3] = 3   | 
-	      |WaitingQ[4] = 4   | 
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 111
-ReadyQ[0] = 6 | WaitingQ[0] = 4   | RunningQ = 5
-ReadyQ[1] = 7 | WaitingQ[1] = 0   | 
-ReadyQ[2] = 8 | WaitingQ[2] = 2   | 
-ReadyQ[3] = 1 | WaitingQ[3] = 3   | 
-ReadyQ[4] = 9 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 112
-ReadyQ[0] = 7 | WaitingQ[0] = 3   | RunningQ = 6
-ReadyQ[1] = 8 | WaitingQ[1] = 4   | 
-ReadyQ[2] = 1 | WaitingQ[2] = 2   | 
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 5 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 113
-ReadyQ[0] = 8 | WaitingQ[0] = 3   | RunningQ = 7
-ReadyQ[1] = 1 | WaitingQ[1] = 4   | 
-ReadyQ[2] = 9 | WaitingQ[2] = 6   | 
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 2 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 114
-ReadyQ[0] = 8 | WaitingQ[0] = 3   | RunningQ = 7
-ReadyQ[1] = 1 | WaitingQ[1] = 4   | 
-ReadyQ[2] = 9 | WaitingQ[2] = 6   | 
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 2 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 115
-ReadyQ[0] = 1 | WaitingQ[0] = 6   | RunningQ = 8
-ReadyQ[1] = 9 | WaitingQ[1] = 4   | 
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 7 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 116
-ReadyQ[0] = 9 | WaitingQ[0] = 6   | RunningQ = 1
-ReadyQ[1] = 0 | WaitingQ[1] = 8   | 
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 4 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 117
-ReadyQ[0] = 9 | WaitingQ[0] = 6   | RunningQ = 1
-ReadyQ[1] = 0 | WaitingQ[1] = 8   | 
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 4 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 118
-ReadyQ[0] = 0 | WaitingQ[0] = 6   | RunningQ = 9
-ReadyQ[1] = 5 | WaitingQ[1] = 8   | 
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 1 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 119
-ReadyQ[0] = 0 | WaitingQ[0] = 8   | RunningQ = 9
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 6 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 120
-ReadyQ[0] = 5 | WaitingQ[0] = 8   | RunningQ = 0
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 9 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 121
-ReadyQ[0] = 5 | WaitingQ[0] = 8   | RunningQ = 0
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 9 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 122
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 5
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 1 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 123
-ReadyQ[0] = 3 | WaitingQ[0] = 5   | RunningQ = 2
-ReadyQ[1] = 7 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 0 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 124
-ReadyQ[0] = 3 | WaitingQ[0] = 5   | RunningQ = 2
-ReadyQ[1] = 7 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 1 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 0 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 125
-ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 3
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 1 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 2 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 126
-ReadyQ[0] = 7 | WaitingQ[0] = 5   | RunningQ = 3
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 1 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 8 | 	          |
-ReadyQ[6] = 0 | 	          |
-ReadyQ[7] = 2 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 127
-ReadyQ[0] = 4 | WaitingQ[0] = 5   | RunningQ = 7
-ReadyQ[1] = 1 | 	          |
-ReadyQ[2] = 6 | 	          |
-ReadyQ[3] = 9 | 	          |
-ReadyQ[4] = 8 | 	          |
-ReadyQ[5] = 0 | 	          |
-ReadyQ[6] = 2 | 	          |
-ReadyQ[7] = 3 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 128
-ReadyQ[0] = 1 | WaitingQ[0] = 7   | RunningQ = 4
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 5 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 129
-ReadyQ[0] = 1 | WaitingQ[0] = 7   | RunningQ = 4
-ReadyQ[1] = 6 | 	          |
-ReadyQ[2] = 9 | 	          |
-ReadyQ[3] = 8 | 	          |
-ReadyQ[4] = 0 | 	          |
-ReadyQ[5] = 2 | 	          |
-ReadyQ[6] = 3 | 	          |
-ReadyQ[7] = 5 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 130
-ReadyQ[0] = 6 | WaitingQ[0] = 7   | RunningQ = 1
-ReadyQ[1] = 9 | 	          |
-ReadyQ[2] = 8 | 	          |
-ReadyQ[3] = 0 | 	          |
-ReadyQ[4] = 2 | 	          |
-ReadyQ[5] = 3 | 	          |
-ReadyQ[6] = 5 | 	          |
-ReadyQ[7] = 4 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 131
-ReadyQ[0] = 9 | WaitingQ[0] = 7   | RunningQ = 6
-ReadyQ[1] = 8 | WaitingQ[1] = 1   | 
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 4 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 132
-ReadyQ[0] = 9 | WaitingQ[0] = 7   | RunningQ = 6
-ReadyQ[1] = 8 | WaitingQ[1] = 1   | 
-ReadyQ[2] = 0 | 	          |
-ReadyQ[3] = 2 | 	          |
-ReadyQ[4] = 3 | 	          |
-ReadyQ[5] = 5 | 	          |
-ReadyQ[6] = 4 | 	          |
-	      |	          |
-	      |	          |
-	      |	          |
-
-Running tick = 133
-ReadyQ[0] = 8 | WaitingQ[0] = 1   | RunningQ = 9
-ReadyQ[1] = 0 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 7 | 	          |
-ReadyQ[7] = 6 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 134
-ReadyQ[0] = 8 | WaitingQ[0] = 1   | RunningQ = 9
-ReadyQ[1] = 0 | 	          |
-ReadyQ[2] = 2 | 	          |
-ReadyQ[3] = 3 | 	          |
-ReadyQ[4] = 5 | 	          |
-ReadyQ[5] = 4 | 	          |
-ReadyQ[6] = 7 | 	          |
-ReadyQ[7] = 6 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 135
-ReadyQ[0] = 0 | WaitingQ[0] = 1   | RunningQ = 8
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 9 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 136
-ReadyQ[0] = 0 | WaitingQ[0] = 1   | RunningQ = 8
-ReadyQ[1] = 2 | 	          |
-ReadyQ[2] = 3 | 	          |
-ReadyQ[3] = 5 | 	          |
-ReadyQ[4] = 4 | 	          |
-ReadyQ[5] = 7 | 	          |
-ReadyQ[6] = 6 | 	          |
-ReadyQ[7] = 9 | 	          |
-	      |	          |
-	      |	          |
-
-Running tick = 137
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 1 | 	          |
-ReadyQ[8] = 8 | 	          |
-	      |	          |
-
-Running tick = 138
-ReadyQ[0] = 2 | WaitingQ is empty | RunningQ = 0
-ReadyQ[1] = 3 | 	          |
-ReadyQ[2] = 5 | 	          |
-ReadyQ[3] = 4 | 	          |
-ReadyQ[4] = 7 | 	          |
-ReadyQ[5] = 6 | 	          |
-ReadyQ[6] = 9 | 	          |
-ReadyQ[7] = 1 | 	          |
-ReadyQ[8] = 8 | 	          |
-	      |	          |
-
-Running tick = 139
-ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 140
-ReadyQ[0] = 3 | WaitingQ is empty | RunningQ = 2
-ReadyQ[1] = 5 | 	          |
-ReadyQ[2] = 4 | 	          |
-ReadyQ[3] = 7 | 	          |
-ReadyQ[4] = 6 | 	          |
-ReadyQ[5] = 9 | 	          |
-ReadyQ[6] = 1 | 	          |
-ReadyQ[7] = 8 | 	          |
-ReadyQ[8] = 0 | 	          |
-	      |	          |
-
-Running tick = 141
-ReadyQ[0] = 5 | WaitingQ is empty | RunningQ = 3
-ReadyQ[1] = 4 | 	          |
-ReadyQ[2] = 7 | 	          |
-ReadyQ[3] = 6 | 	          |
-ReadyQ[4] = 9 | 	          |
-ReadyQ[5] = 1 | 	          |
-ReadyQ[6] = 8 | 	          |
-ReadyQ[7] = 0 | 	          |
-ReadyQ[8] = 2 | 	          |
-	      |	          |
-
-Running tick = 142
-ReadyQ[0] = 5 
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0001 │ 00    │ 00              │ 01          │ none          │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 05          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 07          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │ 09          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0002 │ 00    │ 01              │ 02          │ 00            │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 09          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0003 │ 00    │ 01              │ 02          │ none          │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 09          │               │
+│      │ 08    │                 │ 00          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0004 │ 00    │ 02              │ 03          │ none          │
+│      │ 01    │                 │ 04          │               │
+│      │ 02    │                 │ 05          │               │
+│      │ 03    │                 │ 06          │               │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │ 08          │               │
+│      │ 06    │                 │ 09          │               │
+│      │ 07    │                 │ 00          │               │
+│      │ 08    │                 │ 01          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0005 │ 00    │ 03              │ 04          │ 02            │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 09          │               │
+│      │ 06    │                 │ 00          │               │
+│      │ 07    │                 │ 01          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0006 │ 00    │ 03              │ 04          │ none          │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 09          │               │
+│      │ 06    │                 │ 00          │               │
+│      │ 07    │                 │ 01          │               │
+│      │ 08    │                 │ 02          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0007 │ 00    │ 04              │ 05          │ 03            │
+│      │ 01    │                 │ 06          │               │
+│      │ 02    │                 │ 07          │               │
+│      │ 03    │                 │ 08          │               │
+│      │ 04    │                 │ 09          │               │
+│      │ 05    │                 │ 00          │               │
+│      │ 06    │                 │ 01          │               │
+│      │ 07    │                 │ 02          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0008 │ 00    │ 05              │ 06          │ 03            │
+│      │ 01    │                 │ 07          │ 04            │
+│      │ 02    │                 │ 08          │               │
+│      │ 03    │                 │ 09          │               │
+│      │ 04    │                 │ 00          │               │
+│      │ 05    │                 │ 01          │               │
+│      │ 06    │                 │ 02          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0009 │ 00    │ 05              │ 06          │ 04            │
+│      │ 01    │                 │ 07          │               │
+│      │ 02    │                 │ 08          │               │
+│      │ 03    │                 │ 09          │               │
+│      │ 04    │                 │ 00          │               │
+│      │ 05    │                 │ 01          │               │
+│      │ 06    │                 │ 02          │               │
+│      │ 07    │                 │ 03          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0010 │ 00    │ 06              │ 07          │ none          │
+│      │ 01    │                 │ 08          │               │
+│      │ 02    │                 │ 09          │               │
+│      │ 03    │                 │ 00          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 02          │               │
+│      │ 06    │                 │ 03          │               │
+│      │ 07    │                 │ 04          │               │
+│      │ 08    │                 │ 05          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0011 │ 00    │ 06              │ 07          │ none          │
+│      │ 01    │                 │ 08          │               │
+│      │ 02    │                 │ 09          │               │
+│      │ 03    │                 │ 00          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 02          │               │
+│      │ 06    │                 │ 03          │               │
+│      │ 07    │                 │ 04          │               │
+│      │ 08    │                 │ 05          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0012 │ 00    │ 07              │ 08          │ none          │
+│      │ 01    │                 │ 09          │               │
+│      │ 02    │                 │ 00          │               │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 02          │               │
+│      │ 05    │                 │ 03          │               │
+│      │ 06    │                 │ 04          │               │
+│      │ 07    │                 │ 05          │               │
+│      │ 08    │                 │ 06          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0013 │ 00    │ 07              │ 08          │ none          │
+│      │ 01    │                 │ 09          │               │
+│      │ 02    │                 │ 00          │               │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 02          │               │
+│      │ 05    │                 │ 03          │               │
+│      │ 06    │                 │ 04          │               │
+│      │ 07    │                 │ 05          │               │
+│      │ 08    │                 │ 06          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0014 │ 00    │ 08              │ 09          │ none          │
+│      │ 01    │                 │ 00          │               │
+│      │ 02    │                 │ 01          │               │
+│      │ 03    │                 │ 02          │               │
+│      │ 04    │                 │ 03          │               │
+│      │ 05    │                 │ 04          │               │
+│      │ 06    │                 │ 05          │               │
+│      │ 07    │                 │ 06          │               │
+│      │ 08    │                 │ 07          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0015 │ 00    │ 09              │ 00          │ 08            │
+│      │ 01    │                 │ 01          │               │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 05          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │ 07          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0016 │ 00    │ 09              │ 00          │ none          │
+│      │ 01    │                 │ 01          │               │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 05          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │ 07          │               │
+│      │ 08    │                 │ 08          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0017 │ 00    │ 00              │ 01          │ none          │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 05          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 07          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │ 09          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0018 │ 00    │ 00              │ 01          │ none          │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 05          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 07          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │ 09          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0019 │ 00    │ 01              │ 02          │ none          │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 09          │               │
+│      │ 08    │                 │ 00          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0020 │ 00    │ 01              │ 02          │ none          │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 09          │               │
+│      │ 08    │                 │ 00          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0021 │ 00    │ 02              │ 03          │ none          │
+│      │ 01    │                 │ 04          │               │
+│      │ 02    │                 │ 05          │               │
+│      │ 03    │                 │ 06          │               │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │ 08          │               │
+│      │ 06    │                 │ 09          │               │
+│      │ 07    │                 │ 00          │               │
+│      │ 08    │                 │ 01          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0022 │ 00    │ 02              │ 03          │ none          │
+│      │ 01    │                 │ 04          │               │
+│      │ 02    │                 │ 05          │               │
+│      │ 03    │                 │ 06          │               │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │ 08          │               │
+│      │ 06    │                 │ 09          │               │
+│      │ 07    │                 │ 00          │               │
+│      │ 08    │                 │ 01          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0023 │ 00    │ 03              │ 04          │ none          │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 09          │               │
+│      │ 06    │                 │ 00          │               │
+│      │ 07    │                 │ 01          │               │
+│      │ 08    │                 │ 02          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0024 │ 00    │ 03              │ 04          │ none          │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 09          │               │
+│      │ 06    │                 │ 00          │               │
+│      │ 07    │                 │ 01          │               │
+│      │ 08    │                 │ 02          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0025 │ 00    │ 04              │ 05          │ none          │
+│      │ 01    │                 │ 06          │               │
+│      │ 02    │                 │ 07          │               │
+│      │ 03    │                 │ 08          │               │
+│      │ 04    │                 │ 09          │               │
+│      │ 05    │                 │ 00          │               │
+│      │ 06    │                 │ 01          │               │
+│      │ 07    │                 │ 02          │               │
+│      │ 08    │                 │ 03          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0026 │ 00    │ 04              │ 05          │ none          │
+│      │ 01    │                 │ 06          │               │
+│      │ 02    │                 │ 07          │               │
+│      │ 03    │                 │ 08          │               │
+│      │ 04    │                 │ 09          │               │
+│      │ 05    │                 │ 00          │               │
+│      │ 06    │                 │ 01          │               │
+│      │ 07    │                 │ 02          │               │
+│      │ 08    │                 │ 03          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0027 │ 00    │ 05              │ 06          │ none          │
+│      │ 01    │                 │ 07          │               │
+│      │ 02    │                 │ 08          │               │
+│      │ 03    │                 │ 09          │               │
+│      │ 04    │                 │ 00          │               │
+│      │ 05    │                 │ 01          │               │
+│      │ 06    │                 │ 02          │               │
+│      │ 07    │                 │ 03          │               │
+│      │ 08    │                 │ 04          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0028 │ 00    │ 06              │ 07          │ 05            │
+│      │ 01    │                 │ 08          │               │
+│      │ 02    │                 │ 09          │               │
+│      │ 03    │                 │ 00          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 02          │               │
+│      │ 06    │                 │ 03          │               │
+│      │ 07    │                 │ 04          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0029 │ 00    │ 06              │ 07          │ 05            │
+│      │ 01    │                 │ 08          │               │
+│      │ 02    │                 │ 09          │               │
+│      │ 03    │                 │ 00          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 02          │               │
+│      │ 06    │                 │ 03          │               │
+│      │ 07    │                 │ 04          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0030 │ 00    │ 07              │ 08          │ 05            │
+│      │ 01    │                 │ 09          │               │
+│      │ 02    │                 │ 00          │               │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 02          │               │
+│      │ 05    │                 │ 03          │               │
+│      │ 06    │                 │ 04          │               │
+│      │ 07    │                 │ 06          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0031 │ 00    │ 07              │ 08          │ none          │
+│      │ 01    │                 │ 09          │               │
+│      │ 02    │                 │ 00          │               │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 02          │               │
+│      │ 05    │                 │ 03          │               │
+│      │ 06    │                 │ 04          │               │
+│      │ 07    │                 │ 06          │               │
+│      │ 08    │                 │ 05          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0032 │ 00    │ 08              │ 09          │ 07            │
+│      │ 01    │                 │ 00          │               │
+│      │ 02    │                 │ 01          │               │
+│      │ 03    │                 │ 02          │               │
+│      │ 04    │                 │ 03          │               │
+│      │ 05    │                 │ 04          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │ 05          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0033 │ 00    │ 08              │ 09          │ 07            │
+│      │ 01    │                 │ 00          │               │
+│      │ 02    │                 │ 01          │               │
+│      │ 03    │                 │ 02          │               │
+│      │ 04    │                 │ 03          │               │
+│      │ 05    │                 │ 04          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │ 05          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0034 │ 00    │ 09              │ 00          │ 07            │
+│      │ 01    │                 │ 01          │               │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 05          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0035 │ 00    │ 09              │ 00          │ 07            │
+│      │ 01    │                 │ 01          │               │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 05          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0036 │ 00    │ 00              │ 01          │ none          │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 05          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 07          │               │
+│      │ 08    │                 │ 09          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0037 │ 00    │ 00              │ 01          │ none          │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 05          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 07          │               │
+│      │ 08    │                 │ 09          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0038 │ 00    │ 01              │ 02          │ none          │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 06          │               │
+│      │ 04    │                 │ 05          │               │
+│      │ 05    │                 │ 08          │               │
+│      │ 06    │                 │ 07          │               │
+│      │ 07    │                 │ 09          │               │
+│      │ 08    │                 │ 00          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0039 │ 00    │ 02              │ 03          │ 01            │
+│      │ 01    │                 │ 04          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 09          │               │
+│      │ 07    │                 │ 00          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0040 │ 00    │ 02              │ 03          │ 01            │
+│      │ 01    │                 │ 04          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 09          │               │
+│      │ 07    │                 │ 00          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0041 │ 00    │ 03              │ 04          │ 01            │
+│      │ 01    │                 │ 06          │               │
+│      │ 02    │                 │ 05          │               │
+│      │ 03    │                 │ 08          │               │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │ 09          │               │
+│      │ 06    │                 │ 00          │               │
+│      │ 07    │                 │ 02          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0042 │ 00    │ 03              │ 04          │ 01            │
+│      │ 01    │                 │ 06          │               │
+│      │ 02    │                 │ 05          │               │
+│      │ 03    │                 │ 08          │               │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │ 09          │               │
+│      │ 06    │                 │ 00          │               │
+│      │ 07    │                 │ 02          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0043 │ 00    │ 04              │ 06          │ 01            │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 08          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 09          │               │
+│      │ 05    │                 │ 00          │               │
+│      │ 06    │                 │ 02          │               │
+│      │ 07    │                 │ 03          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0044 │ 00    │ 04              │ 06          │ none          │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 08          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 09          │               │
+│      │ 05    │                 │ 00          │               │
+│      │ 06    │                 │ 02          │               │
+│      │ 07    │                 │ 03          │               │
+│      │ 08    │                 │ 01          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0045 │ 00    │ 06              │ 05          │ none          │
+│      │ 01    │                 │ 08          │               │
+│      │ 02    │                 │ 07          │               │
+│      │ 03    │                 │ 09          │               │
+│      │ 04    │                 │ 00          │               │
+│      │ 05    │                 │ 02          │               │
+│      │ 06    │                 │ 03          │               │
+│      │ 07    │                 │ 01          │               │
+│      │ 08    │                 │ 04          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0046 │ 00    │ 06              │ 05          │ none          │
+│      │ 01    │                 │ 08          │               │
+│      │ 02    │                 │ 07          │               │
+│      │ 03    │                 │ 09          │               │
+│      │ 04    │                 │ 00          │               │
+│      │ 05    │                 │ 02          │               │
+│      │ 06    │                 │ 03          │               │
+│      │ 07    │                 │ 01          │               │
+│      │ 08    │                 │ 04          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0047 │ 00    │ 05              │ 08          │ none          │
+│      │ 01    │                 │ 07          │               │
+│      │ 02    │                 │ 09          │               │
+│      │ 03    │                 │ 00          │               │
+│      │ 04    │                 │ 02          │               │
+│      │ 05    │                 │ 03          │               │
+│      │ 06    │                 │ 01          │               │
+│      │ 07    │                 │ 04          │               │
+│      │ 08    │                 │ 06          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0048 │ 00    │ 05              │ 08          │ none          │
+│      │ 01    │                 │ 07          │               │
+│      │ 02    │                 │ 09          │               │
+│      │ 03    │                 │ 00          │               │
+│      │ 04    │                 │ 02          │               │
+│      │ 05    │                 │ 03          │               │
+│      │ 06    │                 │ 01          │               │
+│      │ 07    │                 │ 04          │               │
+│      │ 08    │                 │ 06          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0049 │ 00    │ 08              │ 07          │ none          │
+│      │ 01    │                 │ 09          │               │
+│      │ 02    │                 │ 00          │               │
+│      │ 03    │                 │ 02          │               │
+│      │ 04    │                 │ 03          │               │
+│      │ 05    │                 │ 01          │               │
+│      │ 06    │                 │ 04          │               │
+│      │ 07    │                 │ 06          │               │
+│      │ 08    │                 │ 05          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0050 │ 00    │ 08              │ 07          │ none          │
+│      │ 01    │                 │ 09          │               │
+│      │ 02    │                 │ 00          │               │
+│      │ 03    │                 │ 02          │               │
+│      │ 04    │                 │ 03          │               │
+│      │ 05    │                 │ 01          │               │
+│      │ 06    │                 │ 04          │               │
+│      │ 07    │                 │ 06          │               │
+│      │ 08    │                 │ 05          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0051 │ 00    │ 07              │ 09          │ none          │
+│      │ 01    │                 │ 00          │               │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 04          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │ 05          │               │
+│      │ 08    │                 │ 08          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0052 │ 00    │ 07              │ 09          │ none          │
+│      │ 01    │                 │ 00          │               │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 04          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │ 05          │               │
+│      │ 08    │                 │ 08          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0053 │ 00    │ 09              │ 00          │ none          │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 05          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │ 07          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0054 │ 00    │ 09              │ 00          │ none          │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 05          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │ 07          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0055 │ 00    │ 00              │ 02          │ 09            │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 01          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 05          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 07          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0056 │ 00    │ 02              │ 03          │ 09            │
+│      │ 01    │                 │ 01          │ 00            │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 06          │               │
+│      │ 04    │                 │ 05          │               │
+│      │ 05    │                 │ 08          │               │
+│      │ 06    │                 │ 07          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0057 │ 00    │ 03              │ 01          │ 09            │
+│      │ 01    │                 │ 04          │ 00            │
+│      │ 02    │                 │ 06          │ 02            │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0058 │ 00    │ 01              │ 04          │ 09            │
+│      │ 01    │                 │ 06          │ 00            │
+│      │ 02    │                 │ 05          │ 02            │
+│      │ 03    │                 │ 08          │ 03            │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │             │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0059 │ 00    │ 01              │ 04          │ 09            │
+│      │ 01    │                 │ 06          │ 00            │
+│      │ 02    │                 │ 05          │ 02            │
+│      │ 03    │                 │ 08          │ 03            │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │             │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0060 │ 00    │ 04              │ 06          │ 09            │
+│      │ 01    │                 │ 05          │ 00            │
+│      │ 02    │                 │ 08          │ 02            │
+│      │ 03    │                 │ 07          │ 03            │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │             │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0061 │ 00    │ 06              │ 05          │ 02            │
+│      │ 01    │                 │ 08          │ 03            │
+│      │ 02    │                 │ 07          │ 04            │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 09          │               │
+│      │ 05    │                 │ 00          │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0062 │ 00    │ 05              │ 08          │ 02            │
+│      │ 01    │                 │ 07          │ 03            │
+│      │ 02    │                 │ 01          │ 04            │
+│      │ 03    │                 │ 09          │ 06            │
+│      │ 04    │                 │ 00          │               │
+│      │ 05    │                 │             │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0063 │ 00    │ 05              │ 08          │ 06            │
+│      │ 01    │                 │ 07          │ 03            │
+│      │ 02    │                 │ 01          │ 04            │
+│      │ 03    │                 │ 09          │               │
+│      │ 04    │                 │ 00          │               │
+│      │ 05    │                 │ 02          │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0064 │ 00    │ 08              │ 07          │ 04            │
+│      │ 01    │                 │ 01          │ 06            │
+│      │ 02    │                 │ 09          │               │
+│      │ 03    │                 │ 00          │               │
+│      │ 04    │                 │ 02          │               │
+│      │ 05    │                 │ 03          │               │
+│      │ 06    │                 │ 05          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0065 │ 00    │ 07              │ 01          │ 04            │
+│      │ 01    │                 │ 09          │ 06            │
+│      │ 02    │                 │ 00          │ 08            │
+│      │ 03    │                 │ 02          │               │
+│      │ 04    │                 │ 03          │               │
+│      │ 05    │                 │ 05          │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0066 │ 00    │ 07              │ 01          │ 04            │
+│      │ 01    │                 │ 09          │ 06            │
+│      │ 02    │                 │ 00          │ 08            │
+│      │ 03    │                 │ 02          │               │
+│      │ 04    │                 │ 03          │               │
+│      │ 05    │                 │ 05          │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0067 │ 00    │ 01              │ 09          │ 08            │
+│      │ 01    │                 │ 00          │ 06            │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 05          │               │
+│      │ 05    │                 │ 04          │               │
+│      │ 06    │                 │ 07          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0068 │ 00    │ 01              │ 09          │ 08            │
+│      │ 01    │                 │ 00          │ 06            │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 05          │               │
+│      │ 05    │                 │ 04          │               │
+│      │ 06    │                 │ 07          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0069 │ 00    │ 09              │ 00          │ 08            │
+│      │ 01    │                 │ 02          │ 06            │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 01          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0070 │ 00    │ 09              │ 00          │ 08            │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 01          │               │
+│      │ 07    │                 │ 06          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0071 │ 00    │ 00              │ 02          │ none          │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 05          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │ 01          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │ 09          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0072 │ 00    │ 00              │ 02          │ none          │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 05          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │ 01          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │ 09          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0073 │ 00    │ 02              │ 03          │ none          │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 09          │               │
+│      │ 08    │                 │ 00          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0074 │ 00    │ 02              │ 03          │ none          │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 09          │               │
+│      │ 08    │                 │ 00          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0075 │ 00    │ 03              │ 05          │ none          │
+│      │ 01    │                 │ 04          │               │
+│      │ 02    │                 │ 07          │               │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 08          │               │
+│      │ 06    │                 │ 09          │               │
+│      │ 07    │                 │ 00          │               │
+│      │ 08    │                 │ 02          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0076 │ 00    │ 03              │ 05          │ none          │
+│      │ 01    │                 │ 04          │               │
+│      │ 02    │                 │ 07          │               │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 08          │               │
+│      │ 06    │                 │ 09          │               │
+│      │ 07    │                 │ 00          │               │
+│      │ 08    │                 │ 02          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0077 │ 00    │ 05              │ 04          │ none          │
+│      │ 01    │                 │ 07          │               │
+│      │ 02    │                 │ 01          │               │
+│      │ 03    │                 │ 06          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 09          │               │
+│      │ 06    │                 │ 00          │               │
+│      │ 07    │                 │ 02          │               │
+│      │ 08    │                 │ 03          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0078 │ 00    │ 04              │ 07          │ 05            │
+│      │ 01    │                 │ 01          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 08          │               │
+│      │ 04    │                 │ 09          │               │
+│      │ 05    │                 │ 00          │               │
+│      │ 06    │                 │ 02          │               │
+│      │ 07    │                 │ 03          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0079 │ 00    │ 04              │ 07          │ 05            │
+│      │ 01    │                 │ 01          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 08          │               │
+│      │ 04    │                 │ 09          │               │
+│      │ 05    │                 │ 00          │               │
+│      │ 06    │                 │ 02          │               │
+│      │ 07    │                 │ 03          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0080 │ 00    │ 07              │ 01          │ 05            │
+│      │ 01    │                 │ 06          │               │
+│      │ 02    │                 │ 08          │               │
+│      │ 03    │                 │ 09          │               │
+│      │ 04    │                 │ 00          │               │
+│      │ 05    │                 │ 02          │               │
+│      │ 06    │                 │ 03          │               │
+│      │ 07    │                 │ 04          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0081 │ 00    │ 01              │ 06          │ 05            │
+│      │ 01    │                 │ 08          │ 07            │
+│      │ 02    │                 │ 09          │               │
+│      │ 03    │                 │ 00          │               │
+│      │ 04    │                 │ 02          │               │
+│      │ 05    │                 │ 03          │               │
+│      │ 06    │                 │ 04          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0082 │ 00    │ 06              │ 08          │ 05            │
+│      │ 01    │                 │ 09          │ 07            │
+│      │ 02    │                 │ 00          │ 01            │
+│      │ 03    │                 │ 02          │               │
+│      │ 04    │                 │ 03          │               │
+│      │ 05    │                 │ 04          │               │
+│      │ 06    │                 │             │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0083 │ 00    │ 06              │ 08          │ 01            │
+│      │ 01    │                 │ 09          │ 07            │
+│      │ 02    │                 │ 00          │               │
+│      │ 03    │                 │ 02          │               │
+│      │ 04    │                 │ 03          │               │
+│      │ 05    │                 │ 04          │               │
+│      │ 06    │                 │ 05          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0084 │ 00    │ 08              │ 09          │ 01            │
+│      │ 01    │                 │ 00          │ 07            │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 05          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0085 │ 00    │ 08              │ 09          │ 01            │
+│      │ 01    │                 │ 00          │ 07            │
+│      │ 02    │                 │ 02          │               │
+│      │ 03    │                 │ 03          │               │
+│      │ 04    │                 │ 04          │               │
+│      │ 05    │                 │ 05          │               │
+│      │ 06    │                 │ 06          │               │
+│      │ 07    │                 │             │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0086 │ 00    │ 09              │ 00          │ 01            │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 05          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 07          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0087 │ 00    │ 09              │ 00          │ 01            │
+│      │ 01    │                 │ 02          │               │
+│      │ 02    │                 │ 03          │               │
+│      │ 03    │                 │ 04          │               │
+│      │ 04    │                 │ 05          │               │
+│      │ 05    │                 │ 06          │               │
+│      │ 06    │                 │ 07          │               │
+│      │ 07    │                 │ 08          │               │
+│      │ 08    │                 │             │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0088 │ 00    │ 00              │ 02          │ none          │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 01          │               │
+│      │ 08    │                 │ 09          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0089 │ 00    │ 00              │ 02          │ none          │
+│      │ 01    │                 │ 03          │               │
+│      │ 02    │                 │ 04          │               │
+│      │ 03    │                 │ 05          │               │
+│      │ 04    │                 │ 06          │               │
+│      │ 05    │                 │ 07          │               │
+│      │ 06    │                 │ 08          │               │
+│      │ 07    │                 │ 01          │               │
+│      │ 08    │                 │ 09          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0090 │ 00    │ 02              │ 03          │ none          │
+│      │ 01    │                 │ 04          │               │
+│      │ 02    │                 │ 05          │               │
+│      │ 03    │                 │ 06          │               │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │ 08          │               │
+│      │ 06    │                 │ 01          │               │
+│      │ 07    │                 │ 09          │               │
+│      │ 08    │                 │ 00          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0091 │ 00    │ 02              │ 03          │ none          │
+│      │ 01    │                 │ 04          │               │
+│      │ 02    │                 │ 05          │               │
+│      │ 03    │                 │ 06          │               │
+│      │ 04    │                 │ 07          │               │
+│      │ 05    │                 │ 08          │               │
+│      │ 06    │                 │ 01          │               │
+│      │ 07    │                 │ 09          │               │
+│      │ 08    │                 │ 00          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0092 │ 00    │ 03              │ 04          │ none          │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 01          │               │
+│      │ 06    │                 │ 09          │               │
+│      │ 07    │                 │ 00          │               │
+│      │ 08    │                 │ 02          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0093 │ 00    │ 03              │ 04          │ none          │
+│      │ 01    │                 │ 05          │               │
+│      │ 02    │                 │ 06          │               │
+│      │ 03    │                 │ 07          │               │
+│      │ 04    │                 │ 08          │               │
+│      │ 05    │                 │ 01          │               │
+│      │ 06    │                 │ 09          │               │
+│      │ 07    │                 │ 00          │               │
+│      │ 08    │                 │ 02          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0094 │ 00    │ 04              │ 05          │ none          │
+│      │ 01    │                 │ 06          │               │
+│      │ 02    │                 │ 07          │               │
+│      │ 03    │                 │ 08          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 09          │               │
+│      │ 06    │                 │ 00          │               │
+│      │ 07    │                 │ 02          │               │
+│      │ 08    │                 │ 03          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0095 │ 00    │ 04              │ 05          │ none          │
+│      │ 01    │                 │ 06          │               │
+│      │ 02    │                 │ 07          │               │
+│      │ 03    │                 │ 08          │               │
+│      │ 04    │                 │ 01          │               │
+│      │ 05    │                 │ 09          │               │
+│      │ 06    │                 │ 00          │               │
+│      │ 07    │                 │ 02          │               │
+│      │ 08    │                 │ 03          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0096 │ 00    │ 05              │ 06          │ none          │
+│      │ 01    │                 │ 07          │               │
+│      │ 02    │                 │ 08          │               │
+│      │ 03    │                 │ 01          │               │
+│      │ 04    │                 │ 09          │               │
+│      │ 05    │                 │ 00          │               │
+│      │ 06    │                 │ 02          │               │
+│      │ 07    │                 │ 03          │               │
+│      │ 08    │                 │ 04          │               │
+│      │ 09    │                 │             │               │
+└──────┴───────┴─────────────────┴─────────────┴───────────────┘
+
+┌──────┬───────┬─────────────────┬─────────────┬───────────────┐
+│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │
+│ 0097 │ 00    │ 05              │ 06    
