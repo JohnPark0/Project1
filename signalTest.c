@@ -9,7 +9,9 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <time.h>
 
+void readFile(void);
 void parent(void);
 void child(int* ckey);
 void pmsgSnd(int curProc);
@@ -28,6 +30,7 @@ struct data {
     int pid;// 자식 프로세스의 id.
     int cpuTime;
     int ioTime;// 자식의 io time.
+    int timeQuantum;
 };// 메세지 큐에 넣을  자식 프로세스의  데이터.
 
 struct msgbuf {
@@ -38,22 +41,30 @@ struct msgbuf {
 int main(int argc, char** argv) {
     printf("PROCESS\tNUMBER\tPID\tKEY\n");
     for (int i = 0; i < 3; i++) {
-        int pid = fork();
+        int ret = fork();
 
-        if (pid > 0) {
+        if (ret > 0) {
             if (i == 0)
                 printf("parent\t%d\t%d\n", i + 1, getpid());
-            cpid[i] = pid;
+            cpid[i] = ret;
+
+            /* 여기에 메세지 큐를 생성하는 코드를 작성하세요. */
         }
-        else if (pid == 0) {
+        else if (ret == 0) {
+            srand((unsigned int)time(NULL));
+
+            /* 여기에 파일에서 cpu, io를 읽거나 랜덤으로 생성하는 코드를 작성하세요. */
+            int pid = getpid();
+            int cpuTime = rand() % 100;
+            int ioTime = rand() % 100;
             int key = 0x1000 * (i + 1);// 자식 프로세스마다 고유한 키를 갖는다.
             ckey[i] = &key;// 0x1000, 0x2000, 0x3000, ...
 
-            printf("child\t%d\t%d\t%d\n", i + 1, getpid(), *ckey[i]);
+            printf("child\t%d\t%d\t%d\n", i + 1, pid, key);
             child(ckey[i]);
             exit(0);
         }
-        else if (pid == -1) {
+        else if (ret == -1) {
             perror("fork error");
             exit(0);
         }
@@ -61,6 +72,10 @@ int main(int argc, char** argv) {
     parent();
     exit(0);
     return 0;
+}
+
+void readFile(void) {
+    return;
 }
 
 void parent(void) {
@@ -114,7 +129,7 @@ void signalHandler(int signo) {// 타임 틱이 발생했을 때 실행되는 �
     if (curProc >= 4) {// 자식 프로세스를 종료한다.
         for (int i = 0; i < 3; i++) {
             kill(cpid[i], SIGKILL);
-            msgctl(cqid[i], IPC_RMID, NULL);
+            msgctl(cqid[i], IPC_RMID, NULL);// 메시지 큐를 삭제한다.
         }
         exit(0);
     }
@@ -161,7 +176,7 @@ void cmsgRcv(int* ckey) {
     return;
 }
 
-// 자식이 부모에게 자신의 데이터가 담긴  메시지를 보낸다.
+// 자식이 부모에게 자신의 데이터가 담긴 메시지를 보낸다.
 void cmsgSnd(int* ckey) {
     int qid;
     int ret;
