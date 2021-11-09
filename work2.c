@@ -160,7 +160,7 @@ int main(int argc, char* arg[]) {
 			while (true) {
 				// cpu burst part.
 				if (cpuTime != 0) {
-					cpuTime = -TIME_TICK;
+					cpuTime =- TIME_TICK;
 
 					// move process to the end of readyQueue.
 					if (cpuTime != 0) {
