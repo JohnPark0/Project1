@@ -48,15 +48,21 @@ void writeallnode(list* ready, list* waiting, node* running, FILE* fp);
 void inilist(list* list);
 void signal_handler(int signo);
 
-//Global Parameter
-int child_proc_num = 0;		//편의를 위해 자식 프로세스 번호지정
-//child_proc_num 을 통해 각 자식 프로세스가 bust_time[child_proc_num]으로 남은 버스트 타임 계산
+void cmsgSnd(int ckey, int iobust_time);
+void pmsgRcv(int curProc, int* iobust_time);
+
+void signalHandler(int signo);
+
 
 int bust_time[MAX_PROC];
 int iobust_time[MAX_PROC];
 int pids[MAX_PROC];
 int parents_pid;
 int WaitingQ_num;
+int running_ticks = 0;
+int tickCount = 0; //타임 카운터
+int curProc = 1;// 현재 실행 중인 자식 프로세스.
+int ckey[MAX_PROC];// child holds child process key array.
 
 list* WaitingQ;
 list* ReadyQ;
@@ -65,35 +71,19 @@ node* IORunningQ;
 
 FILE* fp;
 
-int running_ticks = 0;
-int tickCount = 0; //타임 카운터
-//int messagechk[MAX_PROC];
-
-//합칠 코드
-void pmsgSnd(int curProc);
-//void pmsgRcv(int curProc);
-//void cmsgSnd(int* ckey);
-void cmsgRcv(int* ckey);
-
-void cmsgSnd(int ckey, int iobust_time);
-void pmsgRcv(int curProc, int* iobust_time);
-
-void signalHandler(int signo);
-
-int curProc = 1;// 현재 실행 중인 자식 프로세스.
-int quantumCount = 0;//틱 카운터.
-int cpid[MAX_PROC];// parent holds child process pid array.
-int cqid[MAX_PROC];// parent holds message queue id array.
-int ckey[MAX_PROC];// child holds child process key array.
-//합칠 코드
-
-int main(int argc, char* arg[]) {
+int main(int argc, char* argv[]) {
 	int ret;
 	int temp;
+	int Set = 0;
+	int Origin = 1;
+	int child_proc_num = 0;		//편의를 위해 자식 프로세스 번호지정
+	int Origin_bust_time[3000];
+	int Origin_iobust_time[3000];
+
+	FILE* settingfp;
 
 	fp = fopen("schedule_dump.txt", "w");
-
-	//memset(&messagechk, 0, sizeof(messagechk));
+	fclose(fp);
 
 	struct sigaction new_sa;
 	memset(&new_sa, 0, sizeof(new_sa));
@@ -104,7 +94,6 @@ int main(int argc, char* arg[]) {
 	if (TICK_TIME > 999999) {
 		new_itimer.it_interval.tv_sec = TICK_TIME / 1000000;
 	}
-	//new_itimer.it_interval.tv_sec = 0;
 	new_itimer.it_interval.tv_usec = TICK_TIME % 1000000;
 	new_itimer.it_value.tv_sec = 1;
 	new_itimer.it_value.tv_usec = 0;
@@ -129,41 +118,63 @@ int main(int argc, char* arg[]) {
 
 	for (int i = 0; i < MAX_PROC; i++) {						//이전에 사용했던 메시지 큐를 비워 에러 방지(무한대로 돌기때문에 프로그램 끝날때 초기화 불가능)
 		ckey[i] = 0x1000 * (i + 1);
-		cqid[i] = msgget(ckey[i], IPC_CREAT | 0666);
-		msgctl(cqid[i], IPC_RMID, NULL);
+		temp = msgget(ckey[i], IPC_CREAT | 0666);
+		msgctl(temp, IPC_RMID, NULL);
 	}
 
-	//CPU bust 타임 임의 세팅
-	//추가 할 것 : setting.txt 파일등으로 미리 세팅된 파일을 불러와서 저장 or 세팅파일을 프로그램 시작시 지정하지 않으면 랜덤으로 생성(고려)
-	bust_time[0] = 100;
-	bust_time[1] = 500;
-	bust_time[2] = 100;
-	bust_time[3] = 200;
-	bust_time[4] = 100;
-	bust_time[5] = 300;
-	bust_time[6] = 700;
-	bust_time[7] = 400;
-	bust_time[8] = 100;
-	bust_time[9] = 600;
+	if (argc == 2) {			//Setting.txt 파일을 입력 받았을 때
+		Set = 1;
+		settingfp = fopen((char*)argv[1], "r");
+		if (settingfp == NULL) {
+			printf("setting.txt Reading ERROR\n");
+			exit(0);
+		}
+		for (int i = 0; i < 3000; i++) {
+			if (fscanf(settingfp, "%d , %d", &ret, &temp) == EOF) {		//변수 선언을 최소화 하기위해 선언한 변수 활용
+				printf("Setting Data type ERROR\n");
+				exit(0);
+			}
+			
+			Origin_bust_time[i] = ret;
+			Origin_iobust_time[i] = temp;
+			if (i < MAX_PROC) {
+				bust_time[i] = ret;
+				iobust_time[i] = temp;
+			}
+		}
+		ret = 0;
+		temp = 0;
+	}
+	else {
+		Set = 0;
+		bust_time[0] = 1;
+		bust_time[1] = 5;
+		bust_time[2] = 1;
+		bust_time[3] = 2;
+		bust_time[4] = 1;
+		bust_time[5] = 3;
+		bust_time[6] = 7;
+		bust_time[7] = 4;
+		bust_time[8] = 1;
+		bust_time[9] = 6;
 
-	//IO bust 타임 임의 세팅
-	iobust_time[0] = 100;
-	iobust_time[1] = 500;
-	iobust_time[2] = 100;
-	iobust_time[3] = 200;
-	iobust_time[4] = 100;
-	iobust_time[5] = 300;
-	iobust_time[6] = 700;
-	iobust_time[7] = 400;
-	iobust_time[8] = 100;
-	iobust_time[9] = 600;
+		iobust_time[0] = 1;
+		iobust_time[1] = 5;
+		iobust_time[2] = 1;
+		iobust_time[3] = 2;
+		iobust_time[4] = 1;
+		iobust_time[5] = 3;
+		iobust_time[6] = 7;
+		iobust_time[7] = 4;
+		iobust_time[8] = 1;
+		iobust_time[9] = 6;
+	}
 
 	parents_pid = getpid();
 	WaitingQ_num = 0;
 
 	//초기 자식 프로세스 생성 구간 - 부모 프로세스(처음 1번만 실행)
 	for (int i = 0; i < 10; i++) {
-		//sleep(1);
 		ckey[i] = 0x1000 * (i + 1);
 		ret = fork();
 		if (ret > 0) {								//부모 프로세스
@@ -174,32 +185,45 @@ int main(int argc, char* arg[]) {
 		}
 		//초기 자식 프로세스 생성 구간
 
-			//자식 프로세스 코드 구간 - 부모 프로세스가 kill 시그널 혹은 일정 자식 프로세스의 일정 조건까지 반복 후 종료
+		//자식 프로세스 코드 구간 - 부모 프로세스가 kill 시그널 혹은 일정 자식 프로세스의 일정 조건까지 반복 후 종료
 		else if (ret == 0) {						//자식 프로세스
-			//printf("pid[%d] = proc num [%d]\n",getpid(),child_proc_num);		//디버그 용
 			printf("pid[%d] : stop\n", getpid());
-			//raise(SIGSTOP);
 			kill(getpid(), SIGSTOP);
 
 			while (1) {								//루프가 없으면 한번 실행 후 자식 프로세스가 다른 자식 프로세스 무한 생성
 				if (bust_time[child_proc_num] == 0) {				//IO_bust part
-
-					//임시코드	:	랜덤으로 생성하도록 수정해야
 					if (iobust_time[child_proc_num] == 0) {
-						iobust_time[child_proc_num] = 500;
+						if (Set == 1) {					//세팅 파일 존재
+							iobust_time[child_proc_num] = Origin_iobust_time[child_proc_num * Origin];
+							Origin++;
+							if (Origin > 300) {
+								Origin = 1;
+							}
+						}
+						else if (Set == 0) {
+							iobust_time[child_proc_num] = 5;
+						}
 					}
-					//
 
 					printf("pid[%d] : work1\n", getpid());
 					temp = iobust_time[child_proc_num];
-					iobust_time[child_proc_num] = iobust_time[child_proc_num] - 100;
-					printf("pids[%d] = io_bust decrease %d - 100 = %d\n", getpid(), temp, iobust_time[child_proc_num]);
+					iobust_time[child_proc_num] = iobust_time[child_proc_num] - 1;
+					printf("pids[%d] = io_bust decrease %d - 1 = %d\n", getpid(), temp, iobust_time[child_proc_num]);
 					//send parents message left io_bust time
 					cmsgSnd(ckey[child_proc_num], iobust_time[child_proc_num]);
 
 					//임시코드	:	랜덤으로 생성하도록 수정해야
 					if (iobust_time[child_proc_num] == 0) {
-						bust_time[child_proc_num] = 500;
+						if (Set == 1) {			//세팅 파일존재
+							bust_time[child_proc_num] = Origin_bust_time[child_proc_num * Origin];
+							Origin++;
+							if (Origin > 300) {
+								Origin = 1;
+							}
+						}
+						else if (Set == 0) {
+							bust_time[child_proc_num] = 5;
+						}
 					}
 					//
 				}
@@ -207,14 +231,14 @@ int main(int argc, char* arg[]) {
 
 					printf("\npid[%d] : work2\n", getpid());
 					temp = bust_time[child_proc_num];
-					if (bust_time[child_proc_num] - 100 == 0) {
-						bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
-						printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
+					if (bust_time[child_proc_num] - 1 == 0) {
+						bust_time[child_proc_num] = bust_time[child_proc_num] - 1;
+						printf("pids[%d] = cpu_bust decrease %d - 1 = %d\n", getpid(), temp, bust_time[child_proc_num]);
 						kill(parents_pid, SIGUSR2);
 					}
 					else {
-						bust_time[child_proc_num] = bust_time[child_proc_num] - 100;
-						printf("pids[%d] = cpu_bust decrease %d - 100 = %d\n", getpid(), temp, bust_time[child_proc_num]);
+						bust_time[child_proc_num] = bust_time[child_proc_num] - 1;
+						printf("pids[%d] = cpu_bust decrease %d - 1 = %d\n", getpid(), temp, bust_time[child_proc_num]);
 						kill(parents_pid, SIGUSR1);
 					}
 					printf("pid[%d] : work done\n", getpid());
@@ -304,46 +328,6 @@ void signal_bustend(int signo) {			//실행중인 자식 프로세스에서 작�
 	tickCount = 0;							//퀀텀 초기화
 }
 
-//합칠 코드
-void pmsgSnd(int curProc) {				//->사용 X
-	int qid;
-	int ret;
-	int key = 0x1000 * curProc;
-	struct msgbuf msg;
-
-	qid = msgget(key, IPC_CREAT | 0666);
-	cqid[curProc - 1] = qid;
-	memset(&msg, 0, sizeof(msg));
-
-	msg.mtype = 1;
-	msg.mdata.pid = 0;
-	msg.mdata.cpuTime = 0;
-	msg.mdata.ioTime = 0;
-
-	if (ret = msgsnd(qid, (void*)&msg, sizeof(struct data), 0) == -1) {
-		perror("pmsgsnd error");
-		exit(1);
-	}
-	return;
-}
-
-// 부모가 보낸 메시지를 자식이 받는다.
-void cmsgRcv(int* ckey) {				//->사용 X
-	int qid;
-	int ret;
-	int key = *ckey;// 자식 프로세스 고유의 키 값.
-	struct msgbuf msg;
-
-	qid = msgget(key, IPC_CREAT | 0666);
-	memset(&msg, 0, sizeof(msg));
-
-	if (ret = msgrcv(qid, (void*)&msg, sizeof(msg), 0, 0) == -1) {
-		perror("cmsgrcv error");
-		exit(1);
-	}
-	return;
-}
-
 // 자식이 부모에게 자신의 데이터가 담긴  메시지를 보낸다.
 void cmsgSnd(int ckey, int iobust_time) {
 	int qid;
@@ -382,15 +366,10 @@ void pmsgRcv(int curProc, int* iobust_time) {
 		exit(1);
 	}
 
-
 	*(iobust_time + curProc) = msg.mdata.ioTime;
 
-	//printf("%ld\t%d\t%d\t\t%d\n", msg.mtype, msg.mdata.pid, msg.mdata.cpuTime, msg.mdata.ioTime);
 	return;
 }
-
-
-
 
 //헤더로 분리할 함수들 - 1	(가명 list.h)
 
@@ -465,6 +444,8 @@ void writeallnode(list* ready, list* waiting, node* running, FILE* fp) {
 	node* nodePtr1 = ready->head;
 	node* nodePtr2 = waiting->head;
 
+	fp = fopen("schedule_dump.txt", "a+");				//덤프파일 사용때만 열고닫아 파일 깨짐 방지
+
 	fprintf(fp, "\n");
 	fprintf(fp, "┌──────┬───────┬─────────────────┬─────────────┬───────────────┐\n");
 	fprintf(fp, "│ TICK │ INDEX │ RUNNING PROCESS │ READY QUEUE │ WAITING QUEUE │\n");
@@ -513,5 +494,7 @@ void writeallnode(list* ready, list* waiting, node* running, FILE* fp) {
 		}
 	}
 	fprintf(fp, "└──────┴───────┴─────────────────┴─────────────┴───────────────┘\n");
+
+	fclose(fp);
 }
 //헤더로 분리할 함수들 - 1
