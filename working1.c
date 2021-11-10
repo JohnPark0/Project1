@@ -38,21 +38,17 @@ struct msgbuf {
 };// 메세지 큐에 넣을 데이터.
 
 //Function Define
-void signal_bustend(int signo);
-void signal_decrease(int signo);
+void signal_ready2wait(int signo);
+void signal_cpubustRR(int signo);
+void signal_cpubustFIFO(int signo);
+void signal_tick(int signo);
 void addnode(list* list, int proc_num);
 int delnode(list* list, node* return_node);
 void writenode(list* list, FILE* fp, char* listname);
 void writeallnode(list* ready, list* waiting, node* running, FILE* fp);
-
 void inilist(list* list);
-void signal_handler(int signo);
-
 void cmsgSnd(int ckey, int iobust_time);
 void pmsgRcv(int curProc, int* iobust_time);
-
-void signalHandler(int signo);
-
 
 int bust_time[MAX_PROC];
 int iobust_time[MAX_PROC];
@@ -63,6 +59,7 @@ int running_ticks = 0;
 int tickCount = 0; //타임 카운터
 int curProc = 1;// 현재 실행 중인 자식 프로세스.
 int ckey[MAX_PROC];// child holds child process key array.
+int running_time = 0;	//프로그램 구동 시간 = sec
 
 list* WaitingQ;
 list* ReadyQ;
@@ -87,7 +84,7 @@ int main(int argc, char* argv[]) {
 
 	struct sigaction new_sa;
 	memset(&new_sa, 0, sizeof(new_sa));
-	new_sa.sa_handler = &signal_handler;
+	new_sa.sa_handler = &signal_tick;
 	sigaction(SIGALRM, &new_sa, NULL);
 
 	struct itimerval new_itimer, old_itimer;
@@ -100,12 +97,11 @@ int main(int argc, char* argv[]) {
 
 	struct sigaction act;
 	memset(&act, 0, sizeof(act));
-	act.sa_handler = &signal_decrease;
-	sigaction(SIGUSR1, &act, NULL);
+	
 
 	struct sigaction act2;
 	memset(&act2, 0, sizeof(act2));
-	act2.sa_handler = &signal_bustend;
+	act2.sa_handler = &signal_ready2wait;
 	sigaction(SIGUSR2, &act2, NULL);
 
 	ReadyQ = malloc(sizeof(list));
@@ -122,30 +118,7 @@ int main(int argc, char* argv[]) {
 		msgctl(temp, IPC_RMID, NULL);
 	}
 
-	if (argc == 2) {			//Setting.txt 파일을 입력 받았을 때
-		Set = 1;
-		settingfp = fopen((char*)argv[1], "r");
-		if (settingfp == NULL) {
-			printf("setting.txt Reading ERROR\n");
-			exit(0);
-		}
-		for (int i = 0; i < 3000; i++) {
-			if (fscanf(settingfp, "%d , %d", &ret, &temp) == EOF) {		//변수 선언을 최소화 하기위해 선언한 변수 활용
-				printf("Setting Data type ERROR\n");
-				exit(0);
-			}
-			
-			Origin_bust_time[i] = ret;
-			Origin_iobust_time[i] = temp;
-			if (i < MAX_PROC) {
-				bust_time[i] = ret;
-				iobust_time[i] = temp;
-			}
-		}
-		ret = 0;
-		temp = 0;
-	}
-	else {
+	if(argc == 1) {
 		Set = 0;
 		bust_time[0] = 1;
 		bust_time[1] = 5;
@@ -169,7 +142,51 @@ int main(int argc, char* argv[]) {
 		iobust_time[8] = 1;
 		iobust_time[9] = 6;
 	}
+	else {//Setting.txt 파일을 입력 받았을 때
+		Set = 1;
+		settingfp = fopen((char*)argv[1], "r");
+		if (settingfp == NULL) {
+			printf("setting.txt Reading ERROR\n");
+			exit(0);
+		}
+		for (int i = 0; i < 3000; i++) {
+			if (fscanf(settingfp, "%d , %d", &ret, &temp) == EOF) {		//변수 선언을 최소화 하기위해 선언한 변수 활용
+				printf("Setting Data type ERROR\n");
+				exit(0);
+			}
+			Origin_bust_time[i] = ret;
+			Origin_iobust_time[i] = temp;
+			if (i < MAX_PROC) {
+				bust_time[i] = ret;
+				iobust_time[i] = temp;
+			}
+		}
+		ret = 0;
+		temp = 0;
 
+		if (argv[2] != NULL) {										//작동시간 = 작동시간/틱타임(micro sec)
+			running_time = atoi(argv[2]);
+			running_time = running_time * 1000000 / TICK_TIME;
+		}
+		else {
+			running_time = 0xFFFFFF;
+		}
+
+		if (argv[3] != NULL) {
+			temp = atoi(argv[3]);
+			if (temp == 0) {			//RR
+				act.sa_handler = &signal_cpubustRR;
+			}
+			else {						//FIFO
+				act.sa_handler = &signal_cpubustFIFO;
+			}
+			sigaction(SIGUSR1, &act, NULL);
+		}
+		else {							//Default RR
+			act.sa_handler = &signal_cpubustRR;
+			sigaction(SIGUSR1, &act, NULL);
+		}
+	}
 	parents_pid = getpid();
 	WaitingQ_num = 0;
 
@@ -190,42 +207,21 @@ int main(int argc, char* argv[]) {
 			printf("pid[%d] : stop\n", getpid());
 			kill(getpid(), SIGSTOP);
 
-			while (1) {								//루프가 없으면 한번 실행 후 자식 프로세스가 다른 자식 프로세스 무한 생성
+			while (1) {
 				if (bust_time[child_proc_num] == 0) {				//IO_bust part
-					if (iobust_time[child_proc_num] == 0) {
-						if (Set == 1) {					//세팅 파일 존재
-							iobust_time[child_proc_num] = Origin_iobust_time[child_proc_num * Origin];
-							Origin++;
-							if (Origin > 300) {
-								Origin = 1;
-							}
-						}
-						else if (Set == 0) {
-							iobust_time[child_proc_num] = 5;
+					if (Set == 1) {					//세팅 파일 존재
+						iobust_time[child_proc_num] = Origin_iobust_time[child_proc_num * Origin];
+						bust_time[child_proc_num] = Origin_bust_time[child_proc_num * Origin];
+						Origin++;
+						if (Origin > 300) {
+						Origin = 1;
 						}
 					}
-
-					printf("pid[%d] : work1\n", getpid());
-					temp = iobust_time[child_proc_num];
-					iobust_time[child_proc_num] = iobust_time[child_proc_num] - 1;
-					printf("pids[%d] = io_bust decrease %d - 1 = %d\n", getpid(), temp, iobust_time[child_proc_num]);
-					//send parents message left io_bust time
+					else if (Set == 0) {
+						iobust_time[child_proc_num] = 5;
+						bust_time[child_proc_num] = 5;
+					}
 					cmsgSnd(ckey[child_proc_num], iobust_time[child_proc_num]);
-
-					//임시코드	:	랜덤으로 생성하도록 수정해야
-					if (iobust_time[child_proc_num] == 0) {
-						if (Set == 1) {			//세팅 파일존재
-							bust_time[child_proc_num] = Origin_bust_time[child_proc_num * Origin];
-							Origin++;
-							if (Origin > 300) {
-								Origin = 1;
-							}
-						}
-						else if (Set == 0) {
-							bust_time[child_proc_num] = 5;
-						}
-					}
-					//
 				}
 				else {												//CPU_bust part
 
@@ -253,7 +249,7 @@ int main(int argc, char* argv[]) {
 
 	delnode(ReadyQ, RunningQ);
 	setitimer(ITIMER_REAL, &new_itimer, &old_itimer);
-	while (1) {
+	while (running_time != 0) {
 
 	}
 
@@ -267,55 +263,60 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
-void signal_handler(int signo)				//부모 프로세스에서 작동 SIGALRM
-{
+void signal_tick(int signo){				//부모 프로세스에서 작동 SIGALRM
 	int child_proc;
-	char ready[] = "ReadyQ";
 
-	//writenode(ReadyQ, fp, ready);
 	writeallnode(ReadyQ, WaitingQ, RunningQ, fp);
 
-	for (int i = 0; i < WaitingQ_num; i++) {						//현재 WaitingQ의 모든 노드들의 io_bust감소 코드
+	for (int i = 0; i < WaitingQ_num; i++) {				//WaitingQ의 모든 노드 io_bust 감소
 		printf("iobust check\n");
 		delnode(WaitingQ, IORunningQ);
-		kill(pids[IORunningQ->proc_num], SIGCONT);					//WaitingQ의 맨앞 노드의 io_bust를 감소 -> 자식 프로세스의 io_bust감소 코드로
 
-		//검토 필요 -> 아마 작동됨
-		printf("parents Receive message %d\n", IORunningQ->proc_num);
-		pmsgRcv(IORunningQ->proc_num, iobust_time);		//receive message from child
-		//messagechk[IORunningQ->proc_num] = 0;
-		printf("pid[%d] = iobust_time left : %d\n", pids[IORunningQ->proc_num], iobust_time[IORunningQ->proc_num]);
-
-		if (iobust_time[IORunningQ->proc_num] == 0) {
+		iobust_time[IORunningQ->proc_num]--;
+		if (iobust_time[IORunningQ->proc_num] == 0) {		//io가 끝남 -> ReadyQ 맨 뒤로
+			kill(pids[IORunningQ->proc_num], SIGCONT);
+			pmsgRcv(IORunningQ->proc_num, iobust_time);
 			addnode(ReadyQ, IORunningQ->proc_num);
 			WaitingQ_num--;
 			printf("2Current WaitingQ_num = %d\n", WaitingQ_num);
 		}
-		else {
+		else {												//io가 안끝남 -> WaitingQ 맨 뒤로
 			addnode(WaitingQ, IORunningQ->proc_num);
 		}
-		//
 	}
 
 	//자식 프로세스의 cpu_bust 감소 부분
-	if (RunningQ->proc_num != -1) {							//예외처리 ReadyQ가 비어있을 경우 -> 전부 WaitingQ에 있는경우
+	//예외처리 ReadyQ가 비어있을 경우 -> 전부 WaitingQ에 있는경우 -> RunningQ->proc_num == -1 <아무것도 안함>
+	if (RunningQ->proc_num != -1) {							
 		child_proc = pids[RunningQ->proc_num];				//Running Queue의 자식 프로세스 pid 지정
 		kill(pids[RunningQ->proc_num], SIGCONT);			//ReadyQ의 맨앞 노드의 cpu_bust를 감소 -> 자식 프로세스의 cpu_bust감소 코드로
 	}
+	running_time--;
 }
 
-void signal_decrease(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR1 -> 남은 cpu_bust가 0이 아님 -> ReadyQ맨 뒤로
-	if (tickCount < QUANTUM_TIME - 1) {		//퀀텀이 안끝남 -> RunningQ 유지
+void signal_cpubustRR(int signo) {							//실행중인 자식 프로세스에서 작동 SIGUSR1 -> 남은 cpu_bust가 0이 아님 -> (조건)ReadyQ맨 뒤로
+	if (tickCount < QUANTUM_TIME - 1) {						//퀀텀이 안끝남 -> RunningQ 유지
 		tickCount++;
 	}
-	else {									//퀀텀이 끝남 -> ReadyQ맨 뒤로 -> RunningQ 업데이트
+	else {													//퀀텀이 끝남 -> ReadyQ맨 뒤로 -> RunningQ 업데이트
 		addnode(ReadyQ, RunningQ->proc_num);
 		delnode(ReadyQ, RunningQ);
 		tickCount = 0;
 	}
 }
 
-void signal_bustend(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR2 -> 남은 cpu_bust가 0임 -> WaitingQ맨 뒤로
+void signal_cpubustFIFO(int signo) {						//실행중인 자식 프로세스에서 작동 SIGUSR1 -> 남은 cpu_bust가 0이 아님 -> (조건)ReadyQ맨 뒤로
+	if (tickCount < 1000000000) {						//퀀텀이 안끝남 -> RunningQ 유지
+		tickCount++;
+	}
+	else {													//퀀텀이 끝남 -> ReadyQ맨 뒤로 -> RunningQ 업데이트
+		addnode(ReadyQ, RunningQ->proc_num);
+		delnode(ReadyQ, RunningQ);
+		tickCount = 0;
+	}
+}
+
+void signal_ready2wait(int signo) {			//실행중인 자식 프로세스에서 작동 SIGUSR2 -> 남은 cpu_bust가 0임 -> WaitingQ맨 뒤로
 	int temp = 0;
 	addnode(WaitingQ, RunningQ->proc_num);
 	WaitingQ_num++;
@@ -386,12 +387,10 @@ void addnode(list* list, int proc_num) {
 	if (list->head == NULL) {				//첫번째 노드일때 list->head = list->tail
 		list->head = addnode;
 		list->tail = addnode;
-		//printf("Add first node\n");
 	}
 	else {									//첫번째 노드가 아니면 마지막 노드 업데이트
 		list->tail->next = addnode;
 		list->tail = addnode;
-		//printf("Add node\n");
 	}
 }
 
@@ -408,11 +407,9 @@ int delnode(list* list, node* return_node) {
 	if (list->head->next == NULL) {			//마지막 노드를 지우면 list를 NULL로 초기화
 		list->head = NULL;
 		list->tail = NULL;
-		//printf("Delete last node\n");
 	}
 	else {
 		list->head = delnode->next;
-		//printf("Delete node\n");
 	}
 	*return_node = *delnode;
 	free(delnode);
