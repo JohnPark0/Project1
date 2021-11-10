@@ -142,7 +142,7 @@ int main(int argc, char* argv[]) {
 		iobust_time[8] = 1;
 		iobust_time[9] = 6;
 	}
-	else {//Setting.txt 파일을 입력 받았을 때
+	else {																//프로그램 실행 시 옵션이 있을 때
 		Set = 1;
 		settingfp = fopen((char*)argv[1], "r");
 		if (settingfp == NULL) {
