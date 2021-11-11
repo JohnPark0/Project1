@@ -12,7 +12,7 @@
 #include <time.h>
 
 #define MAX_PROCESS 10
-#define TIME_TICK 1// 0.1 second
+#define TIME_TICK 100000// 1 second
 #define TIME_QUANTUM 3// 3 seconds
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -83,8 +83,8 @@ int main(int argc, char* argv[]) {
 	struct itimerval new_itimer;
 	struct itimerval old_itimer;
 
-	new_itimer.it_interval.tv_sec = TIME_TICK;
-	new_itimer.it_interval.tv_usec = 0;
+	new_itimer.it_interval.tv_sec = 0;
+	new_itimer.it_interval.tv_usec = TIME_TICK;
 	new_itimer.it_value.tv_sec = 1;
 	new_itimer.it_value.tv_usec = 0;
 
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
 	initList(readyQueue);
 	initList(subReadyQueue);
 
-	wfp = fopen("schedule_dump.txt", "w");
+	wfp = fopen("schedule_dump_js.txt", "w");
 	if (wfp == NULL) {
 		perror("file open error");
 		exit(EXIT_FAILURE);
@@ -166,25 +166,25 @@ int main(int argc, char* argv[]) {
 			originIoBurstTime[innerLoopIndex] = preIoTime;
 		}
 		RUN_TIME = atoi(argv[2]);
+		RUN_TIME = RUN_TIME * 1000000 / TIME_TICK;
 	}
 
 	printf("initialization is completed!\n");
 	//////////////////////////////////////////////////////////////////////////////////////////////////
+	int ppid = getpid();
 
 	for (int outerLoopIndex = 0; outerLoopIndex < MAX_PROCESS; outerLoopIndex++) {
 		int ret = fork();
-		int ppid = getpid();
 
 		// parent process
 		if (ret > 0) {
 			CPID[outerLoopIndex] = ret;
-			printf("%d, %d, %d\n", outerLoopIndex, originCpuBurstTime[outerLoopIndex], originIoBurstTime[outerLoopIndex]);
+			// printf("%d, %d, %d\n", outerLoopIndex, originCpuBurstTime[outerLoopIndex], originIoBurstTime[outerLoopIndex]);
 			pushBackNode(readyQueue, outerLoopIndex, originCpuBurstTime[outerLoopIndex], originIoBurstTime[outerLoopIndex]);
 		}
 
 		// child process
 		else {
-			printf("child process waits...\n");
 			int procNum = outerLoopIndex;
 			int cpuBurstTime = originCpuBurstTime[procNum];
 			int ioBurstTime = originIoBurstTime[procNum];
@@ -194,16 +194,17 @@ int main(int argc, char* argv[]) {
 
 			while (true) {
 				// cpu burst part
-				cpuBurstTime =- 1;
-
+				cpuBurstTime--;
+				printf("!!! child cpu burst %d\n", cpuBurstTime);
+			
 				if (cpuBurstTime == 0) {
-					printf("sigusr 2 called");
+					printf("sigusr 2 called\n");
 					cpuBurstTime = originCpuBurstTime[procNum];
-					kill(ppid, SIGUSR2);
 					cmsgSnd(KEY[procNum], cpuBurstTime, ioBurstTime);
+					kill(ppid, SIGUSR2);
 				}
 				else {
-					printf("sigusr 1 called");
+					printf("sigusr 1 called\n");
 					kill(ppid, SIGUSR1);
 				}
 				kill(getpid(), SIGSTOP);
@@ -212,7 +213,6 @@ int main(int argc, char* argv[]) {
 	}
 
 	popFrontNode(readyQueue, cpuRunNode);// cpuRunNode has cpu, io time.
-	printf("*** %d %d %d ***", cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
 	setitimer(ITIMER_REAL, &new_itimer, &old_itimer);
 	while (RUN_TIME != 0);
 
@@ -228,7 +228,7 @@ int main(int argc, char* argv[]) {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 void signal_timeTick(int signo) {
-	//writeNode(readyQueue, waitQueue, cpuRunNode, wfp);
+	writeNode(readyQueue, waitQueue, cpuRunNode, wfp);
 
 	// io burst part.
 	Node* NodePtr = waitQueue->head;
@@ -242,6 +242,7 @@ void signal_timeTick(int signo) {
 	for (int i = 0; i < waitQueueSize; i++) {
 		popFrontNode(waitQueue, ioRunNode);
 		ioRunNode->ioTime--;
+		printf("!!! ioRunnode %d\n", ioRunNode->ioTime);
 
 		if (ioRunNode->ioTime == 0) {
 			pushBackNode(readyQueue, ioRunNode->procNum, ioRunNode->cpuTime, ioRunNode->ioTime);
@@ -259,11 +260,24 @@ void signal_timeTick(int signo) {
 
 	// run time decreased by 1.
 	RUN_TIME--;
-	printf("1 time tick passed.\n");
 	return;
 }
 
+void signal_cpuSchedOut(int signo) {
+	TICK_COUNT++;
+	printf("cpu sched out called.\n");
+	printf("cpu sched out cpuRunNode %d %d %d\n", cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
+
+	if (TICK_COUNT >= TIME_QUANTUM) {
+		pushBackNode(readyQueue, cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
+		popFrontNode(readyQueue, cpuRunNode);
+		TICK_COUNT = 0;
+	}
+	return;
+}// go to signal_timeTick.
+
 void signal_ioSchedIn(int signo) {
+	printf("io sched in called.\n");
 	pmsgRcv(cpuRunNode->procNum, cpuRunNode);
 	pushBackNode(waitQueue, cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
 
@@ -271,18 +285,6 @@ void signal_ioSchedIn(int signo) {
 		cpuRunNode->procNum = -1;
 	}
 	TICK_COUNT = 0;
-	return;
-}// go to signal_timeTick.
-
-void signal_cpuSchedOut(int signo) {
-	TICK_COUNT++;
-
-	if (TICK_COUNT >= TIME_QUANTUM) {
-		printf("cpuRunNode %d %d %d\n", cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
-		pushBackNode(readyQueue, cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
-		popFrontNode(readyQueue, cpuRunNode);
-		TICK_COUNT = 0;
-	}
 	return;
 }// go to signal_timeTick.
 
@@ -296,7 +298,6 @@ void initList(List* list) {
 }
 
 void pushBackNode(List* list, int procNum, int cpuTime, int ioTime) {
-	printf("push back node called.\n");
 	Node* newNode = (Node*)malloc(sizeof(Node));
 	if (newNode == NULL) {
 		perror("push node malloc error");
@@ -322,7 +323,6 @@ void pushBackNode(List* list, int procNum, int cpuTime, int ioTime) {
 }
 
 int popFrontNode(List* list, Node* runNode) {
-	printf("pop front node called.\n");
 	Node* oldNode = list->head;
 
 	// empty list case.
@@ -388,7 +388,7 @@ void writeNode(List* readyQueue, List* waitQueue, Node* cpuRunNode, FILE* wfp) {
 	Node* nodePtr1 = readyQueue->head;
 	Node* nodePtr2 = waitQueue->head;
 
-	wfp = fopen("schedule_dump.txt", "a+");
+	wfp = fopen("schedule_dump_js.txt", "a+");
 
 	fprintf(wfp, "\n");
 	fprintf(wfp, "┌──────┬───────┬─────────────────┬─────────────┬───────────────┐\n");
