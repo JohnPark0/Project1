@@ -13,7 +13,6 @@
 
 #define MAX_PROCESS 10
 #define TIME_TICK 100000// 0.1 second(100ms).
-#define TIME_QUANTUM 3// 0.3 seconds(300ms).
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -124,7 +123,7 @@ int main(int argc, char* argv[]) {
 	initList(readyQueue);
 	initList(subReadyQueue);
 
-	wfp = fopen("RR_schedule_dump.txt", "w");
+	wfp = fopen("FIFO_schedule_dump.txt", "w");
 	if (wfp == NULL) {
 		perror("file open error");
 		exit(EXIT_FAILURE);
@@ -261,15 +260,9 @@ void signal_timeTick(int signo) {
 	return;
 }
 
-// Round Robin case.
+// First In First Out case.
 void signal_RRcpuSchedOut(int signo) {
 	TICK_COUNT++;
-
-	if (TICK_COUNT >= TIME_QUANTUM) {
-		pushBackNode(readyQueue, cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
-		popFrontNode(readyQueue, cpuRunNode);
-		TICK_COUNT = 0;
-	}
 	return;
 }
 
@@ -384,7 +377,7 @@ void writeNode(List* readyQueue, List* waitQueue, Node* cpuRunNode, FILE* wfp) {
 	Node* nodePtr1 = readyQueue->head;
 	Node* nodePtr2 = waitQueue->head;
 
-	wfp = fopen("RR_schedule_dump.txt", "a+");
+	wfp = fopen("FIFO_schedule_dump.txt", "a+");
 	fprintf(wfp, "───────────────────────────────────────────────────────\n");
 	fprintf(wfp, " TICK   %04d\n\n", CONST_TICK_COUNT);
 	fprintf(wfp, " RUNNING PROCESS\n");

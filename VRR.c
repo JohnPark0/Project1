@@ -12,8 +12,8 @@
 #include <time.h>
 
 #define MAX_PROCESS 10
-#define TIME_TICK 100000// 0.1 second(100ms)
-#define TIME_QUANTUM 3// 0.3 seconds(300ms)
+#define TIME_TICK 100000// 0.1 second(100ms).
+#define TIME_QUANTUM 3// 0.3 seconds(300ms).
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,7 +51,7 @@ int popFrontNode(List* list, Node* runNode);
 void writeNode(List* readyQueue, List* subReadyQueue, List* waitQueue, Node* cpuRunNode, FILE* wfp);
 
 void signal_timeTick(int signo);
-void signal_RRcpuSchedOut(int signo);
+void signal_vRRcpuSchedOut(int signo);
 void signal_ioSchedIn(int signo);
 
 void cmsgSnd(int key, int cpuBurstTime, int ioBurstTime);
@@ -73,7 +73,7 @@ int CPID[MAX_PROCESS];
 int KEY[MAX_PROCESS];
 int CONST_TICK_COUNT;
 int TICK_COUNT;
-int REM_TIME_QUANTUM;
+int REM_TIME_QUANTUM;// virtual RR has remained time quantum.
 int RUN_TIME;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -81,6 +81,7 @@ int RUN_TIME;
 int main(int argc, char* argv[]) {
 	int originCpuBurstTime[2048];
 	int originIoBurstTime[2048];
+	int ppid = getpid();
 
 	struct itimerval new_itimer;
 	struct itimerval old_itimer;
@@ -99,7 +100,7 @@ int main(int argc, char* argv[]) {
 	memset(&io, 0, sizeof(io));
 
 	tick.sa_handler = &signal_timeTick;
-	cpu.sa_handler = &signal_RRcpuSchedOut;
+	cpu.sa_handler = &signal_vRRcpuSchedOut;
 	io.sa_handler = &signal_ioSchedIn;
 
 	sigaction(SIGALRM, &tick, NULL);
@@ -125,7 +126,7 @@ int main(int argc, char* argv[]) {
 	initList(readyQueue);
 	initList(subReadyQueue);
 
-	wfp = fopen("schedule_dump.txt", "w");
+	wfp = fopen("VRR_schedule_dump.txt", "w");
 	if (wfp == NULL) {
 		perror("file open error");
 		exit(EXIT_FAILURE);
@@ -146,7 +147,7 @@ int main(int argc, char* argv[]) {
 
 	if (argc == 1 || argc == 2) {
 		printf("COMMAND <TEXT FILE> <RUN TIME(sec)>\n");
-		printf("./vRRsched_JS.o time_set.txt 10\n");
+		printf("./vRR.o time_set.txt 10\n");
 		exit(EXIT_SUCCESS);
 	}
 	else {
@@ -170,33 +171,34 @@ int main(int argc, char* argv[]) {
 		RUN_TIME = atoi(argv[2]);
 		RUN_TIME = RUN_TIME * 1000000 / TIME_TICK;
 	}
+	printf("\x1b[33m");
+	printf("[Log] process are initialized.\n");
+	printf("\x1b[0m");
 
-	printf("initialization is completed!\n");
 	//////////////////////////////////////////////////////////////////////////////////////////////////
-	int ppid = getpid();
 
 	for (int outerLoopIndex = 0; outerLoopIndex < MAX_PROCESS; outerLoopIndex++) {
 		int ret = fork();
 
-		// parent process
+		// parent process.
 		if (ret > 0) {
 			CPID[outerLoopIndex] = ret;
 			pushBackNode(readyQueue, outerLoopIndex, originCpuBurstTime[outerLoopIndex], originIoBurstTime[outerLoopIndex], 0);
 		}
 
-		// child process
+		// child process.
 		else {
 			int procNum = outerLoopIndex;
 			int cpuBurstTime = originCpuBurstTime[procNum];
 			int ioBurstTime = originIoBurstTime[procNum];
 
-			// child process waits until tick happens.
+			// child process waits until a tick happens.
 			kill(getpid(), SIGSTOP);
 
 			while (true) {
-				// cpu burst part
+				// cpu burst part.
 				cpuBurstTime--;
-				printf("[Log] child process(%d) rem. cpu burst time %d.\n", procNum, cpuBurstTime);
+				printf("[Log] child process(%02d) rem. cpu burst time %d.\n", procNum, cpuBurstTime);
 			
 				if (cpuBurstTime == 0) {
 					cpuBurstTime = originCpuBurstTime[procNum];
@@ -226,7 +228,7 @@ int main(int argc, char* argv[]) {
 
 void signal_timeTick(int signo) {
 	CONST_TICK_COUNT++;
-	printf("\t[Log] tick %d\n", CONST_TICK_COUNT);
+	printf("[Log] tick %d\n", CONST_TICK_COUNT);
 
 	// io burst part.
 	Node* NodePtr = waitQueue->head;
@@ -242,11 +244,11 @@ void signal_timeTick(int signo) {
 		ioRunNode->ioTime--;
 
 		if (ioRunNode->ioTime == 0) {
-			// no remaining time quantum
+			// io run node has no remained time quantum.
 			if (ioRunNode->remTimeQuantum == 0) {
 				pushBackNode(readyQueue, ioRunNode->procNum, ioRunNode->cpuTime, ioRunNode->ioTime, 0);
 			}
-			// remaining time quantum
+			// io node has a remained time quantum.
 			else {
 				pushBackNode(subReadyQueue, ioRunNode->procNum, ioRunNode->cpuTime, ioRunNode->ioTime, ioRunNode->remTimeQuantum);
 			}
@@ -268,8 +270,8 @@ void signal_timeTick(int signo) {
 	return;
 }
 
-// Round Robin case.
-void signal_RRcpuSchedOut(int signo) {
+// virtual Round Robin case.
+void signal_vRRcpuSchedOut(int signo) {
 	TICK_COUNT++;
 
 	if (cpuRunNode->remTimeQuantum == TICK_COUNT || TICK_COUNT >= TIME_QUANTUM) {
@@ -278,17 +280,17 @@ void signal_RRcpuSchedOut(int signo) {
 		if (subReadyQueue->head != NULL) {
 			popFrontNode(subReadyQueue, cpuRunNode);
 			printf("\x1b[33m");
-			printf("sub ready queue pushed run node.\n");
+			printf("[Log] sub ready queue pushed run node.\n");
 			printf("\x1b[0m");
 		}
 		else {
 			popFrontNode(readyQueue, cpuRunNode);
-			printf("ready queue pushed run node\n");
+			printf("[Log] ready queue pushed run node.\n");
 		}
 		TICK_COUNT = 0;
 	}
 	return;
-}// go to signal_timeTick.
+}
 
 void signal_ioSchedIn(int signo) {
 	TICK_COUNT++;
@@ -300,12 +302,12 @@ void signal_ioSchedIn(int signo) {
 	if (subReadyQueue->head != NULL) {
 		popFrontNode(subReadyQueue, cpuRunNode);
 		printf("\x1b[33m");
-		printf("sub ready queue pushed run node.\n");
+		printf("[Log] sub ready queue pushed run node.\n");
 		printf("\x1b[0m");
 	}
 	else if (readyQueue->head != NULL) {
 		popFrontNode(readyQueue, cpuRunNode);
-		printf("ready queue pushed run node.\n");
+		printf("[Log] ready queue pushed run node.\n");
 	}
 	/*
 	else if (popFrontNode(readyQueue, cpuRunNode) == -1) {
@@ -313,7 +315,7 @@ void signal_ioSchedIn(int signo) {
 	}*/
 	TICK_COUNT = 0;
 	return;
-}// go to signal_timeTick.
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -417,7 +419,7 @@ void writeNode(List* readyQueue, List* subReadyQueue, List* waitQueue, Node* cpu
 	Node* nodePtr2 = subReadyQueue->head;
 	Node* nodePtr3 = waitQueue->head;
 
-	wfp = fopen("schedule_dump.txt", "a+");
+	wfp = fopen("VRR_schedule_dump.txt", "a+");
 	fprintf(wfp, "───────────────────────────────────────────────────────\n");
 	fprintf(wfp, " TICK   %04d\n\n", CONST_TICK_COUNT);
 	fprintf(wfp, " RUNNING PROCESS\n");
