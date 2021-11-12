@@ -49,7 +49,7 @@ int popFrontNode(List* list, Node* runNode);
 void writeNode(List* readyQueue, List* waitQueue, Node* cpuRunNode, FILE* wfp);
 
 void signal_timeTick(int signo);
-void signal_RRcpuSchedOut(int signo);
+void signal_FIFOcpuSchedOut(int signo);
 void signal_ioSchedIn(int signo);
 
 void cmsgSnd(int key, int cpuBurstTime, int ioBurstTime);
@@ -97,7 +97,7 @@ int main(int argc, char* argv[]) {
 	memset(&io, 0, sizeof(io));
 
 	tick.sa_handler = &signal_timeTick;
-	cpu.sa_handler = &signal_RRcpuSchedOut;
+	cpu.sa_handler = &signal_FIFOcpuSchedOut;
 	io.sa_handler = &signal_ioSchedIn;
 
 	sigaction(SIGALRM, &tick, NULL);
@@ -261,7 +261,7 @@ void signal_timeTick(int signo) {
 }
 
 // First In First Out case.
-void signal_RRcpuSchedOut(int signo) {
+void signal_FIFOcpuSchedOut(int signo) {
 	TICK_COUNT++;
 	return;
 }
