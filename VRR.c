@@ -64,6 +64,7 @@ void signal_vRRcpuSchedOut(int signo);
 void signal_ioSchedIn(int signo);
 void cmsgSnd(int key, int cpuBurstTime, int ioBurstTime);
 void pmsgRcv(int curProc, Node* nodePtr);
+void Delnode(List* list);
 
 List* waitQueue;
 List* readyQueue;
@@ -249,11 +250,16 @@ int main(int argc, char* argv[]) {
 	}
 
 	// free dynamic memory allocation.
+	Delnode(readyQueue);
+	Delnode(subReadyQueue);
+	Delnode(waitQueue);
+	
 	free(readyQueue);
 	free(subReadyQueue);
 	free(waitQueue);
 	free(cpuRunNode);
 	free(ioRunNode);
+
 	return 0;
 }
 
@@ -495,6 +501,16 @@ bool isEmptyList(List* list) {
 		return true;
 	else
 		return false;
+}
+
+void Delnode(List* list) {
+	while (isEmptyList(list) == false) {
+		Node* delnode;
+		delnode = list->head;
+		list->head = list->head->next;
+		free(delnode);
+		printf("delete  node\n");
+	}
 }
 
 /*

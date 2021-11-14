@@ -57,6 +57,7 @@ void pushBackNode(List* list, int procNum, int cpuTime, int ioTime);
 void popFrontNode(List* list, Node* runNode);
 bool isEmptyList(List* list);
 void writeNode(List* readyQueue, List* waitQueue, Node* cpuRunNode, FILE* wfp);
+void Delnode(List* list);
 
 void signal_timeTick(int signo);
 void signal_FIFOcpuSchedOut(int signo);
@@ -450,6 +451,16 @@ bool isEmptyList(List* list) {
 		return true;
 	else
 		return false;
+}
+
+void Delnode(List* list) {
+	while (isEmptyList(list) == false) {
+		Node* delnode;
+		delnode = list->head;
+		list->head = list->head->next;
+		free(delnode);
+		printf("delete  node\n");
+	}
 }
 
 /*
