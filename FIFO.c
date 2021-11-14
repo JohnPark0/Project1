@@ -248,6 +248,10 @@ int main(int argc, char* argv[]) {
 	}
 	
 	// free dynamic memory allocation.
+	Delnode(readyQueue);
+	Delnode(subReadyQueue);
+	Delnode(waitQueue);
+
 	free(readyQueue);
 	free(subReadyQueue);
 	free(waitQueue);
