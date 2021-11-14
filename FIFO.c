@@ -165,7 +165,7 @@ int main(int argc, char* argv[]) {
 		int preIoTime;
 
 		// read time_set.txt file.
-		for (int innerLoopIndex = 0; innerLoopIndex < 2048; innerLoopIndex++) {
+		for (int innerLoopIndex = 0; innerLoopIndex < 3000; innerLoopIndex++) {
 			if (fscanf(rfp, "%d , %d", &preCpuTime, &preIoTime) == EOF) {
 				printf("fscanf error");
 				exit(EXIT_FAILURE);
@@ -211,14 +211,16 @@ int main(int argc, char* argv[]) {
 
 				// cpu task is over.
 				if (cpuBurstTime == 0) {
-					cpuBurstTime = originCpuBurstTime[procNum * RANDOM];// set the next cpu burst time.
+					cpuBurstTime = originCpuBurstTime[procNum + (RANDOM*10)];// set the next cpu burst time.
 
 					// send the data of child process to parent process.
 					cmsgSnd(KEY[procNum], cpuBurstTime, ioBurstTime);
 					ioBurstTime = originIoBurstTime[procNum * RANDOM];// set the next io burst time.
-
-					if (++RANDOM >= 300)
+					RANDOM++;
+					if (RANDOM > 298)
+					{
 						RANDOM = 1;
+					}
 					kill(ppid, SIGUSR2);
 				}
 				// cpu task is not over.
