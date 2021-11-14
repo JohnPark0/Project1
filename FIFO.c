@@ -12,7 +12,7 @@
 #include <time.h>
 
 #define MAX_PROCESS 10
-#define TIME_TICK 100000// 0.1 second(100ms).
+#define TIME_TICK 100000// 00.1 second(10ms).
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -45,7 +45,8 @@ struct msgbuf {
 
 void initList(List* list);
 void pushBackNode(List* list, int procNum, int cpuTime, int ioTime);
-int popFrontNode(List* list, Node* runNode);
+void popFrontNode(List* list, Node* runNode);
+bool isEmptyList(List* list);
 void writeNode(List* readyQueue, List* waitQueue, Node* cpuRunNode, FILE* wfp);
 
 void signal_timeTick(int signo);
@@ -169,7 +170,7 @@ int main(int argc, char* argv[]) {
 		RUN_TIME = RUN_TIME * 1000000 / TIME_TICK;
 	}
 	printf("\x1b[33m");
-	printf("[Log] process are initialized.\n");
+	printf("TICK   PROC NUMBER   REMAINED CPU TIME\n");
 	printf("\x1b[0m");
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////
@@ -195,8 +196,10 @@ int main(int argc, char* argv[]) {
 			while (true) {
 				// cpu burst part.
 				cpuBurstTime--;
-				printf("[Log] child process(%02d) rem. cpu burst time %d.\n", procNum, cpuBurstTime);
+				printf("            %02d            %02d\n", procNum, cpuBurstTime);
+				printf("───────────────────────────────────────────\n");
 
+				// cpu task is over.
 				if (cpuBurstTime == 0) {
 					cpuBurstTime = originCpuBurstTime[procNum];
 					cmsgSnd(KEY[procNum], cpuBurstTime, ioBurstTime);
@@ -218,6 +221,12 @@ int main(int argc, char* argv[]) {
 		msgctl(msgget(KEY[innerLoopIndex], IPC_CREAT | 0666), IPC_RMID, NULL);
 		kill(CPID[innerLoopIndex], SIGKILL);
 	}
+	
+	free(readyQueue);
+	free(subReadyQueue);
+	free(waitQueue);
+	free(cpuRunNode);
+	free(ioRunNode);
 	return 0;
 }
 
@@ -225,7 +234,7 @@ int main(int argc, char* argv[]) {
 
 void signal_timeTick(int signo) {
 	CONST_TICK_COUNT++;
-	printf("[Log] tick %d\n", CONST_TICK_COUNT);
+	printf("%05d       PROC NUMBER   REMAINED CPU TIME\n", CONST_TICK_COUNT);
 
 	// io burst part.
 	Node* NodePtr = waitQueue->head;
@@ -242,7 +251,6 @@ void signal_timeTick(int signo) {
 
 		if (ioRunNode->ioTime == 0) {
 			pushBackNode(readyQueue, ioRunNode->procNum, ioRunNode->cpuTime, ioRunNode->ioTime);
-			waitQueueSize--;
 		}
 		else {
 			pushBackNode(waitQueue, ioRunNode->procNum, ioRunNode->cpuTime, ioRunNode->ioTime);
@@ -268,11 +276,15 @@ void signal_FIFOcpuSchedOut(int signo) {
 
 void signal_ioSchedIn(int signo) {
 	pmsgRcv(cpuRunNode->procNum, cpuRunNode);
-	pushBackNode(waitQueue, cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
 
-	if (popFrontNode(readyQueue, cpuRunNode) == -1) {
-		cpuRunNode->procNum = -1;
+	if (cpuRunNode->ioTime == 0) {
+		pushBackNode(readyQueue, cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
 	}
+	else {
+		pushBackNode(waitQueue, cpuRunNode->procNum, cpuRunNode->cpuTime, cpuRunNode->ioTime);
+	}
+
+	popFrontNode(readyQueue, cpuRunNode);
 	TICK_COUNT = 0;
 	return;
 }
@@ -311,12 +323,15 @@ void pushBackNode(List* list, int procNum, int cpuTime, int ioTime) {
 	return;
 }
 
-int popFrontNode(List* list, Node* runNode) {
+void popFrontNode(List* list, Node* runNode) {
 	Node* oldNode = list->head;
 
 	// empty list case.
-	if (list->head == NULL) {
-		return -1;
+	if (isEmptyList(list) == true) {
+		runNode->cpuTime = -1;
+		runNode->ioTime = -1;
+		runNode->procNum = -1;
+		return;
 	}
 
 	// pop the last node from a list case.
@@ -330,7 +345,14 @@ int popFrontNode(List* list, Node* runNode) {
 
 	*runNode = *oldNode;
 	free(oldNode);
-	return 0;
+	return;
+}
+
+bool isEmptyList(List* list) {
+	if (list->head == NULL)
+		return true;
+	else
+		return false;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
