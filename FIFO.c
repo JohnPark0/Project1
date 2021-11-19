@@ -57,6 +57,7 @@ void pushBackNode(List* list, int procNum, int cpuTime, int ioTime);
 void popFrontNode(List* list, Node* runNode);
 bool isEmptyList(List* list);
 void writeNode(List* readyQueue, List* waitQueue, Node* cpuRunNode, FILE* wfp);
+void Delnode(List* list);
 
 void signal_timeTick(int signo);
 void signal_FIFOcpuSchedOut(int signo);
@@ -165,7 +166,7 @@ int main(int argc, char* argv[]) {
 		int preIoTime;
 
 		// read time_set.txt file.
-		for (int innerLoopIndex = 0; innerLoopIndex < 2048; innerLoopIndex++) {
+		for (int innerLoopIndex = 0; innerLoopIndex < 3000; innerLoopIndex++) {
 			if (fscanf(rfp, "%d , %d", &preCpuTime, &preIoTime) == EOF) {
 				printf("fscanf error");
 				exit(EXIT_FAILURE);
@@ -211,14 +212,16 @@ int main(int argc, char* argv[]) {
 
 				// cpu task is over.
 				if (cpuBurstTime == 0) {
-					cpuBurstTime = originCpuBurstTime[procNum * RANDOM];// set the next cpu burst time.
+					cpuBurstTime = originCpuBurstTime[procNum + (RANDOM*10)];// set the next cpu burst time.
 
 					// send the data of child process to parent process.
 					cmsgSnd(KEY[procNum], cpuBurstTime, ioBurstTime);
 					ioBurstTime = originIoBurstTime[procNum * RANDOM];// set the next io burst time.
-
-					if (++RANDOM >= 300)
+					RANDOM++;
+					if (RANDOM > 298)
+					{
 						RANDOM = 1;
+					}
 					kill(ppid, SIGUSR2);
 				}
 				// cpu task is not over.
@@ -245,6 +248,10 @@ int main(int argc, char* argv[]) {
 	}
 	
 	// free dynamic memory allocation.
+	Delnode(readyQueue);
+	Delnode(subReadyQueue);
+	Delnode(waitQueue);
+
 	free(readyQueue);
 	free(subReadyQueue);
 	free(waitQueue);
@@ -448,6 +455,16 @@ bool isEmptyList(List* list) {
 		return true;
 	else
 		return false;
+}
+
+void Delnode(List* list) {
+	while (isEmptyList(list) == false) {
+		Node* delnode;
+		delnode = list->head;
+		list->head = list->head->next;
+		free(delnode);
+		printf("delete  node\n");
+	}
 }
 
 /*
