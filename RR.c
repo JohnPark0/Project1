@@ -23,7 +23,7 @@
 
 #define MAX_PROCESS 10
 #define TIME_TICK 10000// 0.01 second(10ms).
-#define TIME_QUANTUM 3// 0.03 seconds(30ms).
+#define TIME_QUANTUM 5// 0.03 seconds(30ms).
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -213,10 +213,10 @@ int main(int argc, char* argv[]) {
 				// cpu task is over.
 				if (cpuBurstTime == 0) {
 					cpuBurstTime = originCpuBurstTime[procNum + (RANDOM * 10)];// set the next cpu burst time.
-
+					
 					// send the data of child process to parent process.
 					cmsgSnd(KEY[procNum], cpuBurstTime, ioBurstTime);
-					ioBurstTime = originIoBurstTime[procNum * RANDOM];// set the next io burst time.
+					ioBurstTime = originIoBurstTime[procNum + (RANDOM * 10)];// set the next io burst time.
 
 					RANDOM++;
 					if (RANDOM > 298)
@@ -241,7 +241,7 @@ int main(int argc, char* argv[]) {
 
 	// parent process excutes until the run time is over.
 	while (RUN_TIME != 0);
-
+	writeNode(readyQueue, waitQueue, cpuRunNode, wfp);// write ready, wait queue dump to txt file.
 	// remove message queues and terminate child processes.
 	for (int innerLoopIndex = 0; innerLoopIndex < MAX_PROCESS; innerLoopIndex++) {
 		msgctl(msgget(KEY[innerLoopIndex], IPC_CREAT | 0666), IPC_RMID, NULL);
@@ -273,6 +273,7 @@ int main(int argc, char* argv[]) {
 * return: none.
 */
 void signal_timeTick(int signo) {
+	writeNode(readyQueue, waitQueue, cpuRunNode, wfp);// write ready, wait queue dump to txt file.
 	CONST_TICK_COUNT++;
 	printf("%05d       PROC NUMBER   REMAINED CPU TIME\n", CONST_TICK_COUNT);
 
@@ -305,7 +306,7 @@ void signal_timeTick(int signo) {
 		kill(CPID[cpuRunNode->procNum], SIGCONT);
 	}
 
-	writeNode(readyQueue, waitQueue, cpuRunNode, wfp);// write ready, wait queue dump to txt file.
+
 	RUN_TIME--;// run time decreased by 1.
 	return;
 }
@@ -477,7 +478,7 @@ void Delnode(List* list) {
 		delnode = list->head;
 		list->head = list->head->next;
 		free(delnode);
-		printf("delete  node\n");
+		//printf("delete  node\n");
 	}
 }
 

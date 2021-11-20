@@ -509,7 +509,7 @@ void Delnode(List* list) {
 		delnode = list->head;
 		list->head = list->head->next;
 		free(delnode);
-		printf("delete  node\n");
+		//printf("delete  node\n");
 	}
 }
 

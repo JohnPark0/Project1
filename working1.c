@@ -44,7 +44,6 @@ void signal_cpubustFIFO(int signo);
 void signal_tick(int signo);
 void addnode(list* list, int proc_num);
 int delnode(list* list, node* return_node);
-void writenode(list* list, FILE* fp, char* listname);
 void writeallnode(list* ready, list* waiting, node* running, FILE* fp);
 void inilist(list* list);
 void cmsgSnd(int ckey, int iobust_time);
@@ -53,7 +52,6 @@ void pmsgRcv(int curProc, int* iobust_time);
 int bust_time[MAX_PROC];
 int iobust_time[MAX_PROC];
 int pids[MAX_PROC];
-int parents_pid;
 int WaitingQ_num;
 int running_ticks = 0;
 int tickCount = 0; //타임 카운터
@@ -76,6 +74,7 @@ int main(int argc, char* argv[]) {
 	int child_proc_num = 0;		//편의를 위해 자식 프로세스 번호지정
 	int Origin_bust_time[3000];
 	int Origin_iobust_time[3000];
+	int parents_pid;
 
 	FILE* settingfp;
 
@@ -198,7 +197,6 @@ int main(int argc, char* argv[]) {
 			child_proc_num++;
 			pids[i] = ret;
 			addnode(ReadyQ, i);
-
 		}
 		//초기 자식 프로세스 생성 구간
 
@@ -415,26 +413,6 @@ int delnode(list* list, node* return_node) {
 	free(delnode);
 
 	return 1;								//성공
-}
-
-void writenode(list* list, FILE* fp, char* listname) {
-	node* nodepointer;
-	fprintf(fp, "\nRunning tick = %d\n", running_ticks);
-	running_ticks++;
-	if (list->head == NULL) {	//list empty
-		return;
-	}
-	nodepointer = list->head;
-	for (int i = 0; ; ) {
-		fprintf(fp, "%s[%d] = %d\n", listname, i, nodepointer->proc_num);
-		if (nodepointer->next == NULL) {
-			return;
-		}
-		else {
-			nodepointer = nodepointer->next;
-			i++;
-		}
-	}
 }
 
 void writeallnode(list* ready, list* waiting, node* running, FILE* fp) {
